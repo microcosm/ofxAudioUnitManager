@@ -12,8 +12,12 @@ void MidiHandler::setup(ofxAudioUnit* synth, string midiPortId){
     midiOut.openPort(midiPortId);
 }
 
+ofxMidiOut* MidiHandler::midi() {
+    return &midiOut;
+}
+
 void MidiHandler::sendNoteOn(int note) {
-    sendNoteOn(note, 127);
+    sendNoteOn(note, 64);
 }
 
 void MidiHandler::sendNoteOn(int note, int velocity) {

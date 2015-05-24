@@ -14,16 +14,16 @@ void ofApp::setup(){
 
 void ofApp::play(void){
     if(playing) {
-        leftChain.sendMidiOn(note);
-        rightChain.sendMidiOn(note);
+        leftChain.midi()->sendNoteOn(1, note);
+        rightChain.midi()->sendNoteOn(1, note);
     }
 }
 
 void ofApp::togglePlaying() {
     playing = !playing;
     if(!playing) {
-        leftChain.sendMidiOff(note);
-        rightChain.sendMidiOff(note);
+        leftChain.midi()->sendNoteOff(1, note);
+        rightChain.midi()->sendNoteOff(1, note);
     }
 }
 

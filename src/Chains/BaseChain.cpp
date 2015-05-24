@@ -16,12 +16,12 @@ void BaseChain::draw(){
 }
 
 void BaseChain::exit() {
-    midi.exit();
+    midiHandler.exit();
 }
 
 string BaseChain::report() {
     string report = "";
-    report.append(midi.report());
+    report.append(midiHandler.report());
     report.append("\n\n");
     report.append(presets.report());
     return report;
@@ -58,14 +58,6 @@ void BaseChain::toggleSelected() {
     selected ? presets.select() : presets.deselect();
 }
 
-void BaseChain::sendMidiOn(int note) {
-    midi.sendNoteOn(note);
-}
-
-void BaseChain::sendMidiOn(int note, int velocity) {
-    midi.sendNoteOn(note, velocity);
-}
-
-void BaseChain::sendMidiOff(int note) {
-    midi.sendNoteOff(note);
+ofxMidiOut* BaseChain::midi() {
+    return midiHandler.midi();
 }

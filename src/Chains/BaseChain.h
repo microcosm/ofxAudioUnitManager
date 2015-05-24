@@ -19,16 +19,14 @@ public:
     void select();
     void deselect();
     void toggleSelected();
-    void sendMidiOn(int note);
-    void sendMidiOn(int note, int velocity);
-    void sendMidiOff(int note);
+    ofxMidiOut* midi();
     
 protected:
     ofxAudioUnitTap tap;
     ofPolyline waveform;
     
     PresetsHandler presets;
-    MidiHandler midi;
+    MidiHandler midiHandler;
     ofColor waveColor;
     bool selected;
 };

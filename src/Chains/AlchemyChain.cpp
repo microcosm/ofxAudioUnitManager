@@ -10,7 +10,7 @@ void AlchemyChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
     
     ofxAudioUnit* synth = alchemy.get();
     presets.setup(name, synth);
-    midi.setup(synth, name);
+    midiHandler.setup(synth, name);
     
     synth->connectTo(*filter.get())
       //.connectTo(*reverb.get())
