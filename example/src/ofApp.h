@@ -34,4 +34,5 @@ public:
     ofxBpm bpm;
     Controls controls;
     bool playing, showDebugUI;
+    int note;
 };

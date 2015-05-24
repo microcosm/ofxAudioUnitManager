@@ -58,18 +58,14 @@ void BaseChain::toggleSelected() {
     selected ? presets.select() : presets.deselect();
 }
 
-void BaseChain::incrementMidiNote() {
-    midi.incrementNote();
+void BaseChain::sendMidiOn(int note) {
+    midi.sendNoteOn(note);
 }
 
-void BaseChain::decrementMidiNote() {
-    midi.decrementNote();
+void BaseChain::sendMidiOn(int note, int velocity) {
+    midi.sendNoteOn(note, velocity);
 }
 
-void BaseChain::midiNoteOn() {
-    midi.sendNoteOn();
-}
-
-void BaseChain::midiNoteOff() {
-    midi.sendNoteOff();
+void BaseChain::sendMidiOff(int note) {
+    midi.sendNoteOff(note);
 }

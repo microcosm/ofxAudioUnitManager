@@ -6,6 +6,7 @@ void ofApp::setup(){
     manager.add(&rightChain, "right-chain", ofColor::red);
     
     playing = showDebugUI = false;
+    note = 60;
     
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
     bpm.start();
@@ -13,16 +14,16 @@ void ofApp::setup(){
 
 void ofApp::play(void){
     if(playing) {
-        leftChain.midiNoteOn();
-        rightChain.midiNoteOn();
+        leftChain.sendMidiOn(note);
+        rightChain.sendMidiOn(note);
     }
 }
 
 void ofApp::togglePlaying() {
     playing = !playing;
     if(!playing) {
-        leftChain.midiNoteOff();
-        rightChain.midiNoteOff();
+        leftChain.sendMidiOff(note);
+        rightChain.sendMidiOff(note);
     }
 }
 
@@ -61,9 +62,13 @@ void ofApp::keyPressed(int key){
     } else if(key == 's') {
         selectedChain->savePresets();
     } else if(key == ']') {
-        selectedChain->incrementMidiNote();
+        togglePlaying();
+        note--;
+        togglePlaying();
     } else if(key == '[') {
-        selectedChain->decrementMidiNote();
+        togglePlaying();
+        note++;
+        togglePlaying();
     } else if(key == 359) {
         selectedChain->incrementPreset();
     } else if(key == 357) {

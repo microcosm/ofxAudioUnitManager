@@ -19,10 +19,9 @@ public:
     void select();
     void deselect();
     void toggleSelected();
-    void incrementMidiNote();
-    void decrementMidiNote();
-    void midiNoteOn();
-    void midiNoteOff();
+    void sendMidiOn(int note);
+    void sendMidiOn(int note, int velocity);
+    void sendMidiOff(int note);
     
 protected:
     ofxAudioUnitTap tap;

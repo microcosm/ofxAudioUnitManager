@@ -8,13 +8,11 @@ class MidiHandler{
     
 public:
     void setup(ofxAudioUnit* synth, string midiPortId);
-    void sendNoteOn();
-    void sendNoteOff();
+    void sendNoteOn(int note);
+    void sendNoteOn(int note, int velocity);
+    void sendNoteOff(int note);
     string report();
     void exit();
-    void incrementNote();
-    void decrementNote();
-    void toggleNote();
     
 protected:
     
@@ -22,5 +20,5 @@ protected:
     
     ofxAudioUnitMidiReceiver midiReceiver;
     ofxMidiOut midiOut;
-    int note, channel, velocity;
+    int channel, lastNote, lastVelocity;
 };

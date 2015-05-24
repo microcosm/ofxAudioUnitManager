@@ -4,20 +4,24 @@ void MidiHandler::setup(ofxAudioUnit* synth, string midiPortId){
     this->synth = synth;
     
     channel = 1;
-    velocity = 64;
-    note = 60;
+    lastVelocity = -1;
+    lastNote = -1;
     
     midiReceiver.createMidiDestination(midiPortId);
     midiReceiver.routeMidiTo(*this->synth);
     midiOut.openPort(midiPortId);
 }
 
-void MidiHandler::sendNoteOn() {
+void MidiHandler::sendNoteOn(int note) {
+    sendNoteOn(note, 127);
+}
+
+void MidiHandler::sendNoteOn(int note, int velocity) {
     midiOut.sendNoteOn(channel, note, velocity);
 }
 
-void MidiHandler::sendNoteOff() {
-    midiOut.sendNoteOff(channel, note, velocity);
+void MidiHandler::sendNoteOff(int note) {
+    midiOut.sendNoteOff(channel, note);
 }
 
 string MidiHandler::report() {
@@ -27,23 +31,11 @@ string MidiHandler::report() {
     << " \"" << midiOut.getName() << "\"" << endl
     << "virtual? " << midiOut.isVirtual() << endl
     << "channel " << channel << endl
-    << "note " << note << endl
-    << "velocity " << velocity << endl;
+    << "note " << lastNote << endl
+    << "velocity " << lastVelocity << endl;
     return report.str();
 }
 
 void MidiHandler::exit() {
     midiOut.closePort();
-}
-
-void MidiHandler::incrementNote() {
-    midiOut.sendNoteOff(channel, note, velocity);
-    if(note == 127) note = 0;
-    else note += 1;
-}
-
-void MidiHandler::decrementNote() {
-    midiOut.sendNoteOff(channel, note, velocity);
-    if(note == 0) note = 127;
-    else note -= 1;
 }
