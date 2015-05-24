@@ -5,7 +5,7 @@ void ofApp::setup(){
     manager.add(&leftChain, "left-chain", ofColor::blue);
     manager.add(&rightChain, "right-chain", ofColor::red);
     
-    playing = showDebugUI = false;
+    playing = false;
     note = 60;
     
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
@@ -27,10 +27,6 @@ void ofApp::togglePlaying() {
     }
 }
 
-void ofApp::toggleDebugUI() {
-    showDebugUI = !showDebugUI;
-}
-
 void ofApp::update(){
     leftChain.update();
     rightChain.update();
@@ -40,6 +36,8 @@ void ofApp::draw(){
     ofBackground(0);
     leftChain.draw();
     rightChain.draw();
+    
+    manager.draw();
 }
 
 void ofApp::exit() {
@@ -58,7 +56,7 @@ void ofApp::keyPressed(int key){
     } else if(key == 'f') {
         selectedChain->showFilterUI();
     } else if(key == 'd') {
-        toggleDebugUI();
+        manager.toggleDebugUI();
     } else if(key == 's') {
         selectedChain->savePresets();
     } else if(key == ']') {

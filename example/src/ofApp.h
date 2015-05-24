@@ -16,7 +16,6 @@ public:
     void draw();
     void play();
     void togglePlaying();
-    void toggleDebugUI();
     void exit();
     
     void keyPressed(int key);
@@ -33,6 +32,6 @@ public:
     AlchemyChain leftChain, rightChain;
     ofxBpm bpm;
     Controls controls;
-    bool playing, showDebugUI;
+    bool playing;
     int note;
 };
