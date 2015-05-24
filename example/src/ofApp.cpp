@@ -1,15 +1,11 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
-    playing = showDebugUI = false;
+    manager.setup();
+    manager.add(&leftChain, "left-chain", ofColor::blue);
+    manager.add(&rightChain, "right-chain", ofColor::red);
     
-    mixer.setInputBusCount(2);
-    leftChain.setup("left-chain", &mixer, 0, ofColor::lightGray);
-    rightChain.setup("right-chain", &mixer, 1, ofColor::white);
-    leftChain.select();  //??
-    compressor.setup();
-    mixer.connectTo(*compressor.get()).connectTo(output);
-    output.start();
+    playing = showDebugUI = false;
     
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
     bpm.start();

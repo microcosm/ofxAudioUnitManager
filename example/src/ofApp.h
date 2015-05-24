@@ -6,6 +6,7 @@
 #include "ofxAudioUnit.h"
 #include "Compressor.h"
 #include "AlchemyChain.h"
+#include "ofxAudioUnitManager.h"
 
 class ofApp : public ofBaseApp{
     
@@ -28,11 +29,9 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    ofxAudioUnitManager manager;
     AlchemyChain leftChain, rightChain;
     ofxBpm bpm;
-    Compressor compressor;
-    ofxAudioUnitMixer mixer;
-    ofxAudioUnitOutput output;
     Controls controls;
     bool playing, showDebugUI;
 };
