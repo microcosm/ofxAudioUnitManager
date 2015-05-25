@@ -4,7 +4,7 @@ void ofxAudioUnitManager::setup() {
     showDebugUI = false;
     reportMargin = 25;
     reportWidth = 200;
-    reportHeight = 270;
+    reportHeight = 170;
     compressor.setup();
     mixer.connectTo(*compressor.get()).connectTo(output);
     output.start();

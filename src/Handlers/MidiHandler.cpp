@@ -16,27 +16,12 @@ ofxMidiOut* MidiHandler::midi() {
     return &midiOut;
 }
 
-void MidiHandler::sendNoteOn(int note) {
-    sendNoteOn(note, 64);
-}
-
-void MidiHandler::sendNoteOn(int note, int velocity) {
-    midiOut.sendNoteOn(channel, note, velocity);
-}
-
-void MidiHandler::sendNoteOff(int note) {
-    midiOut.sendNoteOff(channel, note);
-}
-
 string MidiHandler::report() {
     stringstream report;
     report << "MIDI" << endl << endl
     << "port " << midiOut.getPort()
     << " \"" << midiOut.getName() << "\"" << endl
-    << "virtual? " << midiOut.isVirtual() << endl
-    << "channel " << channel << endl
-    << "note " << lastNote << endl
-    << "velocity " << lastVelocity << endl;
+    << "virtual? " << midiOut.isVirtual();
     return report.str();
 }
 
