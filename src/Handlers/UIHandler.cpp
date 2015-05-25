@@ -2,7 +2,7 @@
 
 void UIHandler::setup() {
     controlsDimensions = ofVec2f(300, 260);
-    chainInfoDimensions = ofVec2f(150, 340);
+    chainInfoDimensions = ofVec2f(220, 340);
 
     controlsPositions = ofVec2f(
         ofGetWidth()  - controlsDimensions.x - 20,
@@ -13,7 +13,7 @@ void UIHandler::setup() {
 void UIHandler::drawControls() {
     drawDebugBox(controlsPositions.x, controlsPositions.y, controlsDimensions.x, controlsDimensions.y);
     ofSetColor(ofColor::white);
-    ofDrawBitmapString(controls(), controlsPositions.x + 10, controlsPositions.y + 20);
+    ofDrawBitmapString(controlsReport(), controlsPositions.x + 10, controlsPositions.y + 20);
 }
 
 void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
@@ -26,7 +26,7 @@ void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
         y = chainInfoPositions.y;
         drawDebugBox(x, y, chainInfoDimensions.x, chainInfoDimensions.y);
         ofSetColor(ofColor::white);
-        ofDrawBitmapString(chains.at(i)->report(), x + 10, y + 20);
+        ofDrawBitmapString(chainReport(chains.at(i), i+1), x + 10, y + 20);
     }
 }
 
@@ -39,7 +39,7 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height) {
     ofRect(x, y, width, height);
 }
 
-string UIHandler::controls() {
+string UIHandler::controlsReport() {
     stringstream report;
     report << "CONTROLS"
     << endl << ""
@@ -59,5 +59,16 @@ string UIHandler::controls() {
     << endl << "SPACE:      Start/stop playing"
     << endl << "[ / ]:      Current note up / down"
     << endl << "----------------------------------";
+    return report.str();
+}
+
+string UIHandler::chainReport(AudioUnitChain *chain, int number) {
+    stringstream report;
+    report << "CHAIN " << number << ": " << "\"" << chain->getName() << "\""
+    << endl << "midi port " << chain->midi()->getPort()
+    << endl << ""
+    << endl << (chain->isSelected() ? "(*selected)" : "")
+    << endl << ""
+    << endl << chain->getPresets()->report();
     return report.str();
 }

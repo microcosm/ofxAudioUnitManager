@@ -1,8 +1,9 @@
 #include "AudioUnitChain.h"
 
-void AudioUnitChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
+void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
     waveColor = _waveColor;
     selected = false;
+    name = _name;
 }
 
 void AudioUnitChain::update(){
@@ -17,14 +18,6 @@ void AudioUnitChain::drawWaveform(){
 
 void AudioUnitChain::exit() {
     midiHandler.exit();
-}
-
-string AudioUnitChain::report() {
-    string report = "";
-    report.append(midiHandler.report());
-    report.append("\n\n");
-    report.append(presets.report());
-    return report;
 }
 
 void AudioUnitChain::load(AudioUnitBase* unit) {
@@ -66,4 +59,12 @@ void AudioUnitChain::deselect() {
 
 ofxMidiOut* AudioUnitChain::midi() {
     return midiHandler.midi();
+}
+
+PresetsHandler* AudioUnitChain::getPresets() {
+    return &presets;
+}
+
+string AudioUnitChain::getName() {
+    return name;
 }

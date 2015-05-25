@@ -10,7 +10,8 @@ public:
     void drawChains(vector<AudioUnitChain*> chains);
 protected:
     void drawDebugBox(int x, int y, int width, int height);
-    string controls();
+    string controlsReport();
+    string chainReport(AudioUnitChain* chain, int number);
 
     ofVec2f chainInfoPositions, controlsPositions;
     ofVec2f chainInfoDimensions, controlsDimensions;
