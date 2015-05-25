@@ -35,9 +35,6 @@ void ofApp::update(){
 
 void ofApp::draw(){
     ofBackground(0);
-    leftChain.draw();
-    rightChain.draw();
-    
     manager.draw();
 }
 

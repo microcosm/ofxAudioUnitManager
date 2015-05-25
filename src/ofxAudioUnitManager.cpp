@@ -23,10 +23,8 @@ void ofxAudioUnitManager::update() {
 
 void ofxAudioUnitManager::draw() {
     if(showDebugUI) {
-        //drawDebugBox(10, 10, 420, 300);
-        //drawDebugBox(ofGetWidth() - 370, 10, 300, 230);
-        //drawDebugBox(10, ofGetHeight() - 160, 210, 150);
         
+        //Draw MIDI
         for(int i = 0; i < chains.size(); i++) {
             x = (reportMargin * (i + 1)) + (reportWidth * i);
             y = reportMargin + 10;
@@ -35,9 +33,19 @@ void ofxAudioUnitManager::draw() {
             ofDrawBitmapString(chains.at(i)->report(), x, y);
         }
         
-        drawDebugBox(reportMargin-10, reportHeight + reportMargin, 300, 240);
-        ofDrawBitmapString(controls.report(), reportMargin, reportHeight + reportMargin * 2);
-        //largeFont.drawString("fps:\n" + ofToString(ofGetFrameRate()), 20, ofGetHeight() - 100);
+        //Draw controls
+        x = reportMargin - 10;
+        y = reportHeight + reportMargin;
+        drawDebugBox(x, y, 300, 240);
+        
+        x = reportMargin;
+        y = reportHeight + reportMargin * 2;
+        ofDrawBitmapString(controls.report(), x, y);
+    }
+    
+    //Draw chain polylines
+    for(int i = 0; i < chains.size(); i++) {
+        chains.at(i)->draw();
     }
 }
 
