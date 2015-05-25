@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include "BaseChain.h"
 #include "Compressor.h"
+#include "Controls.h"
 
 class ofxAudioUnitManager {
 public:
@@ -15,6 +16,7 @@ protected:
     void drawDebugBox(int x, int y, int width, int height);
     
     Compressor compressor;
+    Controls controls;
     ofxAudioUnitMixer mixer;
     ofxAudioUnitOutput output;
     vector<BaseChain*> chains;

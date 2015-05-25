@@ -2,6 +2,7 @@
 
 void ofApp::setup(){
     manager.setup();
+    manager.toggleDebugUI();
     manager.add(&leftChain, "left-chain", ofColor::blue);
     manager.add(&rightChain, "right-chain", ofColor::red);
     

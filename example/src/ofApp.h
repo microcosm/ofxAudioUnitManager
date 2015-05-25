@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxBpm.h"
-#include "Controls.h"
 #include "ofxAudioUnit.h"
 #include "Compressor.h"
 #include "AlchemyChain.h"
@@ -31,7 +30,6 @@ public:
     ofxAudioUnitManager manager;
     AlchemyChain leftChain, rightChain;
     ofxBpm bpm;
-    Controls controls;
     bool playing;
     int note;
 };

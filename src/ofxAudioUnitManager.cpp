@@ -34,7 +34,9 @@ void ofxAudioUnitManager::draw() {
             ofSetColor(ofColor::white);
             ofDrawBitmapString(chains.at(i)->report(), x, y);
         }
-        //ofDrawBitmapString(controls.report(), ofGetWidth() - 350, 30);
+        
+        drawDebugBox(reportMargin-10, reportHeight + reportMargin, 300, 240);
+        ofDrawBitmapString(controls.report(), reportMargin, reportHeight + reportMargin * 2);
         //largeFont.drawString("fps:\n" + ofToString(ofGetFrameRate()), 20, ofGetHeight() - 100);
     }
 }
