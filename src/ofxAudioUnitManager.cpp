@@ -10,7 +10,7 @@ void ofxAudioUnitManager::setup() {
     output.start();
 }
 
-void ofxAudioUnitManager::add(BaseChain *chain, string name, ofColor color) {
+void ofxAudioUnitManager::add(AudioUnitChain *chain, string name, ofColor color) {
     int index = chains.size();
     chain->setup(name, &mixer, index, color);
     chains.push_back(chain);

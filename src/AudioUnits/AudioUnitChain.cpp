@@ -1,25 +1,25 @@
-#include "BaseChain.h"
+#include "AudioUnitChain.h"
 
-void BaseChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
+void AudioUnitChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
     waveColor = _waveColor;
     selected = false;
 }
 
-void BaseChain::update(){
+void AudioUnitChain::update(){
     tap.getLeftWaveform(waveform, ofGetWidth(), ofGetHeight());
 }
 
-void BaseChain::draw(){
+void AudioUnitChain::draw(){
     ofSetColor(waveColor);
     ofSetLineWidth(1);
     waveform.draw();
 }
 
-void BaseChain::exit() {
+void AudioUnitChain::exit() {
     midiHandler.exit();
 }
 
-string BaseChain::report() {
+string AudioUnitChain::report() {
     string report = "";
     report.append(midiHandler.report());
     report.append("\n\n");
@@ -27,43 +27,43 @@ string BaseChain::report() {
     return report;
 }
 
-void BaseChain::load(BaseUnit* unit) {
+void AudioUnitChain::load(AudioUnitBase* unit) {
     unit->setup();
     units.push_back(unit);
 }
 
-void BaseChain::showUI(){
+void AudioUnitChain::showUI(){
     for(int i = 0; i < units.size(); i++) {
         units.at(i)->showUI();
     }
 }
 
-void BaseChain::savePresets() {
+void AudioUnitChain::savePresets() {
     presets.save();
 }
 
-void BaseChain::incrementPreset() {
+void AudioUnitChain::incrementPreset() {
     presets.increment();
 }
 
-void BaseChain::decrementPreset() {
+void AudioUnitChain::decrementPreset() {
     presets.decrement();
 }
 
-bool BaseChain::isSelected() {
+bool AudioUnitChain::isSelected() {
     return selected;
 }
 
-void BaseChain::select() {
+void AudioUnitChain::select() {
     selected = true;
     presets.select();
 }
 
-void BaseChain::deselect() {
+void AudioUnitChain::deselect() {
     selected = false;
     presets.deselect();
 }
 
-ofxMidiOut* BaseChain::midi() {
+ofxMidiOut* AudioUnitChain::midi() {
     return midiHandler.midi();
 }

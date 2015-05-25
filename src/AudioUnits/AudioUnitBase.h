@@ -2,8 +2,8 @@
 #include "ofMain.h"
 #include "ofxAudioUnit.h"
 
-class BaseUnit {
-    
+class AudioUnitBase {
+
 public:
     virtual void setup();
     void showUI();

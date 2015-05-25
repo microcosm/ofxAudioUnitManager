@@ -3,9 +3,9 @@
 #include "ofxAudioUnit.h"
 #include "PresetsHandler.h"
 #include "MidiHandler.h"
-#include "BaseUnit.h"
+#include "AudioUnitBase.h"
 
-class BaseChain {
+class AudioUnitChain {
     
 public:
     virtual void setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor);
@@ -13,7 +13,7 @@ public:
     virtual void draw();
     virtual void exit();
     virtual string report();
-    void load(BaseUnit* unit);
+    void load(AudioUnitBase* unit);
     void showUI();
     void savePresets();
     void incrementPreset();
@@ -26,7 +26,7 @@ public:
 protected:
     ofxAudioUnitTap tap;
     ofPolyline waveform;
-    vector<BaseUnit*> units;
+    vector<AudioUnitBase*> units;
     
     PresetsHandler presets;
     MidiHandler midiHandler;

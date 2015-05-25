@@ -6,5 +6,5 @@ void Reverb::setup() {
     
     setParameter(kReverbParam_SmallLargeMix, 30);
     
-    BaseUnit::setup();
+    AudioUnitBase::setup();
 }
