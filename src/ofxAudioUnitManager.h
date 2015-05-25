@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "AudioUnitChain.h"
 #include "Compressor.h"
-#include "Controls.h"
+#include "UIHandler.h"
 
 class ofxAudioUnitManager {
 public:
@@ -17,16 +17,14 @@ public:
     void decrementSelected();
 
 protected:
-    void drawDebugBox(int x, int y, int width, int height);
     void selectChain(int index);
     
     Compressor compressor;
-    Controls controls;
+    UIHandler userInterface;
     ofxAudioUnitMixer mixer;
     ofxAudioUnitOutput output;
     vector<AudioUnitChain*> chains;
     AudioUnitChain* selectedChain;
     bool showDebugUI;
-    int reportMargin, reportWidth, reportHeight, selectedChainIndex;
-    float x, y;
+    int selectedChainIndex;
 };

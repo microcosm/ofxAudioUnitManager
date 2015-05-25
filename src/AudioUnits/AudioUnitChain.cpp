@@ -9,7 +9,7 @@ void AudioUnitChain::update(){
     tap.getLeftWaveform(waveform, ofGetWidth(), ofGetHeight());
 }
 
-void AudioUnitChain::draw(){
+void AudioUnitChain::drawWaveform(){
     ofSetColor(waveColor);
     ofSetLineWidth(1);
     waveform.draw();
