@@ -66,9 +66,10 @@ void ofApp::keyPressed(int key){
         selectedChain->decrementPreset();
     } else if(key == ' ') {
         togglePlaying();
-    } else if(key == 358 || key == 356) {
-        leftChain.toggleSelected();
-        rightChain.toggleSelected();//TODO: replace with manager.incrementSelected() and decrement
+    } else if(key == 358) {
+        manager.incrementSelected();
+    } else if(key == 356) {
+        manager.decrementSelected();
     } else if(key == 13) {
         ofToggleFullscreen();
     }

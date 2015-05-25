@@ -21,7 +21,6 @@ public:
     bool isSelected();
     void select();
     void deselect();
-    void toggleSelected();
     ofxMidiOut* midi();
     
 protected:

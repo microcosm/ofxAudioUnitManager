@@ -64,11 +64,6 @@ void BaseChain::deselect() {
     presets.deselect();
 }
 
-void BaseChain::toggleSelected() {
-    selected = !selected;
-    selected ? presets.select() : presets.deselect();
-}
-
 ofxMidiOut* BaseChain::midi() {
     return midiHandler.midi();
 }

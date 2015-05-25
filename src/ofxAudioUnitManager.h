@@ -12,6 +12,8 @@ public:
     void draw();
     void exit();
     void toggleDebugUI();
+    void incrementSelected();
+    void decrementSelected();
 
 protected:
     void drawDebugBox(int x, int y, int width, int height);
@@ -22,6 +24,6 @@ protected:
     ofxAudioUnitOutput output;
     vector<BaseChain*> chains;
     bool showDebugUI;
-    int reportMargin, reportWidth, reportHeight;
+    int reportMargin, reportWidth, reportHeight, selectedChain;
     float x, y;
 };

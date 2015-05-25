@@ -11,10 +11,11 @@ void ofxAudioUnitManager::setup() {
 }
 
 void ofxAudioUnitManager::add(BaseChain *chain, string name, ofColor color) {
-    chains.push_back(chain);
-    mixer.setInputBusCount(chains.size());
     chain->setup(name, &mixer, chains.size() - 1, color);
     chain->select();
+    chains.push_back(chain);
+    selectedChain = chains.size() - 1;
+    mixer.setInputBusCount(chains.size());
 }
 
 void ofxAudioUnitManager::update() {
@@ -59,6 +60,16 @@ void ofxAudioUnitManager::exit() {
 
 void ofxAudioUnitManager::toggleDebugUI() {
     showDebugUI = !showDebugUI;
+}
+
+void ofxAudioUnitManager::incrementSelected() {
+    selectedChain = selectedChain + 1 >= chains.size() ? 0 : selectedChain + 1;
+    chains.at(selectedChain)->select();
+}
+
+void ofxAudioUnitManager::decrementSelected() {
+    selectedChain = selectedChain - 1 < 0 ? chains.size() - 1 : selectedChain - 1;
+    chains.at(selectedChain)->select();
 }
 
 void ofxAudioUnitManager::drawDebugBox(int x, int y, int width, int height) {
