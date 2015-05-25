@@ -27,6 +27,17 @@ string BaseChain::report() {
     return report;
 }
 
+void BaseChain::load(BaseUnit* unit) {
+    unit->setup();
+    units.push_back(unit);
+}
+
+void BaseChain::showUI(){
+    for(int i = 0; i < units.size(); i++) {
+        units.at(i)->showUI();
+    }
+}
+
 void BaseChain::savePresets() {
     presets.save();
 }

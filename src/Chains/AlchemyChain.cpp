@@ -3,10 +3,10 @@
 void AlchemyChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
     BaseChain::setup(name, mixer, mixerChannel, _waveColor);
     
-    alchemy.setup();
-    filter.setup();
-    reverb.setup();
-    delay.setup();
+    load(&alchemy);
+    load(&filter);
+    load(&reverb);
+    load(&delay);
     
     ofxAudioUnit* synth = alchemy.get();
     presets.setup(name, synth);

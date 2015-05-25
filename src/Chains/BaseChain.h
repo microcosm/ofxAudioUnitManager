@@ -3,6 +3,7 @@
 #include "ofxAudioUnit.h"
 #include "PresetsHandler.h"
 #include "MidiHandler.h"
+#include "BaseUnit.h"
 
 class BaseChain {
     
@@ -12,6 +13,8 @@ public:
     virtual void draw();
     virtual void exit();
     virtual string report();
+    void load(BaseUnit* unit);
+    void showUI();
     void savePresets();
     void incrementPreset();
     void decrementPreset();
@@ -24,6 +27,7 @@ public:
 protected:
     ofxAudioUnitTap tap;
     ofPolyline waveform;
+    vector<BaseUnit*> units;
     
     PresetsHandler presets;
     MidiHandler midiHandler;
