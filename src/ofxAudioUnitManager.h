@@ -11,6 +11,7 @@ public:
     void update();
     void draw();
     void exit();
+    void keyPressed(int key);
     void toggleDebugUI();
     void incrementSelected();
     void decrementSelected();
@@ -24,7 +25,8 @@ protected:
     ofxAudioUnitMixer mixer;
     ofxAudioUnitOutput output;
     vector<BaseChain*> chains;
+    BaseChain* selectedChain;
     bool showDebugUI;
-    int reportMargin, reportWidth, reportHeight, selectedChain;
+    int reportMargin, reportWidth, reportHeight, selectedChainIndex;
     float x, y;
 };

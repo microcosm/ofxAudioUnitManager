@@ -42,36 +42,18 @@ void ofApp::exit() {
 }
 
 void ofApp::keyPressed(int key){
-    //TODO: have manager remember selected chain
-    AlchemyChain* selectedChain;
-    selectedChain = leftChain.isSelected() ? &leftChain : &rightChain;
-    
-    if (key == 'u') {
-        selectedChain->showUI();
-    } else if(key == 'd') {
-        manager.toggleDebugUI();
-    } else if(key == 's') {
-        selectedChain->savePresets();
-    } else if(key == ']') {
-        togglePlaying();
-        note--;
+    if(key == ' ') {
         togglePlaying();
     } else if(key == '[') {
         togglePlaying();
+        note--;
+        togglePlaying();
+    } else if(key == ']') {
+        togglePlaying();
         note++;
         togglePlaying();
-    } else if(key == 359) {
-        selectedChain->incrementPreset();
-    } else if(key == 357) {
-        selectedChain->decrementPreset();
-    } else if(key == ' ') {
-        togglePlaying();
-    } else if(key == 358) {
-        manager.incrementSelected();
-    } else if(key == 356) {
-        manager.decrementSelected();
-    } else if(key == 13) {
-        ofToggleFullscreen();
+    } else {
+        manager.keyPressed(key);
     }
 }
 
