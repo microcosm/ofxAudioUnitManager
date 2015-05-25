@@ -47,7 +47,7 @@ void ofApp::keyPressed(int key){
     selectedChain = leftChain.isSelected() ? &leftChain : &rightChain;
     
     if (key == 'u') {
-        leftChain.showUI();
+        selectedChain->showUI();
     } else if(key == 'd') {
         manager.toggleDebugUI();
     } else if(key == 's') {
