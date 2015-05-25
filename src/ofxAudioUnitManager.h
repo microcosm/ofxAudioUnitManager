@@ -17,6 +17,7 @@ public:
 
 protected:
     void drawDebugBox(int x, int y, int width, int height);
+    void selectChain(int index);
     
     Compressor compressor;
     Controls controls;

@@ -11,10 +11,10 @@ void ofxAudioUnitManager::setup() {
 }
 
 void ofxAudioUnitManager::add(BaseChain *chain, string name, ofColor color) {
-    chain->setup(name, &mixer, chains.size() - 1, color);
-    chain->select();
+    int index = chains.size() - 1;
+    chain->setup(name, &mixer, index, color);
+    selectChain(index);
     chains.push_back(chain);
-    selectedChain = chains.size() - 1;
     mixer.setInputBusCount(chains.size());
 }
 
@@ -63,13 +63,13 @@ void ofxAudioUnitManager::toggleDebugUI() {
 }
 
 void ofxAudioUnitManager::incrementSelected() {
-    selectedChain = selectedChain + 1 >= chains.size() ? 0 : selectedChain + 1;
-    chains.at(selectedChain)->select();
+    int index = selectedChain + 1 >= chains.size() ? 0 : selectedChain + 1;
+    selectChain(index);
 }
 
 void ofxAudioUnitManager::decrementSelected() {
-    selectedChain = selectedChain - 1 < 0 ? chains.size() - 1 : selectedChain - 1;
-    chains.at(selectedChain)->select();
+    int index = selectedChain - 1 < 0 ? chains.size() - 1 : selectedChain - 1;
+    selectChain(index);
 }
 
 void ofxAudioUnitManager::drawDebugBox(int x, int y, int width, int height) {
@@ -79,4 +79,11 @@ void ofxAudioUnitManager::drawDebugBox(int x, int y, int width, int height) {
     ofSetColor(ofColor::white);
     ofNoFill();
     ofRect(x, y, width, height);
+}
+
+void ofxAudioUnitManager::selectChain(int index) {
+    for(int i = 0; i < chains.size(); i++) {
+        i == index ? chains.at(i)->select() : chains.at(i)->deselect();
+    }
+    selectedChain = index;
 }
