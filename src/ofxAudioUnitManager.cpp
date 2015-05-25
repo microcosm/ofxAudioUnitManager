@@ -41,6 +41,12 @@ void ofxAudioUnitManager::draw() {
     }
 }
 
+void ofxAudioUnitManager::exit() {
+    for(int i = 0; i < chains.size(); i++) {
+        chains.at(i)->exit();
+    }
+}
+
 void ofxAudioUnitManager::toggleDebugUI() {
     showDebugUI = !showDebugUI;
 }

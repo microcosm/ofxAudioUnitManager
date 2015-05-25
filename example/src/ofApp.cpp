@@ -42,8 +42,7 @@ void ofApp::draw(){
 }
 
 void ofApp::exit() {
-    leftChain.exit();
-    rightChain.exit();
+    manager.exit();
 }
 
 void ofApp::keyPressed(int key){

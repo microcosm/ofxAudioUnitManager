@@ -10,6 +10,7 @@ public:
     void add(BaseChain *chain, string name, ofColor color);
     void update();
     void draw();
+    void exit();
     void toggleDebugUI();
 
 protected:
