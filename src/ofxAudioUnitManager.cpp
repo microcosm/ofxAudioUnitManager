@@ -18,7 +18,9 @@ void ofxAudioUnitManager::add(BaseChain *chain, string name, ofColor color) {
 }
 
 void ofxAudioUnitManager::update() {
-
+    for(int i = 0; i < chains.size(); i++) {
+        chains.at(i)->update();
+    }
 }
 
 void ofxAudioUnitManager::draw() {

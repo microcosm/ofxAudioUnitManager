@@ -29,12 +29,11 @@ void ofApp::togglePlaying() {
 }
 
 void ofApp::update(){
-    leftChain.update();
-    rightChain.update();
+    manager.update();
 }
 
 void ofApp::draw(){
-    ofBackground(0);
+    ofBackground(ofColor::black);
     manager.draw();
 }
 
