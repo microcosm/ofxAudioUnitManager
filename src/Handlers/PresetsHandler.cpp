@@ -4,6 +4,7 @@ void PresetsHandler::setup(string _chainName){
     chainName = _chainName;
     selected = false;
     currentPreset = -1;
+    storageDir = "AudioUnitPresets/";
     anyExtension = "";
     presetExtension = "aupreset";
     readFromDisk();
@@ -143,7 +144,7 @@ void PresetsHandler::ensureValidIndex() {
 
 vector<ofFile> PresetsHandler::dirContents(string path, string extensions) {
     dir.allowExt(extensions);
-    dir.listDir(path);
+    dir.listDir(storageDir + path);
     return dir.getFiles();
 }
 
@@ -153,7 +154,7 @@ void PresetsHandler::clearPresets() {
 }
 
 string PresetsHandler::path(string presetName) {
-    ofDirectory dir(chainName);
+    ofDirectory dir(storageDir + chainName);
     return dir.getAbsolutePath() + "/" + presetName + "/";
 }
 

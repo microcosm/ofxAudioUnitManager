@@ -27,7 +27,7 @@ protected:
     string path(string presetName);
     string filename(int index, AudioUnitBase* unit);
 
-    string chainName;
+    string chainName, storageDir;
     vector<AudioUnitBase*> units;
     vector< vector<ofFile> > presets;
     vector<string> presetNames;
