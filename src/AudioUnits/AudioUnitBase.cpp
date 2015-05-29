@@ -5,6 +5,10 @@ string AudioUnitBase::getID() {
     return ID;
 }
 
+string AudioUnitBase::getName() {
+    return name;
+}
+
 void AudioUnitBase::setID(string _ID) {
     ID = _ID;
 }

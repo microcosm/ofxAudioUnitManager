@@ -11,6 +11,7 @@ class AudioUnitBase {
 
 public:
     string getID();
+    string getName();
     void setID(string _ID);
     virtual void setup();
     void showUI();
