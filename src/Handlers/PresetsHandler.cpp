@@ -58,17 +58,19 @@ void PresetsHandler::remove() {
 }
 
 void PresetsHandler::increment() {
-    readFromDisk();
-    if(currentPreset == presets.size()-1) currentPreset = 0;
-    else currentPreset += 1;
-    load(currentPreset);
+    if(currentPreset > -1) {
+        readFromDisk();
+        currentPreset = currentPreset == presets.size() - 1 ? currentPreset = 0 : currentPreset + 1;
+        load(currentPreset);
+    }
 }
 
 void PresetsHandler::decrement() {
-    readFromDisk();
-    if(currentPreset == 0) currentPreset = presets.size()-1;
-    else currentPreset -= 1;
-    load(currentPreset);
+    if(currentPreset > -1) {
+        readFromDisk();
+        currentPreset = currentPreset == 0 ? presets.size() - 1 : currentPreset - 1;
+        load(currentPreset);
+    }
 }
 
 void PresetsHandler::select() {
