@@ -5,5 +5,6 @@ void Delay::setup() {
                         kAudioUnitSubType_SampleDelay);
     
     type = AU_TYPE_UNIT;
+    name = "Delay";
     AudioUnitBase::setup();
 }

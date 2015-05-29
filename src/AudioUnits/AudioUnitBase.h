@@ -10,6 +10,8 @@ enum AudioUnitType {
 class AudioUnitBase {
 
 public:
+    string getID();
+    void setID(string _ID);
     virtual void setup();
     void showUI();
     void setParameter(int param, float value);
@@ -17,6 +19,8 @@ public:
     ofxAudioUnit* get();
     AudioUnitType getType();
 protected:
+    string generateID();
     ofxAudioUnit unit;
     AudioUnitType type;
+    string ID, name;
 };

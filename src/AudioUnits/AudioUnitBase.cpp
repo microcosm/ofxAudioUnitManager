@@ -1,6 +1,17 @@
 #include "AudioUnitBase.h"
 
-void AudioUnitBase::setup() {}
+string AudioUnitBase::getID() {
+    if(ID == "") generateID();
+    return ID;
+}
+
+void AudioUnitBase::setID(string _ID) {
+    ID = _ID;
+}
+
+void AudioUnitBase::setup() {
+    ID = "";
+}
 
 void AudioUnitBase::showUI() {
     unit.showUI();
@@ -21,4 +32,8 @@ ofxAudioUnit* AudioUnitBase::get() {
 
 AudioUnitType AudioUnitBase::getType() {
     return type;
+}
+
+string AudioUnitBase::generateID() {
+    return ofGetTimestampString(name + "-%Y-%m-%d-%H-%M-%S-%F");
 }
