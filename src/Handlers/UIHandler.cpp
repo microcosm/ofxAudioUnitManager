@@ -45,7 +45,7 @@ string UIHandler::controlsReport() {
     << endl << ""
     << endl << "----------------------------------"
     << endl << "MANAGER"
-    << endl << "d:          Toggle control panel"
+    << endl << "v:          Toggle view overlay"
     << endl << "Left/right: Select a chain"
     << endl << ""
     << endl << "----------------------------------"
