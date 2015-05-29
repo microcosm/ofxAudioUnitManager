@@ -16,6 +16,7 @@ public:
     void showUI();
     void savePresets();
     void deletePreset();
+    void renamePreset();
     void incrementPreset();
     void decrementPreset();
     bool isSelected();

@@ -8,6 +8,7 @@ public:
     void setup(string synthName, ofxAudioUnit* synth);
     void load(int index);
     void save();
+    void rename();
     void remove();
     void increment();
     void decrement();

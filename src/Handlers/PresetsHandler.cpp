@@ -29,6 +29,17 @@ void PresetsHandler::save() {
     }
 }
 
+void PresetsHandler::rename() {
+    string presetName = ofSystemTextBoxDialog("New name:");
+    if(presetName.length()) {
+        ofDirectory dir(synthName);
+        string newPath = dir.getAbsolutePath() + "/" + presetName + ".aupreset";
+        presets.at(currentPreset).renameTo(newPath);
+        readFromDisk();
+        currentPreset = indexOf(presetName);
+    }
+}
+
 void PresetsHandler::remove() {
     presets.at(currentPreset).remove();
     presets.erase(presets.begin() + currentPreset);

@@ -1,7 +1,7 @@
 #include "UIHandler.h"
 
 void UIHandler::setup() {
-    controlsDimensions = ofVec2f(300, 270);
+    controlsDimensions = ofVec2f(300, 285);
     chainInfoDimensions = ofVec2f(220, 340);
 
     controlsPositions = ofVec2f(
@@ -50,10 +50,11 @@ string UIHandler::controlsReport() {
     << endl << ""
     << endl << "            SELECTED CHAIN (*)"
     << endl << "            ----------------------"
-    << endl << "         u: Show chain UIs"
-    << endl << "   Up/down: Select chain preset"
-    << endl << "         s: Save chain preset"
-    << endl << "         d: Delete chain preset"
+    << endl << "         u: Show audio unit UIs"
+    << endl << "   Up/down: Select preset"
+    << endl << "         s: Save preset"
+    << endl << "         r: Rename preset"
+    << endl << "         d: Delete preset"
     << endl << ""
     << endl << "            EXAMPLE APP"
     << endl << "            ----------------------"

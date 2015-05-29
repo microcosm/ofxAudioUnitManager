@@ -42,6 +42,8 @@ void ofxAudioUnitManager::keyPressed(int key) {
         toggleDebugUI();
     } else if(key == 's') {
         selectedChain->savePresets();
+    } else if(key == 'r') {
+        selectedChain->renamePreset();
     } else if(key == 'd') {
         selectedChain->deletePreset();
     } else if(key == 359) {
