@@ -43,9 +43,7 @@ void PresetsHandler::rename() {
 void PresetsHandler::remove() {
     presets.at(currentPreset).remove();
     presets.erase(presets.begin() + currentPreset);
-    if(currentPreset >= presets.size()) {
-        currentPreset = presets.size() - 1;
-    }
+    ensureValidIndex();
 }
 
 void PresetsHandler::increment() {
@@ -75,9 +73,7 @@ void PresetsHandler::readFromDisk() {
     dir.allowExt("aupreset");
     dir.listDir();
     presets = dir.getFiles();
-    if(currentPreset > presets.size()-1) {
-        currentPreset = presets.size()-1;
-    }
+    ensureValidIndex();
 }
 
 int PresetsHandler::currentIndex(){
@@ -107,4 +103,10 @@ int PresetsHandler::indexOf(string presetName) {
     }
     cout << "ERROR: Could not find index of preset" << endl;
     return -1;
+}
+
+void PresetsHandler::ensureValidIndex() {
+    if(currentPreset > presets.size() - 1) {
+        currentPreset = presets.size() - 1;
+    }
 }

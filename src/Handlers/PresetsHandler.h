@@ -20,6 +20,7 @@ public:
     
 protected:
     int indexOf(string presetName);
+    void ensureValidIndex();
     ofxAudioUnit* synth;
     string synthName;
     vector<ofFile> presets;
