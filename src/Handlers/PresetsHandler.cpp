@@ -52,9 +52,13 @@ void PresetsHandler::rename() {
 }
 
 void PresetsHandler::remove() {
-//    presets.at(currentPreset).remove();
-//    presets.erase(presets.begin() + currentPreset);
-    ensureValidIndex();
+    if(currentPreset > -1) {
+        dir.removeDirectory(path(presetNames.at(currentPreset)), true);
+        presets.erase(presets.begin() + currentPreset);
+        presetNames.erase(presetNames.begin() + currentPreset);
+        readFromDisk();
+        ensureValidIndex();
+    }
 }
 
 void PresetsHandler::increment() {
