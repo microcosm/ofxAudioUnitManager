@@ -113,7 +113,7 @@ int PresetsHandler::currentIndex(){
 }
 
 string PresetsHandler::report() {
-    string icon = selected ? "[*]" : " * ";
+    string icon = selected ? "[*]" : "[ ]";
     stringstream report;
     report << "PRESETS" << endl;
     

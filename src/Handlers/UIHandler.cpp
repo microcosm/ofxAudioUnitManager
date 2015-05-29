@@ -48,7 +48,7 @@ string UIHandler::controlsReport() {
     << endl << "         v: Toggle view overlay"
     << endl << "Left/right: Select chain"
     << endl << ""
-    << endl << "            SELECTED CHAIN (*)"
+    << endl << "            SELECTED CHAIN [*]"
     << endl << "            ----------------------"
     << endl << "         u: Show audio unit UIs"
     << endl << "   Up/down: Select preset"
@@ -68,7 +68,7 @@ string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     report << "CHAIN " << number << ": " << "\"" << chain->getName() << "\""
     << endl << "midi port " << chain->midi()->getPort()
     << endl << ""
-    << endl << (chain->isSelected() ? "(*selected)" : "")
+    << endl << (chain->isSelected() ? "[*] CHAIN SELECTED" : "")
     << endl << ""
     << endl << chain->getPresets()->report();
     return report.str();
