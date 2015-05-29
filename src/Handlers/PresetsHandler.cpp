@@ -72,6 +72,8 @@ void PresetsHandler::deselect() {
 
 void PresetsHandler::readFromDisk() {
     presets.clear();
+    presetNames.clear();
+    dir.allowExt("");
     dir.listDir(chainName);
     vector<ofFile> chainDirContents = dir.getFiles();
 
