@@ -5,6 +5,6 @@ void Reverb::setup() {
                         kAudioUnitSubType_MatrixReverb);
     
     setParameter(kReverbParam_SmallLargeMix, 30);
-    
+    type = AU_TYPE_UNIT;
     AudioUnitBase::setup();
 }

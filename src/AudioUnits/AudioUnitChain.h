@@ -14,6 +14,8 @@ public:
     virtual void exit();
     void sendOut(ofxAudioUnit* chainEndpoint);
     void load(AudioUnitBase* unit);
+    void loadUnit(AudioUnitBase* unit);
+    void loadSynth(AudioUnitBase* synth);
     void showUI();
     void savePresets();
     void deletePreset();

@@ -22,6 +22,5 @@ public:
 protected:
     AlchemyPlayer alchemy;
     LowPassFilter filter;
-    class Delay delay;
     Reverb reverb;
 };

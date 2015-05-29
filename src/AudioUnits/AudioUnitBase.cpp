@@ -18,3 +18,7 @@ void AudioUnitBase::setParameters(int param1, int param2, ofVec2f value) {
 ofxAudioUnit* AudioUnitBase::get() {
     return &unit;
 }
+
+AudioUnitType AudioUnitBase::getType() {
+    return type;
+}

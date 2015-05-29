@@ -2,5 +2,6 @@
 
 void AlchemyPlayer::setup() {
     unit = ofxAudioUnit('aumu', 'CaC2', 'CamA');
+    type = AU_TYPE_SYNTH;
     AudioUnitBase::setup();
 }

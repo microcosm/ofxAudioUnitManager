@@ -27,8 +27,20 @@ void AudioUnitChain::sendOut(ofxAudioUnit* chainEndpoint) {
 }
 
 void AudioUnitChain::load(AudioUnitBase* unit) {
+    unit->getType() == AU_TYPE_SYNTH ?
+        loadSynth(unit) : loadUnit(unit);
+}
+
+void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
     unit->setup();
     units.push_back(unit);
+}
+
+void AudioUnitChain::loadSynth(AudioUnitBase* _synth) {
+    loadUnit(_synth);
+    ofxAudioUnit* synth = _synth->get();
+    presets.setup(name, synth);
+    midiHandler.setup(synth, name);
 }
 
 void AudioUnitChain::showUI(){

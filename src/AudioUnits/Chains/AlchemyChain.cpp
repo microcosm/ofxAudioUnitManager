@@ -3,18 +3,17 @@
 void AlchemyChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
     AudioUnitChain::setup(name, mixer, mixerChannel, _waveColor);
     
-    load(&alchemy);
+    //Load unit(s)
     load(&filter);
-    load(&reverb);
-    load(&delay);
     
-    ofxAudioUnit* synth = alchemy.get();
-    presets.setup(name, synth);
-    midiHandler.setup(synth, name);
-    
-    sendOut(&synth->connectTo(*filter.get()));
-      //.connectTo(*reverb.get())
-      //.connectTo(*delay.get())
+    //Load synth
+    load(&alchemy);
+
+    //Connect up and pipe out
+    sendOut(&
+       alchemy.get()
+       ->connectTo(*filter.get())
+    );
 }
 
 void AlchemyChain::delayTime(float val) {
