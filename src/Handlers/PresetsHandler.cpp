@@ -41,13 +41,20 @@ void PresetsHandler::save() {
 }
 
 void PresetsHandler::rename() {
-    string presetName = ofSystemTextBoxDialog("New name:");
-    if(presetName.length()) {
-        ofDirectory dir(chainName);
-        string newPath = dir.getAbsolutePath() + "/" + presetName + ".aupreset";
-//        presets.at(currentPreset).renameTo(newPath);
-        readFromDisk();
-        currentPreset = indexOf(presetName);
+    if(currentPreset > -1) {
+        string newPresetName = ofSystemTextBoxDialog("New name:");
+        if(newPresetName.length()) {
+            string newPresetPath = path(newPresetName);
+            for(int i = 0; i < units.size(); i++) {
+                string newPresetFilename = filename(i, units.at(i));
+                presets.at(currentPreset).at(i).renameTo(newPresetPath + newPresetFilename);
+            }
+            string oldPresetPath = path(presetNames.at(currentPreset));
+            dir.removeDirectory(oldPresetPath, true);
+            presetNames[currentPreset] = newPresetName;
+            readFromDisk();
+            currentPreset = indexOf(newPresetName);
+        }
     }
 }
 
@@ -88,7 +95,7 @@ void PresetsHandler::deselect() {
 void PresetsHandler::readFromDisk() {
     clearPresets();
     vector<ofFile> chainDirContents = dirContents(chainName, anyExtension);
-
+    
     for(int i = 0; i < chainDirContents.size(); i++) {
         if(chainDirContents.at(i).isDirectory()) {
             string presetName = chainDirContents.at(i).getFileName();
