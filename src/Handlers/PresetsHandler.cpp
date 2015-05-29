@@ -1,8 +1,7 @@
 #include "PresetsHandler.h"
 
-void PresetsHandler::setup(string synthName){
-    this->synthName = synthName;
-    
+void PresetsHandler::setup(string _chainName){
+    chainName = _chainName;
     selected = false;
     currentPreset = -1;
     this->readFromDisk();
@@ -13,8 +12,8 @@ void PresetsHandler::setup(string synthName){
     }
 }
 
-void PresetsHandler::load(int index) {
-//    string path = presets.at(index).getAbsolutePath();
+void PresetsHandler::load(int presetIndex) {
+//    string path = presets.at(presetIndex).getAbsolutePath();
 //    synth->loadCustomPresetAtPath(path);
 }
 
@@ -25,7 +24,7 @@ void PresetsHandler::add(ofxAudioUnit* unit) {
 void PresetsHandler::save() {
     string presetName = ofSystemTextBoxDialog("Preset name:");
     if(presetName.length()) {
-        ofDirectory dir(synthName);
+        ofDirectory dir(chainName);
 //        synth->saveCustomPresetAtPath(dir.getAbsolutePath() + "/" + presetName + ".aupreset");
         readFromDisk();
         currentPreset = indexOf(presetName);
@@ -35,7 +34,7 @@ void PresetsHandler::save() {
 void PresetsHandler::rename() {
     string presetName = ofSystemTextBoxDialog("New name:");
     if(presetName.length()) {
-        ofDirectory dir(synthName);
+        ofDirectory dir(chainName);
         string newPath = dir.getAbsolutePath() + "/" + presetName + ".aupreset";
 //        presets.at(currentPreset).renameTo(newPath);
         readFromDisk();
@@ -73,14 +72,14 @@ void PresetsHandler::deselect() {
 
 void PresetsHandler::readFromDisk() {
     presets.clear();
-    dir.listDir(synthName);
+    dir.listDir(chainName);
     vector<ofFile> chainDirContents = dir.getFiles();
 
     for(int i = 0; i < chainDirContents.size(); i++) {
         if(chainDirContents.at(i).isDirectory()) {
             string presetName = chainDirContents.at(i).getFileName();
             dir.allowExt("aupreset");
-            dir.listDir(synthName + "/" + presetName);
+            dir.listDir(chainName + "/" + presetName);
             presetNames.push_back(presetName);
             presets.push_back(dir.getFiles());
         }

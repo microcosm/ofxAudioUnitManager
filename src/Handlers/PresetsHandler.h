@@ -24,7 +24,7 @@ protected:
     void ensureValidIndex();
 
     ofxAudioUnit* synth;
-    string synthName;
+    string chainName;
     vector<ofxAudioUnit*> units;
     vector< vector<ofFile> > presets;
     vector<string> presetNames;
