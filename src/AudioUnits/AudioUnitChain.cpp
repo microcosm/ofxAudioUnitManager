@@ -34,7 +34,7 @@ void AudioUnitChain::load(AudioUnitBase* unit) {
 
 void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
     unit->setup();
-    presets.add(unit->get());
+    presets.add(unit);
     units.push_back(unit);
 }
 

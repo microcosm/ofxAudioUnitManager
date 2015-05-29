@@ -19,15 +19,19 @@ void PresetsHandler::load(int presetIndex) {
 //    synth->loadCustomPresetAtPath(path);
 }
 
-void PresetsHandler::add(ofxAudioUnit* unit) {
+void PresetsHandler::add(AudioUnitBase* unit) {
     units.push_back(unit);
 }
 
 void PresetsHandler::save() {
     string presetName = ofSystemTextBoxDialog("Preset name:");
     if(presetName.length()) {
-        ofDirectory dir(chainName);
-//        synth->saveCustomPresetAtPath(dir.getAbsolutePath() + "/" + presetName + ".aupreset");
+        string presetPath = path(presetName);
+        dir.createDirectory(presetPath);
+        for(int i = 0; i < units.size(); i++) {
+            string presetFilename = filename(i, units.at(i));
+            units.at(i)->get()->saveCustomPresetAtPath(presetPath + presetFilename);
+        }
         readFromDisk();
         currentPreset = indexOf(presetName);
     }
@@ -130,4 +134,13 @@ vector<ofFile> PresetsHandler::dirContents(string path, string extensions) {
 void PresetsHandler::clearPresets() {
     presets.clear();
     presetNames.clear();
+}
+
+string PresetsHandler::path(string presetName) {
+    ofDirectory dir(chainName);
+    return dir.getAbsolutePath() + "/" + presetName + "/";
+}
+
+string PresetsHandler::filename(int index, AudioUnitBase* unit) {
+    return ofToString(index) + "_" + unit->getName() + "." + presetExtension;
 }
