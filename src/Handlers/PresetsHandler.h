@@ -26,6 +26,7 @@ protected:
     void clearPresets();
     string path(string presetName);
     string filename(int index, AudioUnitBase* unit);
+    void ensureDirectories();
 
     string chainName, storageDir;
     vector<AudioUnitBase*> units;

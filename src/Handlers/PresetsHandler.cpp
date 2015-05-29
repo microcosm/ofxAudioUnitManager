@@ -7,6 +7,7 @@ void PresetsHandler::setup(string _chainName){
     storageDir = "AudioUnitPresets/";
     anyExtension = "";
     presetExtension = "aupreset";
+    ensureDirectories();
     readFromDisk();
     
     if(presets.size() > 0) {
@@ -160,4 +161,15 @@ string PresetsHandler::path(string presetName) {
 
 string PresetsHandler::filename(int index, AudioUnitBase* unit) {
     return ofToString(index) + "_" + unit->getName() + "." + presetExtension;
+}
+
+void PresetsHandler::ensureDirectories() {
+    ofDirectory storage(storageDir);
+    if(!storage.exists()) {
+        storage.create();
+    }
+    ofDirectory chain(storageDir + chainName);
+    if(!chain.exists()) {
+        chain.create();
+    }
 }
