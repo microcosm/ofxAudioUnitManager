@@ -1,7 +1,7 @@
 #include "UIHandler.h"
 
 void UIHandler::setup() {
-    controlsDimensions = ofVec2f(300, 260);
+    controlsDimensions = ofVec2f(300, 270);
     chainInfoDimensions = ofVec2f(220, 340);
 
     controlsPositions = ofVec2f(
@@ -41,25 +41,24 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height) {
 
 string UIHandler::controlsReport() {
     stringstream report;
-    report << "CONTROLS"
+    report <<  "            CONTROLS"
     << endl << ""
-    << endl << "----------------------------------"
-    << endl << "MANAGER"
-    << endl << "v:          Toggle view overlay"
+    << endl << "            MANAGER"
+    << endl << "            ----------------------"
+    << endl << "         v: Toggle view overlay"
     << endl << "Left/right: Select chain"
     << endl << ""
-    << endl << "----------------------------------"
-    << endl << "CURRENTLY SELECTED CHAIN"
-    << endl << "u:          Show chain UIs"
-    << endl << "Up/down:    Select chain preset"
-    << endl << "s:          Save chain preset"
-    << endl << "d:          Delete chain preset"
+    << endl << "            SELECTED CHAIN (*)"
+    << endl << "            ----------------------"
+    << endl << "         u: Show chain UIs"
+    << endl << "   Up/down: Select chain preset"
+    << endl << "         s: Save chain preset"
+    << endl << "         d: Delete chain preset"
     << endl << ""
-    << endl << "----------------------------------"
-    << endl << "EXAMPLE APP"
-    << endl << "SPACE:      Start/stop playing"
-    << endl << "[ / ]:      Current note up / down"
-    << endl << "----------------------------------";
+    << endl << "            EXAMPLE APP"
+    << endl << "            ----------------------"
+    << endl << "     SPACE: Start/stop playing"
+    << endl << "     [ / ]: Current note up / down";
     return report.str();
 }
 
