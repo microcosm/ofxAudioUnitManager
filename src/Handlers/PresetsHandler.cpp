@@ -4,11 +4,13 @@ void PresetsHandler::setup(string _chainName){
     chainName = _chainName;
     selected = false;
     currentPreset = -1;
-    this->readFromDisk();
+    anyExtension = "";
+    presetExtension = "aupreset";
+    readFromDisk();
     
     if(presets.size() > 0) {
         currentPreset = presets.size()-1;
-        this->load(currentPreset);
+        load(currentPreset);
     }
 }
 
@@ -71,19 +73,14 @@ void PresetsHandler::deselect() {
 }
 
 void PresetsHandler::readFromDisk() {
-    presets.clear();
-    presetNames.clear();
-    dir.allowExt("");
-    dir.listDir(chainName);
-    vector<ofFile> chainDirContents = dir.getFiles();
+    clearPresets();
+    vector<ofFile> chainDirContents = dirContents(chainName, anyExtension);
 
     for(int i = 0; i < chainDirContents.size(); i++) {
         if(chainDirContents.at(i).isDirectory()) {
             string presetName = chainDirContents.at(i).getFileName();
-            dir.allowExt("aupreset");
-            dir.listDir(chainName + "/" + presetName);
             presetNames.push_back(presetName);
-            presets.push_back(dir.getFiles());
+            presets.push_back(dirContents(chainName + "/" + presetName, presetExtension));
         }
     }
     ensureValidIndex();
@@ -122,4 +119,15 @@ void PresetsHandler::ensureValidIndex() {
     if(currentPreset > presets.size() - 1) {
         currentPreset = presets.size() - 1;
     }
+}
+
+vector<ofFile> PresetsHandler::dirContents(string path, string extensions) {
+    dir.allowExt(extensions);
+    dir.listDir(path);
+    return dir.getFiles();
+}
+
+void PresetsHandler::clearPresets() {
+    presets.clear();
+    presetNames.clear();
 }

@@ -15,13 +15,15 @@ public:
     void decrement();
     void select();
     void deselect();
-    void readFromDisk();
     int currentIndex();
     string report();
     
 protected:
     int indexOf(string presetName);
     void ensureValidIndex();
+    void readFromDisk();
+    vector<ofFile> dirContents(string path, string extensions);
+    void clearPresets();
 
     ofxAudioUnit* synth;
     string chainName;
@@ -31,4 +33,5 @@ protected:
     ofDirectory dir;
     int currentPreset;
     bool selected;
+    string anyExtension, presetExtension;
 };
