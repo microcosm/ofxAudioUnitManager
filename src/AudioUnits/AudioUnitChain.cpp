@@ -6,6 +6,7 @@ void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerCh
     mixerChannel = _mixerChannel;
     waveColor = _waveColor;
     selected = false;
+    presets.setup(name);
 }
 
 void AudioUnitChain::update(){
@@ -33,14 +34,13 @@ void AudioUnitChain::load(AudioUnitBase* unit) {
 
 void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
     unit->setup();
+    presets.add(unit->get());
     units.push_back(unit);
 }
 
 void AudioUnitChain::loadSynth(AudioUnitBase* _synth) {
     loadUnit(_synth);
-    ofxAudioUnit* synth = _synth->get();
-    presets.setup(name, synth);
-    midiHandler.setup(synth, name);
+    midiHandler.setup(_synth->get(), name);
 }
 
 void AudioUnitChain::showUI(){

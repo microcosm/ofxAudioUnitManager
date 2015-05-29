@@ -5,8 +5,9 @@
 class PresetsHandler{
     
 public:
-    void setup(string synthName, ofxAudioUnit* synth);
+    void setup(string synthName);
     void load(int index);
+    void add(ofxAudioUnit* unit);
     void save();
     void rename();
     void remove();
@@ -21,9 +22,13 @@ public:
 protected:
     int indexOf(string presetName);
     void ensureValidIndex();
+
     ofxAudioUnit* synth;
     string synthName;
-    vector<ofFile> presets;
+    vector<ofxAudioUnit*> units;
+    vector< vector<ofFile> > presets;
+    vector<string> presetNames;
+    ofDirectory dir;
     int currentPreset;
     bool selected;
 };
