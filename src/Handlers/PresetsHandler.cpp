@@ -15,8 +15,11 @@ void PresetsHandler::setup(string _chainName){
 }
 
 void PresetsHandler::load(int presetIndex) {
-//    string path = presets.at(presetIndex).getAbsolutePath();
-//    synth->loadCustomPresetAtPath(path);
+    string presetPath = path(presetNames.at(presetIndex));
+    for(int i = 0; i < units.size(); i++) {
+        string presetFilename = filename(i, units.at(i));
+        units.at(i)->get()->loadCustomPresetAtPath(presetPath + presetFilename);
+    }
 }
 
 void PresetsHandler::add(AudioUnitBase* unit) {
