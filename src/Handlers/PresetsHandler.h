@@ -27,7 +27,6 @@ protected:
     string path(string presetName);
     string filename(int index, AudioUnitBase* unit);
 
-    ofxAudioUnit* synth;
     string chainName;
     vector<AudioUnitBase*> units;
     vector< vector<ofFile> > presets;

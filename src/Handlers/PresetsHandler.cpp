@@ -111,9 +111,9 @@ string PresetsHandler::report() {
 
 int PresetsHandler::indexOf(string presetName) {
     for(int i = 0; i < presets.size(); i++) {
-/*        if(presets.at(i).getBaseName() == presetName) {
+        if(presetNames.at(i) == presetName) {
             return i;
-        }*/
+        }
     }
     cout << "ERROR: Could not find index of preset" << endl;
     return -1;
