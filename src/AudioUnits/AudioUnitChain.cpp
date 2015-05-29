@@ -1,9 +1,11 @@
 #include "AudioUnitChain.h"
 
-void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
+void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor){
+    name = _name;
+    mixer = _mixer;
+    mixerChannel = _mixerChannel;
     waveColor = _waveColor;
     selected = false;
-    name = _name;
 }
 
 void AudioUnitChain::update(){
@@ -18,6 +20,10 @@ void AudioUnitChain::drawWaveform(){
 
 void AudioUnitChain::exit() {
     midiHandler.exit();
+}
+
+void AudioUnitChain::sendOut(ofxAudioUnit* chainEndpoint) {
+    chainEndpoint->connectTo(tap).connectTo(*mixer, mixerChannel);
 }
 
 void AudioUnitChain::load(AudioUnitBase* unit) {

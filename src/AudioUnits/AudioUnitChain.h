@@ -8,10 +8,11 @@
 class AudioUnitChain {
     
 public:
-    virtual void setup(string _name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor);
+    virtual void setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
     virtual void update();
     virtual void drawWaveform();
     virtual void exit();
+    void sendOut(ofxAudioUnit* chainEndpoint);
     void load(AudioUnitBase* unit);
     void showUI();
     void savePresets();
@@ -30,6 +31,8 @@ protected:
     ofxAudioUnitTap tap;
     ofPolyline waveform;
     vector<AudioUnitBase*> units;
+    ofxAudioUnitMixer* mixer;
+    int mixerChannel;
     
     PresetsHandler presets;
     MidiHandler midiHandler;

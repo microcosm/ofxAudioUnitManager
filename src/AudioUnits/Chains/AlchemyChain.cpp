@@ -12,11 +12,9 @@ void AlchemyChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
     presets.setup(name, synth);
     midiHandler.setup(synth, name);
     
-    synth->connectTo(*filter.get())
+    sendOut(&synth->connectTo(*filter.get()));
       //.connectTo(*reverb.get())
       //.connectTo(*delay.get())
-      .connectTo(tap)
-      .connectTo(*mixer, mixerChannel);
 }
 
 void AlchemyChain::delayTime(float val) {
