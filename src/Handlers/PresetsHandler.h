@@ -18,7 +18,7 @@ public:
     string report();
     
 protected:
-    
+    int indexOf(string presetName);
     ofxAudioUnit* synth;
     string synthName;
     vector<ofFile> presets;

@@ -20,11 +20,13 @@ void PresetsHandler::load(int index) {
 }
 
 void PresetsHandler::save() {
-    ofDirectory dir(synthName);
-    string name = "/preset-" + ofToString(ofGetUnixTime()) + ".aupreset";
-    synth->saveCustomPresetAtPath(dir.getAbsolutePath() + "/" + name);
-    readFromDisk();
-    currentPreset = presets.size()-1;
+    string presetName = ofSystemTextBoxDialog("Preset name:");
+    if(presetName.length()) {
+        ofDirectory dir(synthName);
+        synth->saveCustomPresetAtPath(dir.getAbsolutePath() + "/" + presetName + ".aupreset");
+        readFromDisk();
+        currentPreset = indexOf(presetName);
+    }
 }
 
 void PresetsHandler::remove() {
@@ -84,4 +86,14 @@ string PresetsHandler::report() {
     }
     
     return report.str();
+}
+
+int PresetsHandler::indexOf(string presetName) {
+    for(int i = 0; i < presets.size(); i++) {
+        if(presets.at(i).getBaseName() == presetName) {
+            return i;
+        }
+    }
+    cout << "ERROR: Could not find index of preset" << endl;
+    return -1;
 }
