@@ -27,6 +27,14 @@ void PresetsHandler::save() {
     currentPreset = presets.size()-1;
 }
 
+void PresetsHandler::remove() {
+    presets.at(currentPreset).remove();
+    presets.erase(presets.begin() + currentPreset);
+    if(currentPreset >= presets.size()) {
+        currentPreset = presets.size() - 1;
+    }
+}
+
 void PresetsHandler::increment() {
     readFromDisk();
     if(currentPreset == presets.size()-1) currentPreset = 0;

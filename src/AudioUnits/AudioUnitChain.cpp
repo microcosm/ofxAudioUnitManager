@@ -35,6 +35,10 @@ void AudioUnitChain::savePresets() {
     presets.save();
 }
 
+void AudioUnitChain::deletePreset() {
+    presets.remove();
+}
+
 void AudioUnitChain::incrementPreset() {
     presets.increment();
 }

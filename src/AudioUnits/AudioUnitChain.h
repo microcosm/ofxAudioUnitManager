@@ -15,6 +15,7 @@ public:
     void load(AudioUnitBase* unit);
     void showUI();
     void savePresets();
+    void deletePreset();
     void incrementPreset();
     void decrementPreset();
     bool isSelected();
