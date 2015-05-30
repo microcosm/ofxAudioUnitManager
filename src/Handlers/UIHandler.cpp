@@ -3,11 +3,13 @@
 void UIHandler::setup() {
     controlsDimensions = ofVec2f(300, 285);
     chainInfoDimensions = ofVec2f(220, 340);
+    colorBoxDimensions = ofVec2f(20, 8);
 
     controlsPositions = ofVec2f(
         ofGetWidth()  - controlsDimensions.x - 20,
         ofGetHeight() - controlsDimensions.y - 20);
     chainInfoPositions = ofVec2f(20, 20);
+    colorBoxPositions = ofVec2f(66, 67);
 }
 
 void UIHandler::drawControls() {
@@ -27,11 +29,12 @@ void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
         drawDebugBox(x, y, chainInfoDimensions.x, chainInfoDimensions.y);
         ofSetColor(ofColor::white);
         ofDrawBitmapString(chainReport(chains.at(i), i+1), x + 10, y + 20);
+        drawDebugBox(x + colorBoxPositions.x, y + colorBoxPositions.y, colorBoxDimensions.x, colorBoxDimensions.y, chains.at(i)->getColor());
     }
 }
 
-void UIHandler::drawDebugBox(int x, int y, int width, int height) {
-    ofSetColor(ofColor::white, 32);
+void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color) {
+    ofSetColor(color);
     ofFill();
     ofRect(x, y, width, height);
     ofSetColor(ofColor::white);
@@ -69,7 +72,8 @@ string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     << endl << "-------"
     << endl << "type: " << chain->getClassName()
     << endl << "name: " << "\"" << chain->getName() << "\""
-    << endl << "midi port: " << chain->midi()->getPort()
+    << endl << "color: "
+    //<< endl << "midi port: " << chain->midi()->getPort()
     << endl << ""
     << endl << "UNITS"
     << endl << "-----"

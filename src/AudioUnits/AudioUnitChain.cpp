@@ -106,3 +106,7 @@ string AudioUnitChain::getClassName() {
 string AudioUnitChain::getName() {
     return name;
 }
+
+ofColor AudioUnitChain::getColor() {
+    return waveColor;
+}

@@ -30,6 +30,7 @@ public:
     string getUnitReport();
     string getClassName();
     string getName();
+    ofColor getColor();
 
 protected:
     ofxAudioUnitTap tap;
