@@ -118,7 +118,7 @@ string PresetsHandler::report() {
     report << "PRESETS" << endl << "-------";
     
     for(int i = 0; i < presetNames.size(); i++) {
-        report << endl << i << ": " << presetNames.at(i);
+        report << endl << trim(presetNames.at(i));
         if(i == currentIndex()) {
             report << " " << icon;
         }
@@ -161,6 +161,10 @@ string PresetsHandler::path(string presetName) {
 
 string PresetsHandler::filename(int index, AudioUnitBase* unit) {
     return ofToString(index) + "_" + unit->getClassName() + "." + presetExtension;
+}
+
+string PresetsHandler::trim(string presetName) {
+    return presetName.length() < 22 ? presetName : presetName.substr(0, 18) + "...";
 }
 
 void PresetsHandler::ensureDirectories() {
