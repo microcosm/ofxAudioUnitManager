@@ -6,6 +6,6 @@ void LowPassFilter::setup() {
     AudioUnitSetParameter(unit.getUnit(), kLowPassParam_Resonance,
                           kAudioUnitScope_Global, 0, 20, 0);
     type = AU_TYPE_UNIT;
-    name = "LowPassFilter";
+    className = "LowPassFilter";
     AudioUnitBase::setup();
 }

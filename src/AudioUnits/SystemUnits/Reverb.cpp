@@ -6,6 +6,6 @@ void Reverb::setup() {
     
     setParameter(kReverbParam_SmallLargeMix, 30);
     type = AU_TYPE_UNIT;
-    name = "Reverb";
+    className = "Reverb";
     AudioUnitBase::setup();
 }

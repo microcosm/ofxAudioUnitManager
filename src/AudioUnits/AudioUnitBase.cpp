@@ -5,8 +5,8 @@ string AudioUnitBase::getID() {
     return ID;
 }
 
-string AudioUnitBase::getName() {
-    return name;
+string AudioUnitBase::getClassName() {
+    return className;
 }
 
 void AudioUnitBase::setID(string _ID) {
@@ -39,5 +39,5 @@ AudioUnitType AudioUnitBase::getType() {
 }
 
 string AudioUnitBase::generateID() {
-    return ofGetTimestampString(name + "-%Y-%m-%d-%H-%M-%S-%F");
+    return ofGetTimestampString(className + "-%Y-%m-%d-%H-%M-%S-%F");
 }

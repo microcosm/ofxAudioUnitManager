@@ -160,7 +160,7 @@ string PresetsHandler::path(string presetName) {
 }
 
 string PresetsHandler::filename(int index, AudioUnitBase* unit) {
-    return ofToString(index) + "_" + unit->getName() + "." + presetExtension;
+    return ofToString(index) + "_" + unit->getClassName() + "." + presetExtension;
 }
 
 void PresetsHandler::ensureDirectories() {

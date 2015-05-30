@@ -11,7 +11,7 @@ class AudioUnitBase {
 
 public:
     string getID();
-    string getName();
+    string getClassName();
     void setID(string _ID);
     virtual void setup();
     void showUI();
@@ -23,5 +23,5 @@ protected:
     string generateID();
     ofxAudioUnit unit;
     AudioUnitType type;
-    string ID, name;
+    string ID, className;
 };
