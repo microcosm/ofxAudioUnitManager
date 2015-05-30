@@ -33,7 +33,6 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){
-    ofBackground(ofColor::black);
     manager.draw();
 }
 

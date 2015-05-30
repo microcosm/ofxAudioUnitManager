@@ -24,6 +24,9 @@ void ofxAudioUnitManager::update() {
 
 void ofxAudioUnitManager::draw() {
     if(showDebugUI) {
+        ofSetColor(ofColor::black, 180);
+        ofFill();
+        ofRect(0, 0, ofGetWidth(), ofGetHeight());
         userInterface.drawChains(chains);
         userInterface.drawControls();
     }
