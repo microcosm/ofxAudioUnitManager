@@ -3,8 +3,8 @@
 void ofApp::setup(){
     manager.setup();
     manager.toggleDebugUI();
-    manager.add(&leftChain, "left-chain", ofColor::blue);
-    manager.add(&rightChain, "right-chain", ofColor::red);
+    manager.add(&chain1, "chain-one", ofColor::blue);
+    manager.add(&chain2, "chain-two", ofColor::red);
     
     playing = false;
     note = 60;
@@ -15,16 +15,16 @@ void ofApp::setup(){
 
 void ofApp::play(void){
     if(playing) {
-        leftChain.midi()->sendNoteOn(1, note);
-        rightChain.midi()->sendNoteOn(1, note);
+        chain1.midi()->sendNoteOn(1, note);
+        chain2.midi()->sendNoteOn(1, note);
     }
 }
 
 void ofApp::togglePlaying() {
     playing = !playing;
     if(!playing) {
-        leftChain.midi()->sendNoteOff(1, note);
-        rightChain.midi()->sendNoteOff(1, note);
+        chain1.midi()->sendNoteOff(1, note);
+        chain2.midi()->sendNoteOff(1, note);
     }
 }
 

@@ -29,8 +29,8 @@ public:
     void gotMessage(ofMessage msg);
     
     ofxAudioUnitManager manager;
-    //SamplerChain leftChain, rightChain;
-    AlchemyChain leftChain, rightChain;
+    //SamplerChain chain1, chain2;
+    AlchemyChain chain1, chain2;
     ofxBpm bpm;
     bool playing;
     int note;
