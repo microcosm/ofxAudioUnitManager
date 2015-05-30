@@ -5,14 +5,13 @@ void UIHandler::setup() {
     chainInfoDimensions = ofVec2f(220, 340);
     colorBoxDimensions = ofVec2f(20, 8);
 
-    controlsPositions = ofVec2f(
-        ofGetWidth()  - controlsDimensions.x - 20,
-        ofGetHeight() - controlsDimensions.y - 20);
+    controlsPositions = getControlsPositions();
     chainInfoPositions = ofVec2f(20, 20);
     colorBoxPositions = ofVec2f(66, 67);
 }
 
 void UIHandler::drawControls() {
+    controlsPositions = getControlsPositions();
     drawDebugBox(controlsPositions.x, controlsPositions.y, controlsDimensions.x, controlsDimensions.y);
     ofSetColor(ofColor::white);
     ofDrawBitmapString(controlsReport(), controlsPositions.x + 10, controlsPositions.y + 20);
@@ -40,6 +39,12 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color)
     ofSetColor(ofColor::white);
     ofNoFill();
     ofRect(x, y, width, height);
+}
+
+ofVec2f UIHandler::getControlsPositions() {
+    return ofVec2f(
+            ofGetWidth()  - controlsDimensions.x - 20,
+            ofGetHeight() - controlsDimensions.y - 20);
 }
 
 string UIHandler::controlsReport() {
