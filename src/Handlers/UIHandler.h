@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "AudioUnitChain.h"
+#include "AudioUnitBase.h"
 
 class UIHandler{
 

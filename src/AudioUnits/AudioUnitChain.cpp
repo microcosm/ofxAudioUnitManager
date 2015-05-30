@@ -91,6 +91,18 @@ PresetsHandler* AudioUnitChain::getPresets() {
     return &presets;
 }
 
+string AudioUnitChain::getUnitReport() {
+    unitReport = "";
+    for(int i = 0; i < units.size(); i++) {
+        unitReport += "[" + units.at(units.size() - i - 1)->getName() + "]->\n";
+    }
+    return unitReport + "[Mixer]";
+}
+
+string AudioUnitChain::getClassName() {
+    return className;
+}
+
 string AudioUnitChain::getName() {
     return name;
 }

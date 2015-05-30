@@ -115,7 +115,7 @@ int PresetsHandler::currentIndex(){
 string PresetsHandler::report() {
     string icon = selected ? "[*]" : "[ ]";
     stringstream report;
-    report << "PRESETS" << endl;
+    report << "PRESETS" << endl << "-------";
     
     for(int i = 0; i < presetNames.size(); i++) {
         report << endl << i << ": " << presetNames.at(i);

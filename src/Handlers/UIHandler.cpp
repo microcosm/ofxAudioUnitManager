@@ -65,10 +65,15 @@ string UIHandler::controlsReport() {
 
 string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     stringstream report;
-    report << "CHAIN " << number << ": " << "\"" << chain->getName() << "\""
-    << endl << "midi port " << chain->midi()->getPort()
+    report << "CHAIN " << number << (chain->isSelected() ? " [*] SELECTED" : "")
+    << endl << "-------"
+    << endl << "type: " << chain->getClassName()
+    << endl << "name: " << "\"" << chain->getName() << "\""
+    << endl << "midi port: " << chain->midi()->getPort()
     << endl << ""
-    << endl << (chain->isSelected() ? "[*] CHAIN SELECTED" : "")
+    << endl << "UNITS"
+    << endl << "-----"
+    << endl << chain->getUnitReport()
     << endl << ""
     << endl << chain->getPresets()->report();
     return report.str();

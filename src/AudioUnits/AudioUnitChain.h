@@ -27,6 +27,8 @@ public:
     void deselect();
     ofxMidiOut* midi();
     PresetsHandler* getPresets();
+    string getUnitReport();
+    string getClassName();
     string getName();
 
 protected:
@@ -40,5 +42,5 @@ protected:
     MidiHandler midiHandler;
     ofColor waveColor;
     bool selected;
-    string name;
+    string name, unitReport, className;
 };
