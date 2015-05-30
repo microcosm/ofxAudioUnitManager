@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		843D375E1B13CCD00051A88B /* AudioUnitBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D37421B13CCD00051A88B /* AudioUnitBase.cpp */; };
-		843D375F1B13CCD00051A88B /* AudioUnitChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D37441B13CCD00051A88B /* AudioUnitChain.cpp */; };
-		843D37601B13CCD00051A88B /* AlchemyChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D37471B13CCD00051A88B /* AlchemyChain.cpp */; };
-		843D37611B13CCD00051A88B /* Compressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D374A1B13CCD00051A88B /* Compressor.cpp */; };
-		843D37621B13CCD00051A88B /* Delay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D374C1B13CCD00051A88B /* Delay.cpp */; };
-		843D37631B13CCD00051A88B /* LowPassFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D374E1B13CCD00051A88B /* LowPassFilter.cpp */; };
-		843D37641B13CCD00051A88B /* Reverb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D37501B13CCD00051A88B /* Reverb.cpp */; };
-		843D37651B13CCD00051A88B /* AlchemyPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D37531B13CCD00051A88B /* AlchemyPlayer.cpp */; };
-		843D37671B13CCD00051A88B /* MidiHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D37581B13CCD00051A88B /* MidiHandler.cpp */; };
-		843D37681B13CCD00051A88B /* PresetsHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D375A1B13CCD00051A88B /* PresetsHandler.cpp */; };
-		843D37691B13CCD00051A88B /* ofxAudioUnitManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D375C1B13CCD00051A88B /* ofxAudioUnitManager.cpp */; };
-		843D376D1B13D59A0051A88B /* UIHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843D376B1B13D59A0051A88B /* UIHandler.cpp */; };
+		843214571B1A2E000030CB9C /* AlchemyChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8432143B1B1A2E000030CB9C /* AlchemyChain.cpp */; };
+		843214581B1A2E000030CB9C /* AudioUnitChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8432143D1B1A2E000030CB9C /* AudioUnitChain.cpp */; };
+		843214591B1A2E000030CB9C /* AudioUnitBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214401B1A2E000030CB9C /* AudioUnitBase.cpp */; };
+		8432145A1B1A2E000030CB9C /* AlchemyPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214431B1A2E000030CB9C /* AlchemyPlayer.cpp */; };
+		8432145B1B1A2E000030CB9C /* Compressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214461B1A2E000030CB9C /* Compressor.cpp */; };
+		8432145C1B1A2E000030CB9C /* Delay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214481B1A2E000030CB9C /* Delay.cpp */; };
+		8432145D1B1A2E000030CB9C /* LowPassFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8432144A1B1A2E000030CB9C /* LowPassFilter.cpp */; };
+		8432145E1B1A2E000030CB9C /* Reverb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8432144C1B1A2E000030CB9C /* Reverb.cpp */; };
+		8432145F1B1A2E000030CB9C /* MidiHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8432144F1B1A2E000030CB9C /* MidiHandler.cpp */; };
+		843214601B1A2E000030CB9C /* PresetsHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214511B1A2E000030CB9C /* PresetsHandler.cpp */; };
+		843214611B1A2E000030CB9C /* UIHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214531B1A2E000030CB9C /* UIHandler.cpp */; };
+		843214621B1A2E000030CB9C /* ofxAudioUnitManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 843214551B1A2E000030CB9C /* ofxAudioUnitManager.cpp */; };
 		84A526FD1B12793C00C8A56C /* ofxBpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84A526FB1B12793C00C8A56C /* ofxBpm.cpp */; };
 		84A5272D1B12794700C8A56C /* ofxRtMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84A527011B12794700C8A56C /* ofxRtMidiIn.cpp */; };
 		84A5272E1B12794700C8A56C /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84A527031B12794700C8A56C /* ofxRtMidiOut.cpp */; };
@@ -107,30 +107,30 @@
 /* Begin PBXFileReference section */
 		692A51D3CA888391C859A345 /* CoreAudioKit.framework */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = /System/Library/Frameworks/CoreAudioKit.framework; sourceTree = "<group>"; };
 		81AC32CCCB56FAABA3E1BDE0 /* CoreMIDI.framework */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
-		843D37421B13CCD00051A88B /* AudioUnitBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioUnitBase.cpp; sourceTree = "<group>"; };
-		843D37431B13CCD00051A88B /* AudioUnitBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioUnitBase.h; sourceTree = "<group>"; };
-		843D37441B13CCD00051A88B /* AudioUnitChain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioUnitChain.cpp; sourceTree = "<group>"; };
-		843D37451B13CCD00051A88B /* AudioUnitChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioUnitChain.h; sourceTree = "<group>"; };
-		843D37471B13CCD00051A88B /* AlchemyChain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyChain.cpp; sourceTree = "<group>"; };
-		843D37481B13CCD00051A88B /* AlchemyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlchemyChain.h; sourceTree = "<group>"; };
-		843D374A1B13CCD00051A88B /* Compressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Compressor.cpp; sourceTree = "<group>"; };
-		843D374B1B13CCD00051A88B /* Compressor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Compressor.h; sourceTree = "<group>"; };
-		843D374C1B13CCD00051A88B /* Delay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Delay.cpp; sourceTree = "<group>"; };
-		843D374D1B13CCD00051A88B /* Delay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delay.h; sourceTree = "<group>"; };
-		843D374E1B13CCD00051A88B /* LowPassFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LowPassFilter.cpp; sourceTree = "<group>"; };
-		843D374F1B13CCD00051A88B /* LowPassFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LowPassFilter.h; sourceTree = "<group>"; };
-		843D37501B13CCD00051A88B /* Reverb.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Reverb.cpp; sourceTree = "<group>"; };
-		843D37511B13CCD00051A88B /* Reverb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reverb.h; sourceTree = "<group>"; };
-		843D37531B13CCD00051A88B /* AlchemyPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyPlayer.cpp; sourceTree = "<group>"; };
-		843D37541B13CCD00051A88B /* AlchemyPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlchemyPlayer.h; sourceTree = "<group>"; };
-		843D37581B13CCD00051A88B /* MidiHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiHandler.cpp; sourceTree = "<group>"; };
-		843D37591B13CCD00051A88B /* MidiHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MidiHandler.h; sourceTree = "<group>"; };
-		843D375A1B13CCD00051A88B /* PresetsHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PresetsHandler.cpp; sourceTree = "<group>"; };
-		843D375B1B13CCD00051A88B /* PresetsHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresetsHandler.h; sourceTree = "<group>"; };
-		843D375C1B13CCD00051A88B /* ofxAudioUnitManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitManager.cpp; sourceTree = "<group>"; };
-		843D375D1B13CCD00051A88B /* ofxAudioUnitManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitManager.h; sourceTree = "<group>"; };
-		843D376B1B13D59A0051A88B /* UIHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIHandler.cpp; sourceTree = "<group>"; };
-		843D376C1B13D59A0051A88B /* UIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHandler.h; sourceTree = "<group>"; };
+		8432143B1B1A2E000030CB9C /* AlchemyChain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyChain.cpp; sourceTree = "<group>"; };
+		8432143C1B1A2E000030CB9C /* AlchemyChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlchemyChain.h; sourceTree = "<group>"; };
+		8432143D1B1A2E000030CB9C /* AudioUnitChain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioUnitChain.cpp; sourceTree = "<group>"; };
+		8432143E1B1A2E000030CB9C /* AudioUnitChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioUnitChain.h; sourceTree = "<group>"; };
+		843214401B1A2E000030CB9C /* AudioUnitBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioUnitBase.cpp; sourceTree = "<group>"; };
+		843214411B1A2E000030CB9C /* AudioUnitBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioUnitBase.h; sourceTree = "<group>"; };
+		843214431B1A2E000030CB9C /* AlchemyPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlchemyPlayer.cpp; sourceTree = "<group>"; };
+		843214441B1A2E000030CB9C /* AlchemyPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlchemyPlayer.h; sourceTree = "<group>"; };
+		843214461B1A2E000030CB9C /* Compressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Compressor.cpp; sourceTree = "<group>"; };
+		843214471B1A2E000030CB9C /* Compressor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Compressor.h; sourceTree = "<group>"; };
+		843214481B1A2E000030CB9C /* Delay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Delay.cpp; sourceTree = "<group>"; };
+		843214491B1A2E000030CB9C /* Delay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delay.h; sourceTree = "<group>"; };
+		8432144A1B1A2E000030CB9C /* LowPassFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LowPassFilter.cpp; sourceTree = "<group>"; };
+		8432144B1B1A2E000030CB9C /* LowPassFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LowPassFilter.h; sourceTree = "<group>"; };
+		8432144C1B1A2E000030CB9C /* Reverb.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Reverb.cpp; sourceTree = "<group>"; };
+		8432144D1B1A2E000030CB9C /* Reverb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reverb.h; sourceTree = "<group>"; };
+		8432144F1B1A2E000030CB9C /* MidiHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiHandler.cpp; sourceTree = "<group>"; };
+		843214501B1A2E000030CB9C /* MidiHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MidiHandler.h; sourceTree = "<group>"; };
+		843214511B1A2E000030CB9C /* PresetsHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PresetsHandler.cpp; sourceTree = "<group>"; };
+		843214521B1A2E000030CB9C /* PresetsHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresetsHandler.h; sourceTree = "<group>"; };
+		843214531B1A2E000030CB9C /* UIHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UIHandler.cpp; sourceTree = "<group>"; };
+		843214541B1A2E000030CB9C /* UIHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIHandler.h; sourceTree = "<group>"; };
+		843214551B1A2E000030CB9C /* ofxAudioUnitManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioUnitManager.cpp; sourceTree = "<group>"; };
+		843214561B1A2E000030CB9C /* ofxAudioUnitManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitManager.h; sourceTree = "<group>"; };
 		84A526FB1B12793C00C8A56C /* ofxBpm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBpm.cpp; sourceTree = "<group>"; };
 		84A526FC1B12793C00C8A56C /* ofxBpm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBpm.h; sourceTree = "<group>"; };
 		84A527011B12794700C8A56C /* ofxRtMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRtMidiIn.cpp; sourceTree = "<group>"; };
@@ -258,82 +258,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		843D373F1B13CCD00051A88B /* ofxAudioUnitManager */ = {
+		843214381B1A2E000030CB9C /* ofxAudioUnitManager */ = {
 			isa = PBXGroup;
 			children = (
-				843D37401B13CCD00051A88B /* src */,
+				843214391B1A2E000030CB9C /* src */,
 			);
 			name = ofxAudioUnitManager;
 			sourceTree = "<group>";
 		};
-		843D37401B13CCD00051A88B /* src */ = {
+		843214391B1A2E000030CB9C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				843D37411B13CCD00051A88B /* AudioUnits */,
-				843D37551B13CCD00051A88B /* Handlers */,
-				843D375C1B13CCD00051A88B /* ofxAudioUnitManager.cpp */,
-				843D375D1B13CCD00051A88B /* ofxAudioUnitManager.h */,
+				8432143A1B1A2E000030CB9C /* AudioUnitChains */,
+				8432143F1B1A2E000030CB9C /* AudioUnits */,
+				8432144E1B1A2E000030CB9C /* Handlers */,
+				843214551B1A2E000030CB9C /* ofxAudioUnitManager.cpp */,
+				843214561B1A2E000030CB9C /* ofxAudioUnitManager.h */,
 			);
 			name = src;
 			path = ../src;
 			sourceTree = "<group>";
 		};
-		843D37411B13CCD00051A88B /* AudioUnits */ = {
+		8432143A1B1A2E000030CB9C /* AudioUnitChains */ = {
 			isa = PBXGroup;
 			children = (
-				843D37421B13CCD00051A88B /* AudioUnitBase.cpp */,
-				843D37431B13CCD00051A88B /* AudioUnitBase.h */,
-				843D37441B13CCD00051A88B /* AudioUnitChain.cpp */,
-				843D37451B13CCD00051A88B /* AudioUnitChain.h */,
-				843D37461B13CCD00051A88B /* Chains */,
-				843D37491B13CCD00051A88B /* SystemUnits */,
-				843D37521B13CCD00051A88B /* VendorUnits */,
+				8432143B1B1A2E000030CB9C /* AlchemyChain.cpp */,
+				8432143C1B1A2E000030CB9C /* AlchemyChain.h */,
+				8432143D1B1A2E000030CB9C /* AudioUnitChain.cpp */,
+				8432143E1B1A2E000030CB9C /* AudioUnitChain.h */,
+			);
+			path = AudioUnitChains;
+			sourceTree = "<group>";
+		};
+		8432143F1B1A2E000030CB9C /* AudioUnits */ = {
+			isa = PBXGroup;
+			children = (
+				843214401B1A2E000030CB9C /* AudioUnitBase.cpp */,
+				843214411B1A2E000030CB9C /* AudioUnitBase.h */,
+				843214421B1A2E000030CB9C /* Synths */,
+				843214451B1A2E000030CB9C /* Units */,
 			);
 			path = AudioUnits;
 			sourceTree = "<group>";
 		};
-		843D37461B13CCD00051A88B /* Chains */ = {
+		843214421B1A2E000030CB9C /* Synths */ = {
 			isa = PBXGroup;
 			children = (
-				843D37471B13CCD00051A88B /* AlchemyChain.cpp */,
-				843D37481B13CCD00051A88B /* AlchemyChain.h */,
+				843214431B1A2E000030CB9C /* AlchemyPlayer.cpp */,
+				843214441B1A2E000030CB9C /* AlchemyPlayer.h */,
 			);
-			path = Chains;
+			path = Synths;
 			sourceTree = "<group>";
 		};
-		843D37491B13CCD00051A88B /* SystemUnits */ = {
+		843214451B1A2E000030CB9C /* Units */ = {
 			isa = PBXGroup;
 			children = (
-				843D374A1B13CCD00051A88B /* Compressor.cpp */,
-				843D374B1B13CCD00051A88B /* Compressor.h */,
-				843D374C1B13CCD00051A88B /* Delay.cpp */,
-				843D374D1B13CCD00051A88B /* Delay.h */,
-				843D374E1B13CCD00051A88B /* LowPassFilter.cpp */,
-				843D374F1B13CCD00051A88B /* LowPassFilter.h */,
-				843D37501B13CCD00051A88B /* Reverb.cpp */,
-				843D37511B13CCD00051A88B /* Reverb.h */,
+				843214461B1A2E000030CB9C /* Compressor.cpp */,
+				843214471B1A2E000030CB9C /* Compressor.h */,
+				843214481B1A2E000030CB9C /* Delay.cpp */,
+				843214491B1A2E000030CB9C /* Delay.h */,
+				8432144A1B1A2E000030CB9C /* LowPassFilter.cpp */,
+				8432144B1B1A2E000030CB9C /* LowPassFilter.h */,
+				8432144C1B1A2E000030CB9C /* Reverb.cpp */,
+				8432144D1B1A2E000030CB9C /* Reverb.h */,
 			);
-			path = SystemUnits;
+			path = Units;
 			sourceTree = "<group>";
 		};
-		843D37521B13CCD00051A88B /* VendorUnits */ = {
+		8432144E1B1A2E000030CB9C /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				843D37531B13CCD00051A88B /* AlchemyPlayer.cpp */,
-				843D37541B13CCD00051A88B /* AlchemyPlayer.h */,
-			);
-			path = VendorUnits;
-			sourceTree = "<group>";
-		};
-		843D37551B13CCD00051A88B /* Handlers */ = {
-			isa = PBXGroup;
-			children = (
-				843D376B1B13D59A0051A88B /* UIHandler.cpp */,
-				843D376C1B13D59A0051A88B /* UIHandler.h */,
-				843D37581B13CCD00051A88B /* MidiHandler.cpp */,
-				843D37591B13CCD00051A88B /* MidiHandler.h */,
-				843D375A1B13CCD00051A88B /* PresetsHandler.cpp */,
-				843D375B1B13CCD00051A88B /* PresetsHandler.h */,
+				8432144F1B1A2E000030CB9C /* MidiHandler.cpp */,
+				843214501B1A2E000030CB9C /* MidiHandler.h */,
+				843214511B1A2E000030CB9C /* PresetsHandler.cpp */,
+				843214521B1A2E000030CB9C /* PresetsHandler.h */,
+				843214531B1A2E000030CB9C /* UIHandler.cpp */,
+				843214541B1A2E000030CB9C /* UIHandler.h */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				843D373F1B13CCD00051A88B /* ofxAudioUnitManager */,
+				843214381B1A2E000030CB9C /* ofxAudioUnitManager */,
 				84A527371B127C8A00C8A56C /* ofxAudioUnit */,
 				84A526FE1B12794700C8A56C /* ofxMidi */,
 				84A526F91B12793C00C8A56C /* ofxBpm */,
@@ -677,49 +677,49 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				843214601B1A2E000030CB9C /* PresetsHandler.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				843D37651B13CCD00051A88B /* AlchemyPlayer.cpp in Sources */,
 				84A527341B12794700C8A56C /* RtMidi.cpp in Sources */,
 				84A527301B12794700C8A56C /* ofxMidi.cpp in Sources */,
-				843D37621B13CCD00051A88B /* Delay.cpp in Sources */,
 				84A527791B127C8A00C8A56C /* ofxAudioUnitOutput.cpp in Sources */,
 				84A5272F1B12794700C8A56C /* ofxBaseMidi.cpp in Sources */,
 				84A5277E1B127C8A00C8A56C /* TPCircularBuffer.c in Sources */,
 				84A5272D1B12794700C8A56C /* ofxRtMidiIn.cpp in Sources */,
+				843214571B1A2E000030CB9C /* AlchemyChain.cpp in Sources */,
 				84A527311B12794700C8A56C /* ofxMidiIn.cpp in Sources */,
 				84A5276B1B127C8A00C8A56C /* CAAUParameter.cpp in Sources */,
 				84A527711B127C8A00C8A56C /* ofxAudioUnitFilePlayer.cpp in Sources */,
 				84A5277A1B127C8A00C8A56C /* ofxAudioUnitRecorder.cpp in Sources */,
+				8432145B1B1A2E000030CB9C /* Compressor.cpp in Sources */,
 				84A527771B127C8A00C8A56C /* ofxAudioUnitNetReceive.cpp in Sources */,
+				8432145C1B1A2E000030CB9C /* Delay.cpp in Sources */,
 				84A5277B1B127C8A00C8A56C /* ofxAudioUnitSampler.cpp in Sources */,
+				8432145E1B1A2E000030CB9C /* Reverb.cpp in Sources */,
 				84A5272E1B12794700C8A56C /* ofxRtMidiOut.cpp in Sources */,
 				84A527761B127C8A00C8A56C /* ofxAudioUnitMixer.cpp in Sources */,
 				84A527751B127C8A00C8A56C /* ofxAudioUnitMidi.cpp in Sources */,
 				84A5276F1B127C8A00C8A56C /* ofxAudioUnitDSPNode.cpp in Sources */,
-				843D37681B13CCD00051A88B /* PresetsHandler.cpp in Sources */,
 				84A527721B127C8A00C8A56C /* ofxAudioUnitHardwareUtils.cpp in Sources */,
 				84A5276A1B127C8A00C8A56C /* AUParamInfo.cpp in Sources */,
-				843D37601B13CCD00051A88B /* AlchemyChain.cpp in Sources */,
-				843D375E1B13CCD00051A88B /* AudioUnitBase.cpp in Sources */,
-				843D37641B13CCD00051A88B /* Reverb.cpp in Sources */,
 				84A527731B127C8A00C8A56C /* ofxAudioUnitInput.cpp in Sources */,
-				843D375F1B13CCD00051A88B /* AudioUnitChain.cpp in Sources */,
-				843D37671B13CCD00051A88B /* MidiHandler.cpp in Sources */,
-				843D37611B13CCD00051A88B /* Compressor.cpp in Sources */,
-				843D376D1B13D59A0051A88B /* UIHandler.cpp in Sources */,
-				843D37691B13CCD00051A88B /* ofxAudioUnitManager.cpp in Sources */,
+				843214611B1A2E000030CB9C /* UIHandler.cpp in Sources */,
+				843214581B1A2E000030CB9C /* AudioUnitChain.cpp in Sources */,
 				84A5276E1B127C8A00C8A56C /* ofxAudioUnitCocoaUtilties.mm in Sources */,
 				84A5277C1B127C8A00C8A56C /* ofxAudioUnitSpeechSynth.cpp in Sources */,
+				843214621B1A2E000030CB9C /* ofxAudioUnitManager.cpp in Sources */,
+				8432145D1B1A2E000030CB9C /* LowPassFilter.cpp in Sources */,
+				8432145F1B1A2E000030CB9C /* MidiHandler.cpp in Sources */,
 				84A527741B127C8A00C8A56C /* ofxAudioUnitMatrixMixer.cpp in Sources */,
+				8432145A1B1A2E000030CB9C /* AlchemyPlayer.cpp in Sources */,
 				84A5276C1B127C8A00C8A56C /* CADebugMacros.cpp in Sources */,
 				84A5276D1B127C8A00C8A56C /* ofxAudioUnit.cpp in Sources */,
 				84A527321B12794700C8A56C /* ofxMidiMessage.cpp in Sources */,
 				84A5277D1B127C8A00C8A56C /* ofxAudioUnitTap.cpp in Sources */,
 				84A527331B12794700C8A56C /* ofxMidiOut.cpp in Sources */,
+				843214591B1A2E000030CB9C /* AudioUnitBase.cpp in Sources */,
 				84A527781B127C8A00C8A56C /* ofxAudioUnitNetSend.cpp in Sources */,
 				84A526FD1B12793C00C8A56C /* ofxBpm.cpp in Sources */,
 				84A527701B127C8A00C8A56C /* ofxAudioUnitFftNode.cpp in Sources */,
-				843D37631B13CCD00051A88B /* LowPassFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
