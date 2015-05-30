@@ -4,6 +4,7 @@
 #include "ofxBpm.h"
 #include "ofxAudioUnit.h"
 #include "Compressor.h"
+#include "SamplerChain.h"
 #include "AlchemyChain.h"
 #include "ofxAudioUnitManager.h"
 
@@ -28,6 +29,7 @@ public:
     void gotMessage(ofMessage msg);
     
     ofxAudioUnitManager manager;
+    //SamplerChain leftChain, rightChain;
     AlchemyChain leftChain, rightChain;
     ofxBpm bpm;
     bool playing;
