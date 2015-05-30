@@ -1,21 +1,10 @@
 #include "AudioUnitBase.h"
 
-string AudioUnitBase::getID() {
-    if(ID == "") generateID();
-    return ID;
-}
-
 string AudioUnitBase::getClassName() {
     return className;
 }
 
-void AudioUnitBase::setID(string _ID) {
-    ID = _ID;
-}
-
-void AudioUnitBase::setup() {
-    ID = "";
-}
+void AudioUnitBase::setup() {}
 
 void AudioUnitBase::showUI() {
     unit.showUI();
@@ -36,8 +25,4 @@ ofxAudioUnit* AudioUnitBase::get() {
 
 AudioUnitType AudioUnitBase::getType() {
     return type;
-}
-
-string AudioUnitBase::generateID() {
-    return ofGetTimestampString(className + "-%Y-%m-%d-%H-%M-%S-%F");
 }
