@@ -13,8 +13,9 @@ public:
     string getClassName();
     virtual void setup();
     void showUI();
-    void setParameter(int param, float value);
-    void setParameters(int param1, int param2, ofVec2f value);
+    void set(int param, float value);
+    void set(int param1, int param2, ofVec2f value);
+    void set(int param1, int param2, int param3, ofVec3f value);
     ofxAudioUnit* get();
     AudioUnitType getType();
 protected:

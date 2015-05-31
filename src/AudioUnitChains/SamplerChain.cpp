@@ -19,15 +19,3 @@ void SamplerChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
         connectTo(*reverb.get())
     );
 }
-
-void SamplerChain::delayTime(float val) {
-    reverb.setParameter(DelayTime, val);
-}
-
-void SamplerChain::reverbDryWet(float val) {
-    reverb.setParameter(kReverbParam_DryWetMix, val);
-}
-
-void SamplerChain::filterCutoff(float val) {
-    filter.setParameter(kLowPassParam_CutoffFrequency, val);
-}

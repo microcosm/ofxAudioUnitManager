@@ -10,13 +10,6 @@ class TALNoiseMakerChain : public AudioUnitChain {
     
 public:
     void setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor);
-    void delayTime(float val);
-    void reverbDryWet(float val);
-    void filterCutoff(float val);
-    void showFilterUI();
-    void showReverbUI();
-    
-protected:
     TALNoiseMaker noiseMaker;
     LowPassFilter filter;
     Reverb reverb;
