@@ -14,9 +14,9 @@ void AlchemyChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
 
     //Connect units and pipe out to the mixer
     sendOut(&
-        alchemy.get()->
-        connectTo(*filter.get()).
-        connectTo(*reverb.get())
+        alchemy.getUnit()->
+        connectTo(*filter.getUnit()).
+        connectTo(*reverb.getUnit())
     );
 }
 

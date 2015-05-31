@@ -14,9 +14,9 @@ void SamplerChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
 
     //Connect units and pipe out to the mixer
     sendOut(&
-        sampler.get()->
-        connectTo(*filter.get()).
-        connectTo(*reverb.get())
+        sampler.getUnit()->
+        connectTo(*filter.getUnit()).
+        connectTo(*reverb.getUnit())
     );
 }
 

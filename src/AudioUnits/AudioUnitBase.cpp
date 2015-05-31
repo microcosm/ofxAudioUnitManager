@@ -25,7 +25,7 @@ void AudioUnitBase::set(int param1, int param2, int param3, ofVec3f value) {
     set(param3, value.z);
 }
 
-ofxAudioUnit* AudioUnitBase::get() {
+ofxAudioUnit* AudioUnitBase::getUnit() {
     return &unit;
 }
 

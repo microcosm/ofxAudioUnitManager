@@ -43,7 +43,7 @@ void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
 
 void AudioUnitChain::loadSynth(AudioUnitBase* _synth) {
     loadUnit(_synth);
-    midiHandler.setup(_synth->get(), name);
+    midiHandler.setup(_synth->getUnit(), name);
 }
 
 void AudioUnitChain::showUI(){

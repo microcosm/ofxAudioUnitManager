@@ -14,9 +14,9 @@ void TALNoiseMakerChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerC
 
     //Connect units and pipe out to the mixer
     sendOut(&
-        noiseMaker.get()->
-        connectTo(*filter.get()).
-        connectTo(*reverb.get())
+        noiseMaker.getUnit()->
+        connectTo(*filter.getUnit()).
+        connectTo(*reverb.getUnit())
     );
 }
 

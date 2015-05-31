@@ -4,7 +4,7 @@ void ofxAudioUnitManager::setup() {
     showDebugUI = false;
     userInterface.setup();
     compressor.setup();
-    mixer.connectTo(*compressor.get()).connectTo(output);
+    mixer.connectTo(*compressor.getUnit()).connectTo(output);
     output.start();
 }
 

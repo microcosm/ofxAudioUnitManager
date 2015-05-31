@@ -16,7 +16,7 @@ public:
     void set(int param, float value);
     void set(int param1, int param2, ofVec2f value);
     void set(int param1, int param2, int param3, ofVec3f value);
-    ofxAudioUnit* get();
+    ofxAudioUnit* getUnit();
     AudioUnitType getType();
 protected:
     ofxAudioUnit unit;

@@ -20,7 +20,7 @@ void PresetsHandler::load(int presetIndex) {
     string presetPath = path(presetNames.at(presetIndex));
     for(int i = 0; i < units.size(); i++) {
         string presetFilename = filename(i, units.at(i));
-        units.at(i)->get()->loadCustomPresetAtPath(presetPath + presetFilename);
+        units.at(i)->getUnit()->loadCustomPresetAtPath(presetPath + presetFilename);
     }
 }
 
@@ -35,7 +35,7 @@ void PresetsHandler::save() {
         dir.createDirectory(presetPath);
         for(int i = 0; i < units.size(); i++) {
             string presetFilename = filename(i, units.at(i));
-            units.at(i)->get()->saveCustomPresetAtPath(presetPath + presetFilename);
+            units.at(i)->getUnit()->saveCustomPresetAtPath(presetPath + presetFilename);
         }
         readFromDisk();
         currentPreset = indexOf(presetName);
