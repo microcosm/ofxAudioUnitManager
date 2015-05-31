@@ -5,6 +5,7 @@
 #include "ofxAudioUnit.h"
 #include "Compressor.h"
 #include "SamplerChain.h"
+#include "TALNoiseMakerChain.h"
 #include "AlchemyChain.h"
 #include "ofxAudioUnitManager.h"
 
@@ -29,8 +30,9 @@ public:
     void gotMessage(ofMessage msg);
     
     ofxAudioUnitManager manager;
-    //SamplerChain chain1, chain2;
     AlchemyChain chain1, chain2;
+    //SamplerChain chain1, chain2;
+    //TALNoiseMakerChain chain1, chain2;
     ofxBpm bpm;
     bool playing;
     int note;

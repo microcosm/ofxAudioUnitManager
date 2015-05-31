@@ -3,8 +3,8 @@
 void ofApp::setup(){
     manager.setup();
     manager.toggleDebugUI();
-    manager.add(&chain1, "chain-one", ofColor::blue);
-    manager.add(&chain2, "chain-two", ofColor::red);
+    manager.add(&chain1, "alchemy-one", ofColor::blue);
+    manager.add(&chain2, "alchemy-two", ofColor::red);
     
     playing = false;
     note = 60;
