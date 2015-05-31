@@ -9,6 +9,7 @@ class AudioUnitChain {
     
 public:
     virtual void setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
+    void setupPresets();
     virtual void update();
     virtual void drawWaveform();
     virtual void exit();
