@@ -3,7 +3,6 @@
 #include "ofMain.h"
 #include "ofxBpm.h"
 #include "ofxAudioUnit.h"
-#include "Compressor.h"
 #include "SamplerChain.h"
 #include "TALNoiseMakerChain.h"
 #include "AlchemyChain.h"

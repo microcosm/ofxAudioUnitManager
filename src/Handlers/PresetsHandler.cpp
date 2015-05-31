@@ -11,7 +11,7 @@ void PresetsHandler::setup(string _chainName){
     readFromDisk();
     
     if(presets.size() > 0) {
-        currentPreset = presets.size()-1;
+        currentPreset = 0;
         load(currentPreset);
     }
 }
