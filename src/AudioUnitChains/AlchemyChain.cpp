@@ -19,3 +19,15 @@ void AlchemyChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
         connectTo(*reverb.get())
     );
 }
+
+AlchemyPlayer* AlchemyChain::getSynth() {
+    return &alchemy;
+}
+
+LowPassFilter* AlchemyChain::getFilter(){
+    return &filter;
+}
+
+Reverb* AlchemyChain::getReverb(){
+    return &reverb;
+}

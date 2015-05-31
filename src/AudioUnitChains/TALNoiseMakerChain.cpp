@@ -19,3 +19,15 @@ void TALNoiseMakerChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerC
         connectTo(*reverb.get())
     );
 }
+
+TALNoiseMaker* TALNoiseMakerChain::getSynth() {
+    return &noiseMaker;
+}
+
+LowPassFilter* TALNoiseMakerChain::getFilter(){
+    return &filter;
+}
+
+Reverb* TALNoiseMakerChain::getReverb(){
+    return &reverb;
+}

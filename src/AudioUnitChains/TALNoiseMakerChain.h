@@ -10,6 +10,10 @@ class TALNoiseMakerChain : public AudioUnitChain {
     
 public:
     void setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor);
+    TALNoiseMaker* getSynth();
+    LowPassFilter* getFilter();
+    Reverb* getReverb();
+private:
     TALNoiseMaker noiseMaker;
     LowPassFilter filter;
     Reverb reverb;

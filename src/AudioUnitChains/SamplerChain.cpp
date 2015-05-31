@@ -19,3 +19,15 @@ void SamplerChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel
         connectTo(*reverb.get())
     );
 }
+
+Sampler* SamplerChain::getSynth() {
+    return &sampler;
+}
+
+LowPassFilter* SamplerChain::getFilter(){
+    return &filter;
+}
+
+Reverb* SamplerChain::getReverb(){
+    return &reverb;
+}
