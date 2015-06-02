@@ -31,12 +31,12 @@ void AudioUnitChain::sendOut(ofxAudioUnit* chainEndpoint) {
 }
 
 void AudioUnitChain::load(AudioUnitBase* unit) {
+    unit->setup();
     unit->getType() == AU_TYPE_SYNTH ?
         loadSynth(unit) : loadUnit(unit);
 }
 
 void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
-    unit->setup();
     presets.add(unit);
     units.push_back(unit);
 }
