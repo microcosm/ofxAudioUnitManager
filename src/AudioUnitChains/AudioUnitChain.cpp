@@ -5,6 +5,7 @@ void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerCh
     mixer = _mixer;
     mixerChannel = _mixerChannel;
     waveColor = _waveColor;
+    className = "AudioUnitChain";
     selected = false;
 }
 

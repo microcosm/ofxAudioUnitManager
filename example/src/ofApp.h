@@ -17,7 +17,7 @@ public:
     void play();
     void togglePlaying();
     void exit();
-    
+
     void keyPressed(int key);
     void keyReleased(int key);
     void mouseMoved(int x, int y );
@@ -27,11 +27,13 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
-    
+
     ofxAudioUnitManager manager;
-    AlchemyChain chain1, chain2;
-    //SamplerChain chain1, chain2;
-    //TALNoiseMakerChain chain1, chain2;
+    AudioUnitChain chain1, chain2;
+    TALNoiseMaker noiseMaker1, noiseMaker2;
+    LowPassFilter filter1, filter2;
+    Reverb reverb1, reverb2;
+
     ofxBpm bpm;
     bool playing;
     int note;

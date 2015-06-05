@@ -2,13 +2,37 @@
 
 void ofApp::setup(){
     manager.setup();
+
+    //Since this is a demo, let's start with the UI open
     manager.toggleDebugUI();
-    manager.add(&chain1, "alchemy-one", ofColor::blue);
-    manager.add(&chain2, "alchemy-two", ofColor::red);
     
+    //Have the manager init the chain
+    manager.add(&chain1, "tal-one", ofColor::blue);
+    
+    //Load units in order
+    chain1.load(&noiseMaker1);
+    chain1.load(&filter1);
+    chain1.load(&reverb1);
+    chain1.sendOut();
+    
+    //Read presets from disk
+    chain1.loadPresets();
+    
+    //Have the manager init the chain
+    manager.add(&chain2, "tal-two", ofColor::red);
+    
+    //Load units in order
+    chain2.load(&noiseMaker2);
+    chain2.load(&filter2);
+    chain2.load(&reverb2);
+    chain2.sendOut();
+    
+    //Read presets from disk
+    chain2.loadPresets();
+
     playing = false;
     note = 60;
-    
+
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
     bpm.start();
 }
