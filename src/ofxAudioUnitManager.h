@@ -8,6 +8,7 @@ class ofxAudioUnitManager {
 public:
     void setup();
     void add(AudioUnitChain *chain, string name, ofColor color);
+    void loadPresets(AudioUnitChain *chain);
     void update();
     void draw();
     void exit();
@@ -18,6 +19,7 @@ public:
 
 protected:
     void selectChain(int index);
+    void selectChain(AudioUnitChain *chain);
     
     Compressor compressor;
     UIHandler userInterface;

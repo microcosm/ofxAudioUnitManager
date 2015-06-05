@@ -21,7 +21,7 @@ void ofApp::setup(){
           .sendOut();
     
     //3. Read presets from disk (if any)
-    chain1.loadPresets();
+    manager.loadPresets(&chain1);
     //--------------
     
     //Now repeat for every chain you want to create
@@ -32,7 +32,7 @@ void ofApp::setup(){
           .load(&reverb2)
           .sendOut();
 
-    chain2.loadPresets();
+    manager.loadPresets(&chain2);
 
     //Use ofxBpm to regularly schedule MIDI events
     ofAddListener(bpm.beatEvent, this, &ofApp::play);

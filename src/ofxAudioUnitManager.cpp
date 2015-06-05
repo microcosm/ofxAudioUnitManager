@@ -16,6 +16,11 @@ void ofxAudioUnitManager::add(AudioUnitChain *chain, string name, ofColor color)
     selectChain(index);
 }
 
+void ofxAudioUnitManager::loadPresets(AudioUnitChain *chain) {
+    chain->loadPresets();
+    selectChain(chain);
+}
+
 void ofxAudioUnitManager::update() {
     for(int i = 0; i < chains.size(); i++) {
         chains.at(i)->update();
@@ -80,4 +85,14 @@ void ofxAudioUnitManager::selectChain(int index) {
     }
     selectedChainIndex = index;
     selectedChain = chains.at(index);
+}
+
+void ofxAudioUnitManager::selectChain(AudioUnitChain *chain) {
+    for(int i = 0; i < chains.size(); i++) {
+        if(chains.at(i) == chain) {
+            selectedChainIndex = i;
+        }
+    }
+    chain->select();
+    selectedChain = chain;
 }
