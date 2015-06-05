@@ -41,7 +41,7 @@ How to try out this addon
 -------------------------
 1. Clone [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit), follow the instructions in the readme, and make sure it works
 2. Clone this addon and it's dependencies (listed below)
-3. Install [alchemy player](https://www.camelaudio.com/) (the examples use this as the synth)
+3. Install the [TAL NoiseMaker](http://kunz.corrupt.ch/products/tal-noisemaker) audio unit. The example project in this repo uses this synth. The 32bit version seems to work with openFrameworks
 3. Launch the example project and try out the key controls listed on the screen
 
 How to create new units & chains
