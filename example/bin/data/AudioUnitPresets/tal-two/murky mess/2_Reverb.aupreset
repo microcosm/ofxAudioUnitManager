@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<data>
+	AAAAAAAAAAAAAAARAAAAAELIAAAAAAABQsgAAAAAAAI8t/r1AAAAAz4ZmZoAAAAEO00D
+	eAAAAAU6gxJvAAAABj8nrhQAAAAHPy4UewAAAAg/FcKPAAAACT9AAAAAAAAKPyP3zwAA
+	AAs+yoy9AAAADD36zq0AAAANPszMzQAAAA5ESAAAAAAAD0BAAAAAAAAQAAAAAA==
+	</data>
+	<key>manufacturer</key>
+	<integer>1634758764</integer>
+	<key>name</key>
+	<string>Medium Hall 3</string>
+	<key>render-quality</key>
+	<integer>127</integer>
+	<key>subtype</key>
+	<integer>1836213622</integer>
+	<key>type</key>
+	<integer>1635083896</integer>
+	<key>version</key>
+	<integer>0</integer>
+</dict>
+</plist>
