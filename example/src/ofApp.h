@@ -1,12 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBpm.h"
 #include "ofxAudioUnit.h"
-#include "SamplerChain.h"
-#include "TALNoiseMakerChain.h"
-#include "AlchemyChain.h"
 #include "ofxAudioUnitManager.h"
+#include "ofxBpm.h"
+#include "TALNoiseMaker.h"
+#include "LowPassFilter.h"
+#include "Reverb.h"
 
 class ofApp : public ofBaseApp{
     
