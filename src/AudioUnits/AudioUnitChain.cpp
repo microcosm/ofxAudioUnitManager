@@ -42,10 +42,11 @@ void AudioUnitChain::sendOut() {
     sendOut(unitEndpoint);
 }
 
-void AudioUnitChain::load(AudioUnitBase* unit) {
+AudioUnitChain& AudioUnitChain::load(AudioUnitBase* unit) {
     unit->setup();
     unit->getType() == AU_TYPE_SYNTH ?
         loadSynth(unit) : loadUnit(unit);
+    return *this;
 }
 
 void AudioUnitChain::showUI(){

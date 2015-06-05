@@ -1,38 +1,40 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
-    manager.setup();
-
-    //Since this is a demo, let's start with the UI open
-    manager.toggleDebugUI();
-    
-    //Have the manager init the chain
-    manager.add(&chain1, "tal-one", ofColor::blue);
-    
-    //Load units in order
-    chain1.load(&noiseMaker1);
-    chain1.load(&filter1);
-    chain1.load(&reverb1);
-    chain1.sendOut();
-    
-    //Read presets from disk
-    chain1.loadPresets();
-    
-    //Have the manager init the chain
-    manager.add(&chain2, "tal-two", ofColor::red);
-    
-    //Load units in order
-    chain2.load(&noiseMaker2);
-    chain2.load(&filter2);
-    chain2.load(&reverb2);
-    chain2.sendOut();
-    
-    //Read presets from disk
-    chain2.loadPresets();
-
     playing = false;
     note = 60;
 
+    //Setup the manager, and since this is a demo, let's start
+    //with the debug UI toggled on
+    manager.setup();
+    manager.toggleDebugUI();
+
+    //For each chain:
+    //--------------
+    //1. Have the manager init the chain with a name & color
+    manager.add(&chain1, "tal-one", ofColor::blue);
+    
+    //2. Load units in order
+    chain1.load(&noiseMaker1)
+          .load(&filter1)
+          .load(&reverb1)
+          .sendOut();
+    
+    //3. Read presets from disk (if any)
+    chain1.loadPresets();
+    //--------------
+    
+    //Now repeat for every chain you want to create
+    manager.add(&chain2, "tal-two", ofColor::red);
+
+    chain2.load(&noiseMaker2)
+          .load(&filter2)
+          .load(&reverb2)
+          .sendOut();
+
+    chain2.loadPresets();
+
+    //Use ofxBpm to regularly schedule MIDI events
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
     bpm.start();
 }

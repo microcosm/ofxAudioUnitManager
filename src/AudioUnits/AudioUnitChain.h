@@ -15,7 +15,7 @@ public:
     void exit();
     void sendOut(ofxAudioUnit* chainEndpoint);
     void sendOut();
-    void load(AudioUnitBase* unit);
+    AudioUnitChain& load(AudioUnitBase* unit);
     void showUI();
     bool isSelected();
     void select();
