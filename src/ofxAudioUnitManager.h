@@ -13,8 +13,8 @@ public:
     void exit();
     void keyPressed(int key);
     void toggleDebugUI();
-    void incrementSelected();
-    void decrementSelected();
+    void incrementSelectedChain();
+    void decrementSelectedChain();
 
 protected:
     void selectChain(int index);

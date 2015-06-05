@@ -8,8 +8,8 @@ void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerCh
     selected = false;
 }
 
-void AudioUnitChain::setupPresets(){
-    presets.setup(name);
+void AudioUnitChain::loadPresets(){
+    presetsHandler.setup(name);
 }
 
 void AudioUnitChain::update(){
@@ -36,40 +36,10 @@ void AudioUnitChain::load(AudioUnitBase* unit) {
         loadSynth(unit) : loadUnit(unit);
 }
 
-void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
-    presets.add(unit);
-    units.push_back(unit);
-}
-
-void AudioUnitChain::loadSynth(AudioUnitBase* _synth) {
-    loadUnit(_synth);
-    midiHandler.setup(_synth->getUnit(), name);
-}
-
 void AudioUnitChain::showUI(){
     for(int i = 0; i < units.size(); i++) {
         units.at(i)->showUI();
     }
-}
-
-void AudioUnitChain::savePresets() {
-    presets.save();
-}
-
-void AudioUnitChain::deletePreset() {
-    presets.remove();
-}
-
-void AudioUnitChain::renamePreset() {
-    presets.rename();
-}
-
-void AudioUnitChain::incrementPreset() {
-    presets.increment();
-}
-
-void AudioUnitChain::decrementPreset() {
-    presets.decrement();
 }
 
 bool AudioUnitChain::isSelected() {
@@ -78,20 +48,20 @@ bool AudioUnitChain::isSelected() {
 
 void AudioUnitChain::select() {
     selected = true;
-    presets.select();
+    presetsHandler.select();
 }
 
 void AudioUnitChain::deselect() {
     selected = false;
-    presets.deselect();
+    presetsHandler.deselect();
 }
 
 ofxMidiOut* AudioUnitChain::midi() {
     return midiHandler.midi();
 }
 
-PresetsHandler* AudioUnitChain::getPresets() {
-    return &presets;
+PresetsHandler* AudioUnitChain::presets() {
+    return &presetsHandler;
 }
 
 string AudioUnitChain::getUnitReport() {
@@ -112,4 +82,14 @@ string AudioUnitChain::getName() {
 
 ofColor AudioUnitChain::getColor() {
     return waveColor;
+}
+
+void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
+    presetsHandler.add(unit);
+    units.push_back(unit);
+}
+
+void AudioUnitChain::loadSynth(AudioUnitBase* _synth) {
+    loadUnit(_synth);
+    midiHandler.setup(_synth->getUnit(), name);
 }

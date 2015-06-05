@@ -9,38 +9,33 @@ class AudioUnitChain {
     
 public:
     virtual void setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
-    void setupPresets();
-    virtual void update();
-    virtual void drawWaveform();
-    virtual void exit();
+    void loadPresets();
+    void update();
+    void drawWaveform();
+    void exit();
     void sendOut(ofxAudioUnit* chainEndpoint);
     void load(AudioUnitBase* unit);
-    void loadUnit(AudioUnitBase* unit);
-    void loadSynth(AudioUnitBase* synth);
     void showUI();
-    void savePresets();
-    void deletePreset();
-    void renamePreset();
-    void incrementPreset();
-    void decrementPreset();
     bool isSelected();
     void select();
     void deselect();
     ofxMidiOut* midi();
-    PresetsHandler* getPresets();
+    PresetsHandler* presets();
     string getUnitReport();
     string getClassName();
     string getName();
     ofColor getColor();
 
 protected:
+    void loadUnit(AudioUnitBase* unit);
+    void loadSynth(AudioUnitBase* synth);
     ofxAudioUnitTap tap;
     ofPolyline waveform;
     vector<AudioUnitBase*> units;
     ofxAudioUnitMixer* mixer;
     int mixerChannel;
     
-    PresetsHandler presets;
+    PresetsHandler presetsHandler;
     MidiHandler midiHandler;
     ofColor waveColor;
     bool selected;

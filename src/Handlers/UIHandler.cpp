@@ -84,6 +84,6 @@ string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     << endl << "-----"
     << endl << chain->getUnitReport()
     << endl << ""
-    << endl << chain->getPresets()->report();
+    << endl << chain->presets()->report();
     return report.str();
 }
