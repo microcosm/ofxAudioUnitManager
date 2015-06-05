@@ -14,6 +14,7 @@ public:
     void drawWaveform();
     void exit();
     void sendOut(ofxAudioUnit* chainEndpoint);
+    void sendOut();
     void load(AudioUnitBase* unit);
     void showUI();
     bool isSelected();
@@ -32,6 +33,7 @@ protected:
     ofxAudioUnitTap tap;
     ofPolyline waveform;
     vector<AudioUnitBase*> units;
+    ofxAudioUnit* unitEndpoint;
     ofxAudioUnitMixer* mixer;
     int mixerChannel;
     

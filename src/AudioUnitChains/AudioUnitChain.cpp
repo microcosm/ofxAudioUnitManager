@@ -30,6 +30,17 @@ void AudioUnitChain::sendOut(ofxAudioUnit* chainEndpoint) {
     chainEndpoint->connectTo(tap).connectTo(*mixer, mixerChannel);
 }
 
+void AudioUnitChain::sendOut() {
+    ofxAudioUnit* unitEndpoint = units.at(0)->getUnit();
+
+    for(int i = 1; i < units.size(); i++) {
+        unitEndpoint->connectTo(*units.at(i)->getUnit());
+        unitEndpoint = units.at(i)->getUnit();
+    }
+
+    sendOut(unitEndpoint);
+}
+
 void AudioUnitChain::load(AudioUnitBase* unit) {
     unit->setup();
     unit->getType() == AU_TYPE_SYNTH ?

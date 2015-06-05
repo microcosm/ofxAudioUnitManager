@@ -3,21 +3,12 @@
 void TALNoiseMakerChain::setup(string name, ofxAudioUnitMixer* mixer, int mixerChannel, ofColor _waveColor){
     AudioUnitChain::setup(name, mixer, mixerChannel, _waveColor);
     className = "TALNoiseMakerChain";
-
-    //Load unit(s) in the reverse order to which you will connect them
-    //This ensures the UI is accurate
-    load(&reverb);
-    load(&filter);
     
-    //Load synth or generating unit last
+    //Load units in order
     load(&noiseMaker);
-
-    //Connect units and pipe out to the mixer
-    sendOut(&
-        noiseMaker.getUnit()->
-        connectTo(*filter.getUnit()).
-        connectTo(*reverb.getUnit())
-    );
+    load(&filter);
+    load(&reverb);
+    sendOut();
 }
 
 TALNoiseMaker* TALNoiseMakerChain::getSynth() {
