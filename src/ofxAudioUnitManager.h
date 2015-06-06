@@ -9,7 +9,6 @@ public:
     void setup();
     void add(AudioUnitChain *chain, string name, ofColor color);
     void loadPresets(AudioUnitChain *chain);
-    void update();
     void draw();
     void exit();
     void keyPressed(int key);

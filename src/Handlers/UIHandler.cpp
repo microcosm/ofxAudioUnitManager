@@ -17,7 +17,12 @@ void UIHandler::drawControls() {
 
 void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
     for(int i = 0; i < chains.size(); i++) {
-        chains.at(i)->drawWaveform();
+        tap = chains.at(i)->tap();
+        tap->getStereoWaveform(leftWaveform, rightWaveform, ofGetWidth(), ofGetHeight());
+        ofSetColor(chains.at(i)->getColor());
+        ofSetLineWidth(1);
+        leftWaveform.draw();
+        rightWaveform.draw();
     }
 
     for(int i = 0; i < chains.size(); i++) {

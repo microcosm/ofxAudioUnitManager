@@ -13,22 +13,12 @@ void AudioUnitChain::loadPresets(){
     presetsHandler.setup(chainName);
 }
 
-void AudioUnitChain::update(){
-    tap.getLeftWaveform(waveform, ofGetWidth(), ofGetHeight());
-}
-
-void AudioUnitChain::drawWaveform(){
-    ofSetColor(waveColor);
-    ofSetLineWidth(1);
-    waveform.draw();
-}
-
 void AudioUnitChain::exit() {
     midiHandler.exit();
 }
 
 void AudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
-    chainEndpoint->connectTo(tap).connectTo(*mixer, mixerChannel);
+    chainEndpoint->connectTo(tapUnit).connectTo(*mixer, mixerChannel);
 }
 
 void AudioUnitChain::toMixer() {
@@ -83,6 +73,10 @@ void AudioUnitChain::deselect() {
 
 ofxMidiOut* AudioUnitChain::midi() {
     return midiHandler.midi();
+}
+
+ofxAudioUnitTap* AudioUnitChain::tap() {
+    return &tapUnit;
 }
 
 PresetsHandler* AudioUnitChain::presets() {

@@ -21,12 +21,6 @@ void ofxAudioUnitManager::loadPresets(AudioUnitChain *chain) {
     selectChain(chain);
 }
 
-void ofxAudioUnitManager::update() {
-    for(int i = 0; i < chains.size(); i++) {
-        chains.at(i)->update();
-    }
-}
-
 void ofxAudioUnitManager::draw() {
     if(showDebugUI) {
         ofSetColor(ofColor::black, 180);

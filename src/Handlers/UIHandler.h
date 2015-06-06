@@ -15,6 +15,9 @@ protected:
     string controlsReport();
     string chainReport(AudioUnitChain* chain, int number);
 
+    ofxAudioUnitTap* tap;
+    ofPolyline leftWaveform, rightWaveform;
+
     ofVec2f chainInfoPositions, chainInfoDimensions;
     ofVec2f controlsPositions, controlsDimensions;
     float x, y;

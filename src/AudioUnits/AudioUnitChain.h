@@ -10,8 +10,6 @@ class AudioUnitChain {
 public:
     virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
     void loadPresets();
-    void update();
-    void drawWaveform();
     void exit();
     void toMixer(ofxAudioUnit* chainEndpoint);
     void toMixer();
@@ -24,6 +22,7 @@ public:
     void select();
     void deselect();
     ofxMidiOut* midi();
+    ofxAudioUnitTap* tap();
     PresetsHandler* presets();
     string getUnitReport();
     string getClassName();
@@ -33,8 +32,9 @@ public:
 protected:
     void loadUnit(AudioUnitBase* unit, string unitName);
     void loadSynth(AudioUnitBase* synth, string unitName);
-    ofxAudioUnitTap tap;
-    ofPolyline waveform;
+
+    ofxAudioUnitTap tapUnit;
+    ofPolyline waveform1, waveform2;
     vector<AudioUnitBase*> units;
     ofxAudioUnit* unitEndpoint;
     ofxAudioUnitMixer* mixer;

@@ -56,7 +56,7 @@ void ofApp::togglePlaying() {
 }
 
 void ofApp::update(){
-    manager.update();
+    
 }
 
 void ofApp::draw(){
