@@ -19,7 +19,7 @@ void PresetsHandler::setup(string _chainName){
 void PresetsHandler::load(int presetIndex) {
     string presetPath = path(presetNames.at(presetIndex));
     for(int i = 0; i < units.size(); i++) {
-        string presetFilename = filename(i, units.at(i));
+        string presetFilename = filename(units.at(i));
         units.at(i)->getUnit()->loadCustomPresetAtPath(presetPath + presetFilename);
     }
 }
@@ -34,7 +34,7 @@ void PresetsHandler::save() {
         string presetPath = path(presetName);
         dir.createDirectory(presetPath);
         for(int i = 0; i < units.size(); i++) {
-            string presetFilename = filename(i, units.at(i));
+            string presetFilename = filename(units.at(i));
             units.at(i)->getUnit()->saveCustomPresetAtPath(presetPath + presetFilename);
         }
         readFromDisk();
@@ -48,7 +48,7 @@ void PresetsHandler::rename() {
         if(newPresetName.length()) {
             string newPresetPath = path(newPresetName);
             for(int i = 0; i < units.size(); i++) {
-                string newPresetFilename = filename(i, units.at(i));
+                string newPresetFilename = filename(units.at(i));
                 presets.at(currentPreset).at(i).renameTo(newPresetPath + newPresetFilename);
             }
             string oldPresetPath = path(presetNames.at(currentPreset));
@@ -102,10 +102,18 @@ void PresetsHandler::readFromDisk() {
         if(chainDirContents.at(i).isDirectory()) {
             string presetName = chainDirContents.at(i).getFileName();
             presetNames.push_back(presetName);
-            presets.push_back(dirContents(chainName + "/" + presetName, presetExtension));
+            loadPresetsInChainOrder(presetName);
         }
     }
     ensureValidIndex();
+}
+
+void PresetsHandler::loadPresetsInChainOrder(string presetName) {
+    vector<ofFile> files;
+    for(int i = 0; i < units.size(); i++) {
+        files.push_back(ofFile(path(presetName) + filename(units.at(i))));
+    }
+    presets.push_back(files);
 }
 
 int PresetsHandler::currentIndex(){
@@ -159,8 +167,8 @@ string PresetsHandler::path(string presetName) {
     return dir.getAbsolutePath() + "/" + presetName + "/";
 }
 
-string PresetsHandler::filename(int index, AudioUnitBase* unit) {
-    return ofToString(index) + "_" + unit->getClassName() + "." + presetExtension;
+string PresetsHandler::filename(AudioUnitBase* unit) {
+    return unit->getClassName() + "." + presetExtension;
 }
 
 string PresetsHandler::trim(string presetName) {

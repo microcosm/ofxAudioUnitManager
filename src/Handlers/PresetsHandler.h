@@ -22,17 +22,19 @@ protected:
     int indexOf(string presetName);
     void ensureValidIndex();
     void readFromDisk();
+    void loadPresetsInChainOrder(string presetName);
     vector<ofFile> dirContents(string path, string extensions);
     void clearPresets();
     string path(string presetName);
-    string filename(int index, AudioUnitBase* unit);
+    string filename(AudioUnitBase* unit);
     string trim(string presetName);
     void ensureDirectories();
 
-    string chainName, storageDir;
+    vector<string> presetNames;
     vector<AudioUnitBase*> units;
     vector< vector<ofFile> > presets;
-    vector<string> presetNames;
+
+    string chainName, storageDir;
     ofDirectory dir;
     int currentPreset;
     bool selected;
