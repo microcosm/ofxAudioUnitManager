@@ -19,6 +19,7 @@ protected:
 
     ofxAudioUnitTap* tap;
     ofPolyline leftWaveform, rightWaveform;
+    int padding;
 
     ofVec2f chainInfoPositions, chainInfoDimensions;
     ofVec2f controlsPositions, controlsDimensions;

@@ -1,20 +1,21 @@
 #include "UIHandler.h"
 
 void UIHandler::setup() {
+    padding = 10;
     controlsDimensions = ofVec2f(300, 285);
     chainInfoDimensions = ofVec2f(220, 340);
     waveformsDimensions = ofVec2f(220, 80);
 
     controlsPositions = getControlsPositions();
-    chainInfoPositions = ofVec2f(20, 20);
-    waveformsPositions = ofVec2f(20, chainInfoPositions.y + chainInfoDimensions.y + 5);
+    chainInfoPositions = ofVec2f(padding, padding);
+    waveformsPositions = ofVec2f(padding, chainInfoPositions.y + chainInfoDimensions.y + 5);
 }
 
 void UIHandler::drawControls() {
     controlsPositions = getControlsPositions();
     drawDebugBox(controlsPositions.x, controlsPositions.y, controlsDimensions.x, controlsDimensions.y);
     ofSetColor(ofColor::white);
-    ofDrawBitmapString(controlsReport(), controlsPositions.x + 10, controlsPositions.y + 20);
+    ofDrawBitmapString(controlsReport(), controlsPositions.x + padding, controlsPositions.y + padding*2);
 }
 
 void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
@@ -55,8 +56,8 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color)
 
 ofVec2f UIHandler::getControlsPositions() {
     return ofVec2f(
-            ofGetWidth()  - controlsDimensions.x - 20,
-            ofGetHeight() - controlsDimensions.y - 20);
+            ofGetWidth()  - controlsDimensions.x - padding,
+            ofGetHeight() - controlsDimensions.y - padding);
 }
 
 string UIHandler::controlsReport() {
