@@ -27,11 +27,11 @@ void AudioUnitChain::exit() {
     midiHandler.exit();
 }
 
-void AudioUnitChain::sendOut(ofxAudioUnit* chainEndpoint) {
+void AudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
     chainEndpoint->connectTo(tap).connectTo(*mixer, mixerChannel);
 }
 
-void AudioUnitChain::sendOut() {
+void AudioUnitChain::toMixer() {
     ofxAudioUnit* unitEndpoint = units.at(0)->getUnit();
 
     for(int i = 1; i < units.size(); i++) {
@@ -39,14 +39,18 @@ void AudioUnitChain::sendOut() {
         unitEndpoint = units.at(i)->getUnit();
     }
 
-    sendOut(unitEndpoint);
+    toMixer(unitEndpoint);
 }
 
-AudioUnitChain& AudioUnitChain::load(AudioUnitBase* unit) {
+AudioUnitChain& AudioUnitChain::link(AudioUnitBase* unit) {
     unit->setup();
     unit->getType() == AU_TYPE_SYNTH ?
         loadSynth(unit) : loadUnit(unit);
     return *this;
+}
+
+AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit) {
+    return link(unit);
 }
 
 void AudioUnitChain::showUI(){

@@ -13,9 +13,10 @@ public:
     void update();
     void drawWaveform();
     void exit();
-    void sendOut(ofxAudioUnit* chainEndpoint);
-    void sendOut();
-    AudioUnitChain& load(AudioUnitBase* unit);
+    void toMixer(ofxAudioUnit* chainEndpoint);
+    void toMixer();
+    AudioUnitChain& link(AudioUnitBase* unit);
+    AudioUnitChain& to(AudioUnitBase* unit);
     void showUI();
     bool isSelected();
     void select();

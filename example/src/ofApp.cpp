@@ -15,10 +15,10 @@ void ofApp::setup(){
     manager.add(&chain1, "tal-one", ofColor::blue);
     
     //2. Load units in order
-    chain1.load(&noiseMaker1)
-          .load(&filter1)
-          .load(&reverb1)
-          .sendOut();
+    chain1.link(&noiseMaker1)
+          .to(&filter1)
+          .to(&reverb1)
+          .toMixer();
     
     //3. Read presets from disk (if any)
     manager.loadPresets(&chain1);
@@ -27,10 +27,10 @@ void ofApp::setup(){
     //Now repeat for every chain you want to create
     manager.add(&chain2, "tal-two", ofColor::red);
 
-    chain2.load(&noiseMaker2)
-          .load(&filter2)
-          .load(&reverb2)
-          .sendOut();
+    chain2.link(&noiseMaker2)
+          .to(&filter2)
+          .to(&reverb2)
+          .toMixer();
 
     manager.loadPresets(&chain2);
 
