@@ -17,21 +17,25 @@ void UIHandler::drawControls() {
 
 void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
     for(int i = 0; i < chains.size(); i++) {
-        tap = chains.at(i)->tap();
-        tap->getStereoWaveform(leftWaveform, rightWaveform, ofGetWidth(), ofGetHeight());
-        ofSetColor(chains.at(i)->getColor());
-        ofSetLineWidth(1);
-        leftWaveform.draw();
-        rightWaveform.draw();
+        drawWaveforms(chains.at(i));
+        drawChainReport(chains.at(i), i);
     }
+}
 
-    for(int i = 0; i < chains.size(); i++) {
-        x = (chainInfoPositions.x * (i+1)) + (chainInfoDimensions.x * i);
-        y = chainInfoPositions.y;
-        drawDebugBox(x, y, chainInfoDimensions.x, chainInfoDimensions.y, ofColor(chains.at(i)->getColor(), 64));
-        ofSetColor(ofColor::white);
-        ofDrawBitmapString(chainReport(chains.at(i), i+1), x + 10, y + 20);
-    }
+void UIHandler::drawWaveforms(AudioUnitChain* chain) {
+    chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, ofGetWidth(), ofGetHeight());
+    ofSetColor(chain->getColor());
+    ofSetLineWidth(1);
+    leftWaveform.draw();
+    rightWaveform.draw();
+}
+
+void UIHandler::drawChainReport(AudioUnitChain* chain, int index) {
+    x = (chainInfoPositions.x * (index+1)) + (chainInfoDimensions.x * index);
+    y = chainInfoPositions.y;
+    drawDebugBox(x, y, chainInfoDimensions.x, chainInfoDimensions.y, ofColor(chain->getColor(), 64));
+    ofSetColor(ofColor::white);
+    ofDrawBitmapString(chainReport(chain, index+1), x + 10, y + 20);
 }
 
 void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color) {
