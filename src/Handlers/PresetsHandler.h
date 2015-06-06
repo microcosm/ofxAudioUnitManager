@@ -7,7 +7,7 @@ class PresetsHandler{
 public:
     void setup(string synthName);
     void load(int index);
-    void add(AudioUnitBase* unit);
+    void add(AudioUnitBase* unit, string unitName);
     void save();
     void rename();
     void remove();
@@ -26,17 +26,19 @@ protected:
     vector<ofFile> dirContents(string path, string extensions);
     void clearPresets();
     string path(string presetName);
-    string filename(AudioUnitBase* unit);
+    string filename(AudioUnitBase* unit, string unitName);
     string trim(string presetName);
     void ensureDirectories();
 
     vector<string> presetNames;
     vector<AudioUnitBase*> units;
+    vector<string> unitNames;
     vector< vector<ofFile> > presets;
 
     string chainName, storageDir;
-    ofDirectory dir;
     int currentPreset;
     bool selected;
+
+    ofDirectory dir;
     string anyExtension, presetExtension;
 };

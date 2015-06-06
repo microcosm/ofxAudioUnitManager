@@ -27,11 +27,12 @@ void ofApp::setup(){
     //Now repeat for every chain you want to create
     manager.add(&chain2, "tal-two", ofColor::red);
 
-    chain2.link(&noiseMaker2)
-          .to(&filter2)
-          .to(&reverb2)
-          .toMixer();
-
+    chain2.link(&noiseMaker2)       //If you want to use the same type of
+          .to(&filter2, "filter2")  //unit more than once in a chain, you
+          .to(&filter3, "filter3")  //should disambiguate by adding a name.
+          .to(&reverb2)             //This allows you to keep using the same
+          .toMixer();               //presets even if you later switch the
+                                    //unit order.
     manager.loadPresets(&chain2);
 
     //Use ofxBpm to regularly schedule MIDI events

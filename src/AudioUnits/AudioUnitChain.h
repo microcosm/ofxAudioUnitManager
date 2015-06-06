@@ -8,7 +8,7 @@
 class AudioUnitChain {
     
 public:
-    virtual void setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
+    virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
     void loadPresets();
     void update();
     void drawWaveform();
@@ -16,7 +16,9 @@ public:
     void toMixer(ofxAudioUnit* chainEndpoint);
     void toMixer();
     AudioUnitChain& link(AudioUnitBase* unit);
+    AudioUnitChain& link(AudioUnitBase* unit, string unitName);
     AudioUnitChain& to(AudioUnitBase* unit);
+    AudioUnitChain& to(AudioUnitBase* unit, string unitName);
     void showUI();
     bool isSelected();
     void select();
@@ -29,8 +31,8 @@ public:
     ofColor getColor();
 
 protected:
-    void loadUnit(AudioUnitBase* unit);
-    void loadSynth(AudioUnitBase* synth);
+    void loadUnit(AudioUnitBase* unit, string unitName);
+    void loadSynth(AudioUnitBase* synth, string unitName);
     ofxAudioUnitTap tap;
     ofPolyline waveform;
     vector<AudioUnitBase*> units;
@@ -42,5 +44,5 @@ protected:
     MidiHandler midiHandler;
     ofColor waveColor;
     bool selected;
-    string name, unitReport, className;
+    string chainName, className, unitReport;
 };

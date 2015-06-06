@@ -31,7 +31,7 @@ public:
     ofxAudioUnitManager manager;
     AudioUnitChain chain1, chain2;
     TALNoiseMaker noiseMaker1, noiseMaker2;
-    LowPassFilter filter1, filter2;
+    LowPassFilter filter1, filter2, filter3;
     Reverb reverb1, reverb2;
 
     ofxBpm bpm;

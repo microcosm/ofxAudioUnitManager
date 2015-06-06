@@ -1,7 +1,7 @@
 #include "AudioUnitChain.h"
 
-void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor){
-    name = _name;
+void AudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor){
+    chainName = _chainName;
     mixer = _mixer;
     mixerChannel = _mixerChannel;
     waveColor = _waveColor;
@@ -10,7 +10,7 @@ void AudioUnitChain::setup(string _name, ofxAudioUnitMixer* _mixer, int _mixerCh
 }
 
 void AudioUnitChain::loadPresets(){
-    presetsHandler.setup(name);
+    presetsHandler.setup(chainName);
 }
 
 void AudioUnitChain::update(){
@@ -43,14 +43,22 @@ void AudioUnitChain::toMixer() {
 }
 
 AudioUnitChain& AudioUnitChain::link(AudioUnitBase* unit) {
+    return link(unit, "");
+}
+
+AudioUnitChain& AudioUnitChain::link(AudioUnitBase* unit, string unitName) {
     unit->setup();
     unit->getType() == AU_TYPE_SYNTH ?
-        loadSynth(unit) : loadUnit(unit);
+        loadSynth(unit, unitName) : loadUnit(unit, unitName);
     return *this;
 }
 
 AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit) {
     return link(unit);
+}
+
+AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit, string unitName) {
+    return link(unit, unitName);
 }
 
 void AudioUnitChain::showUI(){
@@ -94,19 +102,19 @@ string AudioUnitChain::getClassName() {
 }
 
 string AudioUnitChain::getName() {
-    return name;
+    return chainName;
 }
 
 ofColor AudioUnitChain::getColor() {
     return waveColor;
 }
 
-void AudioUnitChain::loadUnit(AudioUnitBase* unit) {
-    presetsHandler.add(unit);
+void AudioUnitChain::loadUnit(AudioUnitBase* unit, string unitName) {
+    presetsHandler.add(unit, unitName);
     units.push_back(unit);
 }
 
-void AudioUnitChain::loadSynth(AudioUnitBase* _synth) {
-    loadUnit(_synth);
-    midiHandler.setup(_synth->getUnit(), name);
+void AudioUnitChain::loadSynth(AudioUnitBase* _synth, string unitName) {
+    loadUnit(_synth, unitName);
+    midiHandler.setup(_synth->getUnit(), chainName);
 }
