@@ -3,9 +3,11 @@
 void UIHandler::setup() {
     controlsDimensions = ofVec2f(300, 285);
     chainInfoDimensions = ofVec2f(220, 340);
+    waveformsDimensions = ofVec2f(220, 80);
 
     controlsPositions = getControlsPositions();
     chainInfoPositions = ofVec2f(20, 20);
+    waveformsPositions = ofVec2f(20, chainInfoPositions.y + chainInfoDimensions.y + 5);
 }
 
 void UIHandler::drawControls() {
@@ -16,26 +18,30 @@ void UIHandler::drawControls() {
 }
 
 void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
+    ofVec2f position;
     for(int i = 0; i < chains.size(); i++) {
-        drawWaveforms(chains.at(i));
-        drawChainReport(chains.at(i), i);
+        position.x = (chainInfoPositions.x * (i+1)) + (chainInfoDimensions.x * i);
+        position.y = chainInfoPositions.y;
+        drawWaveforms(chains.at(i), position.x);
+        drawChainReport(chains.at(i), position, i+1);
     }
 }
 
-void UIHandler::drawWaveforms(AudioUnitChain* chain) {
-    chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, ofGetWidth(), ofGetHeight());
-    ofSetColor(chain->getColor());
+void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
+    drawDebugBox(positionX, waveformsPositions.y, waveformsDimensions.x, waveformsDimensions.y, ofColor(chain->getColor(), 64));
+    chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, waveformsDimensions.x, waveformsDimensions.y);
+    ofSetColor(ofColor::white);
     ofSetLineWidth(1);
+    ofTranslate(positionX, waveformsPositions.y);
     leftWaveform.draw();
     rightWaveform.draw();
+    ofTranslate(-positionX, -waveformsPositions.y);
 }
 
-void UIHandler::drawChainReport(AudioUnitChain* chain, int index) {
-    x = (chainInfoPositions.x * (index+1)) + (chainInfoDimensions.x * index);
-    y = chainInfoPositions.y;
-    drawDebugBox(x, y, chainInfoDimensions.x, chainInfoDimensions.y, ofColor(chain->getColor(), 64));
+void UIHandler::drawChainReport(AudioUnitChain* chain, ofVec2f position, int chainNumber) {
+    drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, ofColor(chain->getColor(), 64));
     ofSetColor(ofColor::white);
-    ofDrawBitmapString(chainReport(chain, index+1), x + 10, y + 20);
+    ofDrawBitmapString(chainReport(chain, chainNumber), position.x + 10, position.y + 20);
 }
 
 void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color) {

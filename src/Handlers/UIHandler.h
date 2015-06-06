@@ -9,8 +9,8 @@ public:
     void setup();
     void drawControls();
     void drawChains(vector<AudioUnitChain*> chains);
-    void drawWaveforms(AudioUnitChain* chain);
-    void drawChainReport(AudioUnitChain* chain, int index);
+    void drawWaveforms(AudioUnitChain* chain, float positionX);
+    void drawChainReport(AudioUnitChain* chain, ofVec2f position, int chainNumber);
 protected:
     void drawDebugBox(int x, int y, int width, int height, ofColor color=ofColor(255, 255, 255, 32));
     ofVec2f getControlsPositions();
@@ -22,5 +22,5 @@ protected:
 
     ofVec2f chainInfoPositions, chainInfoDimensions;
     ofVec2f controlsPositions, controlsDimensions;
-    float x, y;
+    ofVec2f waveformsPositions, waveformsDimensions;
 };
