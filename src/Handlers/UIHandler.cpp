@@ -29,9 +29,9 @@ void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
 }
 
 void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
-    drawDebugBox(positionX, waveformsPositions.y, waveformsDimensions.x, waveformsDimensions.y, ofColor(chain->getColor(), 64));
+    drawDebugBox(positionX, waveformsPositions.y, waveformsDimensions.x, waveformsDimensions.y, getBackgroundColor(chain));
     chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, waveformsDimensions.x, waveformsDimensions.y);
-    ofSetColor(ofColor::white);
+    ofSetColor(getTextColor(chain));
     ofSetLineWidth(1);
     ofTranslate(positionX, waveformsPositions.y);
     leftWaveform.draw();
@@ -40,8 +40,8 @@ void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
 }
 
 void UIHandler::drawChainReport(AudioUnitChain* chain, ofVec2f position, int chainNumber) {
-    drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, ofColor(chain->getColor(), 64));
-    ofSetColor(ofColor::white);
+    drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, getBackgroundColor(chain));
+    ofSetColor(getTextColor(chain));
     ofDrawBitmapString(chainReport(chain, chainNumber), position.x + 10, position.y + 20);
 }
 
@@ -56,8 +56,20 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color)
 
 ofVec2f UIHandler::getControlsPositions() {
     return ofVec2f(
-            ofGetWidth()  - controlsDimensions.x - padding,
-            ofGetHeight() - controlsDimensions.y - padding);
+        ofGetWidth()  - controlsDimensions.x - padding,
+        ofGetHeight() - controlsDimensions.y - padding);
+}
+
+ofColor UIHandler::getBackgroundColor(AudioUnitChain* chain) {
+    return chain->isSelected() ?
+        ofColor(chain->getColor(), 128) :
+        ofColor(chain->getColor(), 32);
+}
+
+ofColor UIHandler::getTextColor(AudioUnitChain* chain) {
+    return chain->isSelected() ?
+        ofColor(ofColor::white, 255) :
+        ofColor(ofColor::white, 128);
 }
 
 string UIHandler::controlsReport() {
@@ -86,9 +98,7 @@ string UIHandler::controlsReport() {
 
 string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     stringstream report;
-    report  << ""
-            << "CHAIN " << number << " \"" << chain->getName() << "\""
-    //        << "CHAIN " << number << (chain->isSelected() ? " [*] SELECTED" : "")
+    report  << "CHAIN " << number << " \"" << chain->getName() << "\""
     << endl << ""
     << endl << chain->getUnitReport()
     << endl << ""

@@ -14,6 +14,8 @@ public:
 protected:
     void drawDebugBox(int x, int y, int width, int height, ofColor color=ofColor(255, 255, 255, 32));
     ofVec2f getControlsPositions();
+    ofColor getBackgroundColor(AudioUnitChain* chain);
+    ofColor getTextColor(AudioUnitChain* chain);
     string controlsReport();
     string chainReport(AudioUnitChain* chain, int number);
 
