@@ -32,7 +32,6 @@ void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
     drawDebugBox(positionX, waveformsPositions.y, waveformsDimensions.x, waveformsDimensions.y, getBackgroundColor(chain));
     chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, waveformsDimensions.x, waveformsDimensions.y);
     ofSetColor(getTextColor(chain));
-    ofSetLineWidth(1);
     ofTranslate(positionX, waveformsPositions.y);
     leftWaveform.draw();
     rightWaveform.draw();
@@ -42,10 +41,11 @@ void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
 void UIHandler::drawChainReport(AudioUnitChain* chain, ofVec2f position, int chainNumber) {
     drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, getBackgroundColor(chain));
     ofSetColor(getTextColor(chain));
-    ofDrawBitmapString(chainReport(chain, chainNumber), position.x + 10, position.y + 20);
+    ofDrawBitmapString(chainReport(chain, chainNumber), position.x + padding, position.y + padding*2);
 }
 
 void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color) {
+    ofSetLineWidth(1);
     ofSetColor(color);
     ofFill();
     ofRect(x, y, width, height);

@@ -60,6 +60,25 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){
+    //When you use this in your projects, you may be drawing
+    //your own stuff, like this:
+    /*ofBackground(ofColor::black);
+    ofSetLineWidth(30);
+    ofSetColor(ofColor::white, 40);
+    int size = 4000;
+
+    ofRotateZ(45);
+    for(int i = -size; i < size; i+=50) {
+        ofLine(i, -size, i, size);
+    }
+    ofRotateZ(-90);
+    for(int i = -size; i < size; i+=50) {
+        ofLine(i, -size, i, size);
+    }
+    ofRotateZ(45);*/
+
+    //And then you will always draw the manager last
+    //(It can be hidden at runtime by pressing 'v')
     manager.draw();
 }
 
