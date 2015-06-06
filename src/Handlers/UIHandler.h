@@ -17,6 +17,5 @@ protected:
 
     ofVec2f chainInfoPositions, chainInfoDimensions;
     ofVec2f controlsPositions, controlsDimensions;
-    ofVec2f colorBoxPositions, colorBoxDimensions;
     float x, y;
 };
