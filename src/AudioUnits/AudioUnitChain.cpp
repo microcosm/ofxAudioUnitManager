@@ -75,6 +75,14 @@ ofxMidiOut* AudioUnitChain::midi() {
     return midiHandler.midi();
 }
 
+void AudioUnitChain::sendMidiOn(int note) {
+    midiHandler.midi()->sendNoteOn(1, note);
+}
+
+void AudioUnitChain::sendMidiOff(int note) {
+    midiHandler.midi()->sendNoteOff(1, note);
+}
+
 ofxAudioUnitTap* AudioUnitChain::tap() {
     return &tapUnit;
 }

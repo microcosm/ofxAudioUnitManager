@@ -22,6 +22,8 @@ public:
     void select();
     void deselect();
     ofxMidiOut* midi();
+    void sendMidiOn(int note);
+    void sendMidiOff(int note);
     ofxAudioUnitTap* tap();
     PresetsHandler* presets();
     string getUnitReport();

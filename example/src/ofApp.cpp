@@ -42,16 +42,16 @@ void ofApp::setup(){
 
 void ofApp::play(void){
     if(playing) {
-        chain1.midi()->sendNoteOn(1, note);
-        chain2.midi()->sendNoteOn(1, note);
+        chain1.sendMidiOn(note);
+        chain2.sendMidiOn(note);
     }
 }
 
 void ofApp::togglePlaying() {
     playing = !playing;
     if(!playing) {
-        chain1.midi()->sendNoteOff(1, note);
-        chain2.midi()->sendNoteOff(1, note);
+        chain1.sendMidiOff(note);
+        chain2.sendMidiOff(note);
     }
 }
 
