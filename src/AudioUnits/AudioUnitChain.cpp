@@ -51,9 +51,9 @@ AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit, string unitName) {
     return link(unit, unitName);
 }
 
-void AudioUnitChain::showUI(){
+void AudioUnitChain::showUI(int chainIndex, int numChains){
     for(int i = 0; i < units.size(); i++) {
-        units.at(i)->showUI(chainName);
+        units.at(i)->showUI(chainName, chainIndex, numChains);
     }
 }
 

@@ -17,7 +17,7 @@ public:
     AudioUnitChain& link(AudioUnitBase* unit, string unitName);
     AudioUnitChain& to(AudioUnitBase* unit);
     AudioUnitChain& to(AudioUnitBase* unit, string unitName);
-    void showUI();
+    void showUI(int chainIndex, int numChains);
     bool isSelected();
     void select();
     void deselect();

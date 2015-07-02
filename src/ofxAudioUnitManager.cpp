@@ -39,7 +39,7 @@ void ofxAudioUnitManager::exit() {
 
 void ofxAudioUnitManager::keyPressed(int key) {
     if (key == 'u') {
-        selectedChain->showUI();
+        selectedChain->showUI(selectedChainIndex, chains.size());
     } else if(key == 'v') {
         toggleDebugUI();
     } else if(key == 's') {
