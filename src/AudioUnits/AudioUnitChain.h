@@ -27,6 +27,7 @@ public:
     ofxAudioUnitTap* tap();
     PresetsHandler* presets();
     string getUnitReport();
+    string getMidiReport();
     string getClassName();
     string getName();
     ofColor getColor();
@@ -41,10 +42,11 @@ protected:
     ofxAudioUnit* unitEndpoint;
     ofxAudioUnitMixer* mixer;
     int mixerChannel;
+    vector<string> midiEvents;
     
     PresetsHandler presetsHandler;
     MidiHandler midiHandler;
     ofColor waveColor;
     bool selected;
-    string chainName, className, unitReport;
+    string chainName, className, report;
 };

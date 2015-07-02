@@ -77,10 +77,12 @@ ofxMidiOut* AudioUnitChain::midi() {
 
 void AudioUnitChain::sendMidiOn(int note) {
     midiHandler.midi()->sendNoteOn(1, note);
+    midiEvents.push_back("[ON: " + ofToString(note) + "]");
 }
 
 void AudioUnitChain::sendMidiOff(int note) {
     midiHandler.midi()->sendNoteOff(1, note);
+    midiEvents.push_back("[OFF: " + ofToString(note) + "]");
 }
 
 ofxAudioUnitTap* AudioUnitChain::tap() {
@@ -92,11 +94,20 @@ PresetsHandler* AudioUnitChain::presets() {
 }
 
 string AudioUnitChain::getUnitReport() {
-    unitReport = "";
+    report = "";
     for(int i = 0; i < units.size(); i++) {
-        unitReport += "[" + units.at(i)->getClassName() + "]->\n";
+        report += "[" + units.at(i)->getClassName() + "]->\n";
     }
-    return unitReport + "[Mixer]";
+    return report + "[Mixer]";
+}
+
+string AudioUnitChain::getMidiReport() {
+    report = "";
+    for(int i = 0; i < midiEvents.size(); i++) {
+        report += midiEvents.at(i) + " ";
+    }
+    midiEvents.clear();
+    return report;
 }
 
 string AudioUnitChain::getClassName() {

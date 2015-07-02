@@ -1,14 +1,22 @@
 #include "UIHandler.h"
 
 void UIHandler::setup() {
+    midiReceiptTimeout = ofGetFrameRate();
+    lastMidiRecieved = midiReceiptTimeout + 1;
     padding = 10;
     controlsDimensions = ofVec2f(300, 285);
     chainInfoDimensions = ofVec2f(220, 340);
     waveformsDimensions = ofVec2f(220, 80);
+    midiInfoDimensions = ofVec2f(220, 32);
 
     controlsPositions = getControlsPositions();
     chainInfoPositions = ofVec2f(padding, padding);
     waveformsPositions = ofVec2f(padding, chainInfoPositions.y + chainInfoDimensions.y + 5);
+    midiInfoPositions = ofVec2f(padding, waveformsPositions.y + waveformsDimensions.y + 5);
+}
+
+void UIHandler::addChain() {
+    reports.push_back("");
 }
 
 void UIHandler::drawControls() {
@@ -25,6 +33,7 @@ void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
         position.y = chainInfoPositions.y;
         drawWaveforms(chains.at(i), position.x);
         drawChainReport(chains.at(i), position, i+1);
+        drawMidiReport(chains.at(i), position.x, i);
     }
 }
 
@@ -42,6 +51,11 @@ void UIHandler::drawChainReport(AudioUnitChain* chain, ofVec2f position, int cha
     drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, getBackgroundColor(chain));
     ofSetColor(getTextColor(chain));
     ofDrawBitmapString(chainReport(chain, chainNumber), position.x + padding, position.y + padding*2);
+}
+
+void UIHandler::drawMidiReport(AudioUnitChain* chain, float positionX, int index) {
+    drawDebugBox(positionX, midiInfoPositions.y, midiInfoDimensions.x, midiInfoDimensions.y, getBackgroundColor(chain));
+    ofDrawBitmapString(midiReport(chain, index), positionX + padding, midiInfoPositions.y + padding*2);
 }
 
 void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color) {
@@ -105,4 +119,16 @@ string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     << endl << ""
     << endl << chain->presets()->report();
     return report.str();
+}
+
+string UIHandler::midiReport(AudioUnitChain *chain, int index) {
+    tempMidiReport = chain->getMidiReport();
+    if(tempMidiReport.length() > 0) {
+        reports[index] = tempMidiReport;
+        lastMidiRecieved = 0;
+    } else {
+        lastMidiRecieved++;
+    }
+    ofSetColor(ofMap(lastMidiRecieved, 0, midiReceiptTimeout, 255, 0));
+    return reports[index];
 }
