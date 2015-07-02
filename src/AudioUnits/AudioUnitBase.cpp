@@ -6,8 +6,14 @@ string AudioUnitBase::getClassName() {
 
 void AudioUnitBase::setup() {}
 
-void AudioUnitBase::showUI() {
-    unit.showUI();
+void AudioUnitBase::showUI(string chainName) {
+    unit.showUI(chainName + ": " +
+                unitName + (unitName.length() > 0 ? " " : "") +
+                className);
+}
+
+void AudioUnitBase::setUnitName(string name) {
+    unitName = name;
 }
 
 void AudioUnitBase::set(int param, float value) {

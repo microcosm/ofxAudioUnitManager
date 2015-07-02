@@ -12,7 +12,8 @@ class AudioUnitBase {
 public:
     string getClassName();
     virtual void setup();
-    void showUI();
+    void showUI(string chainname);
+    void setUnitName(string name);
     void set(int param, float value);
     void set(int param1, int param2, ofVec2f value);
     void set(int param1, int param2, int param3, ofVec3f value);
@@ -21,5 +22,5 @@ public:
 protected:
     ofxAudioUnit unit;
     AudioUnitType type;
-    string className;
+    string className, unitName;
 };

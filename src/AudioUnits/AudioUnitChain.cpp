@@ -53,7 +53,7 @@ AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit, string unitName) {
 
 void AudioUnitChain::showUI(){
     for(int i = 0; i < units.size(); i++) {
-        units.at(i)->showUI();
+        units.at(i)->showUI(chainName);
     }
 }
 
@@ -104,6 +104,7 @@ ofColor AudioUnitChain::getColor() {
 }
 
 void AudioUnitChain::loadUnit(AudioUnitBase* unit, string unitName) {
+    unit->setUnitName(unitName);
     presetsHandler.add(unit, unitName);
     units.push_back(unit);
 }
