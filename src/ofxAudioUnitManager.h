@@ -19,6 +19,8 @@ public:
 protected:
     void selectChain(int index);
     void selectChain(AudioUnitChain *chain);
+    void showSelectedChainUI();
+    void showAllUIs();
     
     Compressor compressor;
     UIHandler userInterface;

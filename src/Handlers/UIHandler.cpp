@@ -93,6 +93,7 @@ string UIHandler::controlsReport() {
     << endl << "            MANAGER"
     << endl << "            ----------------------"
     << endl << "         v: Toggle view overlay"
+    << endl << "         a: Show all UIs"
     << endl << "Left/right: Select chain"
     << endl << ""
     << endl << "            SELECTED CHAIN [*]"
