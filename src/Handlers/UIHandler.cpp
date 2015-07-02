@@ -4,7 +4,7 @@ void UIHandler::setup() {
     midiReceiptTimeout = ofGetFrameRate();
     lastMidiRecieved = midiReceiptTimeout + 1;
     padding = 10;
-    controlsDimensions = ofVec2f(300, 305);
+    controlsDimensions = ofVec2f(300, 322);
     chainInfoDimensions = ofVec2f(220, 340);
     waveformsDimensions = ofVec2f(220, 80);
     midiInfoDimensions = ofVec2f(220, 32);
@@ -93,8 +93,9 @@ string UIHandler::controlsReport() {
     << endl << "            MANAGER"
     << endl << "            ----------------------"
     << endl << "         v: Toggle view overlay"
-    << endl << "         a: Show all UIs"
+    << endl << "         a: Show all chain UIs"
     << endl << "         A: Show all synth UIs"
+    << endl << "         m: Show mixer UI"
     << endl << "Left/right: Select chain"
     << endl << ""
     << endl << "            SELECTED CHAIN [*]"

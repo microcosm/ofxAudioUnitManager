@@ -22,6 +22,7 @@ protected:
     void showSelectedChainUI();
     void showAllSynthUIs();
     void showAllUIs();
+    void showMixerUI();
     
     Compressor compressor;
     UIHandler userInterface;

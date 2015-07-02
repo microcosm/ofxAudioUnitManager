@@ -45,6 +45,8 @@ void ofxAudioUnitManager::keyPressed(int key) {
         showAllUIs();
     } else if (key == 'A') {
         showAllSynthUIs();
+    } else if (key == 'm') {
+        showMixerUI();
     } else if(key == 'v') {
         toggleDebugUI();
     } else if(key == 's') {
@@ -110,4 +112,8 @@ void ofxAudioUnitManager::showAllUIs() {
     for(int i = 0; i < chains.size(); i++) {
         chains.at(i)->showUI(i, chains.size());
     }
+}
+
+void ofxAudioUnitManager::showMixerUI() {
+    mixer.showUI("Mixer", ofGetScreenWidth() * 0.25, ofGetScreenHeight() * 0.25);
 }
