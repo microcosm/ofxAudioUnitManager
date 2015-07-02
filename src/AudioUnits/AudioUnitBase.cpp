@@ -40,3 +40,7 @@ ofxAudioUnit* AudioUnitBase::getUnit() {
 AudioUnitType AudioUnitBase::getType() {
     return type;
 }
+
+bool AudioUnitBase::isSynth() {
+    return type == AU_TYPE_SYNTH;
+}

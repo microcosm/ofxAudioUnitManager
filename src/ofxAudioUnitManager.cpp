@@ -43,6 +43,8 @@ void ofxAudioUnitManager::keyPressed(int key) {
         showSelectedChainUI();
     } else if (key == 'a') {
         showAllUIs();
+    } else if (key == 'A') {
+        showAllSynthUIs();
     } else if(key == 'v') {
         toggleDebugUI();
     } else if(key == 's') {
@@ -96,6 +98,12 @@ void ofxAudioUnitManager::selectChain(AudioUnitChain *chain) {
 
 void ofxAudioUnitManager::showSelectedChainUI() {
     selectedChain->showUI(selectedChainIndex, chains.size());
+}
+
+void ofxAudioUnitManager::showAllSynthUIs() {
+    for(int i = 0; i < chains.size(); i++) {
+        chains.at(i)->showSynthUI(i, chains.size());
+    }
 }
 
 void ofxAudioUnitManager::showAllUIs() {

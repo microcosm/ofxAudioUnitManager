@@ -57,6 +57,14 @@ void AudioUnitChain::showUI(int chainIndex, int numChains){
     }
 }
 
+void AudioUnitChain::showSynthUI(int chainIndex, int numChains){
+    for(int i = 0; i < units.size(); i++) {
+        if(units.at(i)->isSynth()){
+            units.at(i)->showUI(chainName, chainIndex, numChains, i, units.size());
+        }
+    }
+}
+
 bool AudioUnitChain::isSelected() {
     return selected;
 }

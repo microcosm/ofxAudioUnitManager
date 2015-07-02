@@ -19,6 +19,7 @@ public:
     void set(int param1, int param2, int param3, ofVec3f value);
     ofxAudioUnit* getUnit();
     AudioUnitType getType();
+    bool isSynth();
 protected:
     ofxAudioUnit unit;
     AudioUnitType type;
