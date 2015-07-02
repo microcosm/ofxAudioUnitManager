@@ -12,7 +12,7 @@ class AudioUnitBase {
 public:
     string getClassName();
     virtual void setup();
-    void showUI(string chainname, int chainIndex, int numChains);
+    void showUI(string chainname, int chainIndex, int numChains, int unitIndex, int numUnits);
     void setUnitName(string name);
     void set(int param, float value);
     void set(int param1, int param2, ofVec2f value);

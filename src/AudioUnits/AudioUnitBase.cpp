@@ -6,11 +6,12 @@ string AudioUnitBase::getClassName() {
 
 void AudioUnitBase::setup() {}
 
-void AudioUnitBase::showUI(string chainName, int chainIndex, int numChains) {
+void AudioUnitBase::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {
     x = ofMap(chainIndex, 0, numChains - 1, 0, ofGetScreenWidth() * 0.5);
+    y = ofMap(unitIndex, 0, numUnits - 1, 0, ofGetScreenHeight() * 0.5);
     unit.showUI(chainName + ": " +
                 unitName + (unitName.length() > 0 ? " " : "") +
-                className, x, 0);
+                className, x, y);
 }
 
 void AudioUnitBase::setUnitName(string name) {

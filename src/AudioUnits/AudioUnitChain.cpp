@@ -53,7 +53,7 @@ AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit, string unitName) {
 
 void AudioUnitChain::showUI(int chainIndex, int numChains){
     for(int i = 0; i < units.size(); i++) {
-        units.at(i)->showUI(chainName, chainIndex, numChains);
+        units.at(i)->showUI(chainName, chainIndex, numChains, i, units.size());
     }
 }
 
