@@ -97,9 +97,10 @@ string UIHandler::controlsReport() {
 }
 
 string UIHandler::chainReport(AudioUnitChain *chain, int number) {
+    string underline(chain->getName().length(), '-');
     stringstream report;
     report  << "CHAIN " << number << " \"" << chain->getName() << "\""
-    << endl << ""
+    << endl << "---------" << underline << "-"
     << endl << chain->getUnitReport()
     << endl << ""
     << endl << chain->presets()->report();
