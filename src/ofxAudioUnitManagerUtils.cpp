@@ -8,13 +8,15 @@ void ofxAudioUnitManagerUtils::setup() {
                          "C#5 ON", "C#5 OFF" etc */
 void ofxAudioUnitManagerUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
     vector<string> args = ofSplitString(command, " ");
-    int parsedNote = midiNote(args.at(0));
-    if(args.at(1) == "ON") {
-        cout << "Sending MIDI ON: " << parsedNote << endl;
-        midi->sendNoteOn(1, parsedNote);
-    } else {
-        cout << "Sending MIDI OFF: " << parsedNote << endl;
-        midi->sendNoteOff(1, parsedNote);
+    if(args.size() == 2) {
+        int parsedNote = midiNote(args.at(0));
+        if(args.at(1) == "ON") {
+            cout << "Sending MIDI ON: " << parsedNote << endl;
+            midi->sendNoteOn(1, parsedNote);
+        } else {
+            cout << "Sending MIDI OFF: " << parsedNote << endl;
+            midi->sendNoteOff(1, parsedNote);
+        }
     }
 }
 
