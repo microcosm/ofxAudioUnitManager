@@ -6,6 +6,18 @@ void ofxAudioUnitManagerUtils::setup() {
 
 /* Format can be either: "60 ON",  "60 OFF"  etc, or
                          "C#5 ON", "C#5 OFF" etc */
+void ofxAudioUnitManagerUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
+    vector<string> args = ofSplitString(command, " ");
+    int parsedNote = midiNote(args.at(0));
+    if(args.at(1) == "ON") {
+        cout << "Sending MIDI ON: " << parsedNote << endl;
+        midi->sendNoteOn(1, parsedNote);
+    } else {
+        cout << "Sending MIDI OFF: " << parsedNote << endl;
+        midi->sendNoteOff(1, parsedNote);
+    }
+}
+
 int ofxAudioUnitManagerUtils::midiNote(string arg) {
     if(arg.length() > 1 && ofToInt(arg) == 0) {
         octave = ofToInt(arg.substr(arg.length() - 1, arg.length()));
