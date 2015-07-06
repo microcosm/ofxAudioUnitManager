@@ -104,7 +104,7 @@ string UIHandler::controlsReport() {
     << endl << "   Up/down: Select preset"
     << endl << "         s: Save preset"
     << endl << "         r: Rename preset"
-    << endl << "         d: Delete preset"
+    << endl << "         t: Send preset to trash"
     << endl << ""
     << endl << "            EXAMPLE APP"
     << endl << "            ----------------------"

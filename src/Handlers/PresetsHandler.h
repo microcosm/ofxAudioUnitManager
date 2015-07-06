@@ -10,7 +10,7 @@ public:
     void add(AudioUnitBase* unit, string unitName);
     void save();
     void rename();
-    void remove();
+    void trash();
     void increment();
     void decrement();
     void select();

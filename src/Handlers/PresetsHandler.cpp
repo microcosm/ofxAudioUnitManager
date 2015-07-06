@@ -65,7 +65,7 @@ void PresetsHandler::rename() {
     }
 }
 
-void PresetsHandler::remove() {
+void PresetsHandler::trash() {
     if(currentPreset > -1) {
         ofDirectory presetDir(path(presetNames.at(currentPreset)));
         presetDir.renameTo(newTrashPath(presetNames.at(currentPreset)));

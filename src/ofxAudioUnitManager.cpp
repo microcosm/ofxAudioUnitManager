@@ -53,8 +53,8 @@ void ofxAudioUnitManager::keyPressed(int key) {
         selectedChain->presets()->save();
     } else if(key == 'r') {
         selectedChain->presets()->rename();
-    } else if(key == 'd') {
-        selectedChain->presets()->remove();
+    } else if(key == 't') {
+        selectedChain->presets()->trash();
     } else if(key == 359) {
         selectedChain->presets()->increment();
     } else if(key == 357) {
