@@ -191,6 +191,7 @@ void PresetsHandler::ensureDirectories() {
     }
 }
 
+string allowableCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
 bool PresetsHandler::validateName(string newPresetName, int alertDialogException) {
     bool nameIsUnique = true;
     for(int i = 0; i < presetNames.size(); i++) {
@@ -201,5 +202,10 @@ bool PresetsHandler::validateName(string newPresetName, int alertDialogException
             }
         }
     }
-    return newPresetName.length() && nameIsUnique;
+    bool nameIsValid = true;
+    if(!(newPresetName.length() > 0 && newPresetName.find_first_not_of(allowableCharacters) == std::string::npos)) {
+        nameIsValid = false;
+        ofSystemAlertDialog("Name is not valid");
+    }
+    return nameIsValid && nameIsUnique;
 }
