@@ -48,9 +48,8 @@ void PresetsHandler::save() {
 
 void PresetsHandler::rename() {
     if(currentPreset > -1) {
-        string oldPresetName = presetNames.at(currentPreset);
-        string newPresetName = ofSystemTextBoxDialog("New name:", oldPresetName);
-        if(newPresetName.length() && newPresetName != oldPresetName) {
+        string newPresetName = ofSystemTextBoxDialog("New name:", presetNames.at(currentPreset));
+        if(validateRename(newPresetName)) {
             string newPresetPath = path(newPresetName);
             for(int i = 0; i < units.size(); i++) {
                 string newPresetFilename = filename(units.at(i), unitNames.at(i));
@@ -190,4 +189,17 @@ void PresetsHandler::ensureDirectories() {
     if(!chain.exists()) {
         chain.create();
     }
+}
+
+bool PresetsHandler::validateRename(string newPresetName) {
+    bool nameIsUnique = true;
+    for(int i = 0; i < presetNames.size(); i++) {
+        if(ofToUpper(newPresetName) == ofToUpper(presetNames.at(i))) {
+            nameIsUnique = false;
+            if(i != currentPreset) {
+                ofSystemAlertDialog("Name already taken");
+            }
+        }
+    }
+    return newPresetName.length() && nameIsUnique;
 }
