@@ -4,6 +4,7 @@ void PresetsHandler::setup(string _chainName){
     chainName = _chainName;
     selected = false;
     currentPreset = -1;
+    lastSaved = -1;
     storageDir = "AudioUnitPresets/";
     trashDir = ".trash/";
     anyExtension = "";
@@ -137,6 +138,9 @@ string PresetsHandler::report() {
         if(i == currentIndex()) {
             report << " " << icon;
         }
+        if(i == lastSaved) {
+            report << " - saved";
+        }
     }
     
     return report.str();
@@ -235,4 +239,5 @@ void PresetsHandler::save(string presetName) {
     }
     readFromDisk();
     currentPreset = indexOf(presetName);
+    lastSaved = currentPreset;
 }
