@@ -5,6 +5,7 @@ void PresetsHandler::setup(string _chainName){
     selected = false;
     currentPreset = -1;
     storageDir = "AudioUnitPresets/";
+    trashDir = ".trash/";
     anyExtension = "";
     presetExtension = "aupreset";
     ensureDirectories();
@@ -66,7 +67,8 @@ void PresetsHandler::rename() {
 
 void PresetsHandler::remove() {
     if(currentPreset > -1) {
-        dir.removeDirectory(path(presetNames.at(currentPreset)), true);
+        ofDirectory presetDir(path(presetNames.at(currentPreset)));
+        presetDir.renameTo(newTrashPath(presetNames.at(currentPreset)));
         presets.erase(presets.begin() + currentPreset);
         presetNames.erase(presetNames.begin() + currentPreset);
         readFromDisk();
@@ -171,6 +173,15 @@ string PresetsHandler::path(string presetName) {
     return dir.getAbsolutePath() + "/" + presetName + "/";
 }
 
+string PresetsHandler::newTrashPath(string presetName) {
+    string timeIndexedTrashDir = storageDir + trashDir + ofGetTimestampString() + "/";
+    ofDirectory timedTrashDir(timeIndexedTrashDir);
+    timedTrashDir.create();
+    ofDirectory trashChainDir(timeIndexedTrashDir + chainName);
+    trashChainDir.create();
+    return trashChainDir.getAbsolutePath() + "/" + presetName + "/";
+}
+
 string PresetsHandler::filename(AudioUnitBase* unit, string unitName) {
     return (unitName.length() > 0 ? unitName + "_" : "")
         + unit->getClassName() + "." + presetExtension;
@@ -184,6 +195,10 @@ void PresetsHandler::ensureDirectories() {
     ofDirectory storage(storageDir);
     if(!storage.exists()) {
         storage.create();
+    }
+    ofDirectory trash(storageDir + trashDir);
+    if(!trash.exists()) {
+        trash.create();
     }
     ofDirectory chain(storageDir + chainName);
     if(!chain.exists()) {

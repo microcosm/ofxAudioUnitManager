@@ -26,6 +26,7 @@ protected:
     vector<ofFile> dirContents(string path, string extensions);
     void clearPresets();
     string path(string presetName);
+    string newTrashPath(string presetName);
     string filename(AudioUnitBase* unit, string unitName);
     string trim(string presetName);
     void ensureDirectories();
@@ -36,7 +37,7 @@ protected:
     vector<string> unitNames;
     vector< vector<ofFile> > presets;
 
-    string chainName, storageDir;
+    string chainName, storageDir, trashDir;
     int currentPreset;
     bool selected;
 
