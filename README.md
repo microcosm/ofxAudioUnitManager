@@ -155,6 +155,10 @@ In practice only takes a moment to create these classes, using the existing clas
 
 Obviously there's a world of Audio Units out there and this addon only has a small subset. If you would like to contribute, you can send pull requests with additional units that you use.
 
+Known issues
+------------
+Whenever a dialog pops up the openFrameworks window loses focus. If you try to use the keyboard, it will appear as though the app has become unresponsive. However all you need to do is click the window again to regain focus. If anyone knows a workaround for this, please contact me.
+
 How to try out this addon
 -------------------------
 1. Clone [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit), follow the instructions in the readme, and make sure it works
