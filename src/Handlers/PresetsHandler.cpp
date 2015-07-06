@@ -198,14 +198,14 @@ bool PresetsHandler::validateName(string newPresetName, int alertDialogException
         if(ofToUpper(newPresetName) == ofToUpper(presetNames.at(i))) {
             nameIsUnique = false;
             if(i != alertDialogException) {
-                ofSystemAlertDialog("Name already taken");
+                ofSystemAlertDialog("Name '" + newPresetName + "' already in use on this chain");
             }
         }
     }
     bool nameIsValid = true;
     if(!(newPresetName.length() > 0 && newPresetName.find_first_not_of(allowableCharacters) == std::string::npos)) {
         nameIsValid = false;
-        ofSystemAlertDialog("Name is not valid");
+        ofSystemAlertDialog("Name '" + newPresetName + "' is not valid");
     }
     return nameIsValid && nameIsUnique;
 }
