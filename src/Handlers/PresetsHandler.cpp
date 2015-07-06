@@ -34,7 +34,7 @@ void PresetsHandler::add(AudioUnitBase* unit, string unitName) {
 
 void PresetsHandler::save() {
     string presetName = ofSystemTextBoxDialog("Preset name:");
-    if(presetName.length()) {
+    if(validateName(presetName)) {
         string presetPath = path(presetName);
         dir.createDirectory(presetPath);
         for(int i = 0; i < units.size(); i++) {
@@ -49,7 +49,7 @@ void PresetsHandler::save() {
 void PresetsHandler::rename() {
     if(currentPreset > -1) {
         string newPresetName = ofSystemTextBoxDialog("New name:", presetNames.at(currentPreset));
-        if(validateRename(newPresetName)) {
+        if(validateName(newPresetName, currentPreset)) {
             string newPresetPath = path(newPresetName);
             for(int i = 0; i < units.size(); i++) {
                 string newPresetFilename = filename(units.at(i), unitNames.at(i));
@@ -191,12 +191,12 @@ void PresetsHandler::ensureDirectories() {
     }
 }
 
-bool PresetsHandler::validateRename(string newPresetName) {
+bool PresetsHandler::validateName(string newPresetName, int alertDialogException) {
     bool nameIsUnique = true;
     for(int i = 0; i < presetNames.size(); i++) {
         if(ofToUpper(newPresetName) == ofToUpper(presetNames.at(i))) {
             nameIsUnique = false;
-            if(i != currentPreset) {
+            if(i != alertDialogException) {
                 ofSystemAlertDialog("Name already taken");
             }
         }

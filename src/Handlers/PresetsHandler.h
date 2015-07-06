@@ -29,7 +29,7 @@ protected:
     string filename(AudioUnitBase* unit, string unitName);
     string trim(string presetName);
     void ensureDirectories();
-    bool validateRename(string newPresetName);
+    bool validateName(string newPresetName, int alertDialogException=-1);
 
     vector<string> presetNames;
     vector<AudioUnitBase*> units;
