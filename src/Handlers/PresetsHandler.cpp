@@ -48,7 +48,7 @@ void PresetsHandler::save() {
 
 void PresetsHandler::rename() {
     if(currentPreset > -1) {
-        string newPresetName = ofSystemTextBoxDialog("New name:");
+        string newPresetName = ofSystemTextBoxDialog("New name:", presetNames.at(currentPreset));
         if(newPresetName.length()) {
             string newPresetPath = path(newPresetName);
             for(int i = 0; i < units.size(); i++) {
