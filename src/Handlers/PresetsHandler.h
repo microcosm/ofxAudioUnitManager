@@ -40,7 +40,7 @@ protected:
     vector< vector<ofFile> > presets;
 
     string chainName, storageDir, trashDir;
-    int currentPreset, lastSaved;
+    int currentPreset, lastSaved, lastSaveTimer, lastSaveTimeout;
     bool selected;
 
     ofDirectory dir;
