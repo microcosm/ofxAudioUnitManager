@@ -8,7 +8,8 @@ public:
     void setup(string synthName);
     void load(int index);
     void add(AudioUnitBase* unit, string unitName);
-    void save();
+    void saveNew();
+    void saveOverwrite();
     void rename();
     void trash();
     void increment();
@@ -31,6 +32,7 @@ protected:
     string trim(string presetName);
     void ensureDirectories();
     bool validateName(string newPresetName, int alertDialogException=-1);
+    void save(string presetName);
 
     vector<string> presetNames;
     vector<AudioUnitBase*> units;

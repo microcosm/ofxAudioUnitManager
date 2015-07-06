@@ -50,7 +50,9 @@ void ofxAudioUnitManager::keyPressed(int key) {
     } else if(key == 'v') {
         toggleDebugUI();
     } else if(key == 's') {
-        selectedChain->presets()->save();
+        selectedChain->presets()->saveOverwrite();
+    } else if(key == 'S') {
+        selectedChain->presets()->saveNew();
     } else if(key == 'r') {
         selectedChain->presets()->rename();
     } else if(key == 't') {

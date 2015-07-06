@@ -4,7 +4,7 @@ void UIHandler::setup() {
     midiReceiptTimeout = ofGetFrameRate();
     lastMidiRecieved = midiReceiptTimeout + 1;
     padding = 10;
-    controlsDimensions = ofVec2f(300, 322);
+    controlsDimensions = ofVec2f(300, 340);
     chainInfoDimensions = ofVec2f(220, 340);
     waveformsDimensions = ofVec2f(220, 80);
     midiInfoDimensions = ofVec2f(220, 32);
@@ -102,8 +102,9 @@ string UIHandler::controlsReport() {
     << endl << "            ----------------------"
     << endl << "         u: Show audio unit UIs"
     << endl << "   Up/down: Select preset"
-    << endl << "         s: Save preset"
-    << endl << "         r: Rename preset"
+    << endl << " (lower) s: Save current preset"
+    << endl << " (upper) S: Save new preset"
+    << endl << "         r: Rename current preset"
     << endl << "         t: Send preset to trash"
     << endl << ""
     << endl << "            EXAMPLE APP"

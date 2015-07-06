@@ -33,17 +33,18 @@ void PresetsHandler::add(AudioUnitBase* unit, string unitName) {
     unitNames.push_back(unitName);
 }
 
-void PresetsHandler::save() {
+void PresetsHandler::saveNew() {
     string presetName = ofSystemTextBoxDialog("Preset name:");
     if(validateName(presetName)) {
-        string presetPath = path(presetName);
-        dir.createDirectory(presetPath);
-        for(int i = 0; i < units.size(); i++) {
-            string presetFilename = filename(units.at(i), unitNames.at(i));
-            units.at(i)->getUnit()->saveCustomPresetAtPath(presetPath + presetFilename);
-        }
-        readFromDisk();
-        currentPreset = indexOf(presetName);
+        save(presetName);
+    }
+}
+
+void PresetsHandler::saveOverwrite() {
+    if(currentPreset > -1) {
+        string presetName = presetNames.at(currentPreset);
+        trash();
+        save(presetName);
     }
 }
 
@@ -223,4 +224,15 @@ bool PresetsHandler::validateName(string newPresetName, int alertDialogException
         ofSystemAlertDialog("Name '" + newPresetName + "' is not valid");
     }
     return nameIsValid && nameIsUnique;
+}
+
+void PresetsHandler::save(string presetName) {
+    string presetPath = path(presetName);
+    dir.createDirectory(presetPath);
+    for(int i = 0; i < units.size(); i++) {
+        string presetFilename = filename(units.at(i), unitNames.at(i));
+        units.at(i)->getUnit()->saveCustomPresetAtPath(presetPath + presetFilename);
+    }
+    readFromDisk();
+    currentPreset = indexOf(presetName);
 }
