@@ -24,7 +24,7 @@
 		<key>3728627C4ED29B91E07EF26B19C09D58A9FF7326</key>
 		<string>ofxAudioUnitManager/</string>
 		<key>90E2F969A762FB62C413A0C44D1F334E6EC3F531</key>
-		<string>ofxMidi/</string>
+		<string>ofxMidi</string>
 		<key>9132CAE1CF96CEC3985E7C914A95651916885A50</key>
 		<string>ofxBpm/</string>
 	</dict>

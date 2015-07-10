@@ -4,6 +4,13 @@ string ofxManagedAudioUnit::getClassName() {
     return className;
 }
 
+void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
+                                AudioUnitType _type, string _className) {
+    unit = ofxAudioUnit(type, subType, manufacturer);
+    type = _type;
+    className = _className;
+}
+
 void ofxManagedAudioUnit::setup() {}
 
 void ofxManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {

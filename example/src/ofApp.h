@@ -29,7 +29,7 @@ public:
     void gotMessage(ofMessage msg);
 
     ofxAudioUnitManager manager;
-    AudioUnitChain chain1, chain2;
+    ofxAudioUnitChain chain1, chain2;
     TALNoiseMaker noiseMaker1, noiseMaker2;
     LowPassFilter filter1, filter2, filter3;
     Reverb reverb1, reverb2;
