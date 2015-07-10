@@ -22,9 +22,11 @@ public:
     ofxAudioUnit* getUnit();
     AudioUnitType getType();
     bool isSynth();
+    bool hasBeenSetup();
 protected:
     ofxAudioUnit unit;
     AudioUnitType type;
     string className, unitName;
     int x, y;
+    bool isSetup = false;
 };
