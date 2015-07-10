@@ -5,9 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>607F2AAD-73DA-4BFF-A1B9-EC099C5CC2D6</string>
-	<key>IDESourceControlProjectName</key>
-	<string>example</string>
+	<string>904EF17C-002D-427D-B210-78F30A319352</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>01AA4CBABFC70149D264A6043113AE4AA0B55E07</key>
@@ -19,25 +17,23 @@
 		<key>9132CAE1CF96CEC3985E7C914A95651916885A50</key>
 		<string>https://github.com/mirrorboy714/ofxBpm</string>
 	</dict>
-	<key>IDESourceControlProjectPath</key>
-	<string>example/example.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>01AA4CBABFC70149D264A6043113AE4AA0B55E07</key>
-		<string>../../../../ofxAudioUnit</string>
+		<string>ofxAudioUnit/</string>
 		<key>3728627C4ED29B91E07EF26B19C09D58A9FF7326</key>
-		<string>../../..</string>
+		<string>ofxAudioUnitManager/</string>
 		<key>90E2F969A762FB62C413A0C44D1F334E6EC3F531</key>
-		<string>../../../../ofxMidi</string>
+		<string>ofxMidi/</string>
 		<key>9132CAE1CF96CEC3985E7C914A95651916885A50</key>
-		<string>../../../../ofxBpm</string>
+		<string>ofxBpm/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/microcosm/ofxAudioUnitManager.git</string>
+	<string>https://github.com/danomatika/ofxMidi.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3728627C4ED29B91E07EF26B19C09D58A9FF7326</string>
+	<string>90E2F969A762FB62C413A0C44D1F334E6EC3F531</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
