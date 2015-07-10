@@ -6,5 +6,5 @@ void Delay::setup() {
     
     type = AU_TYPE_UNIT;
     className = "Delay";
-    AudioUnitBase::setup();
+    ofxManagedAudioUnit::setup();
 }

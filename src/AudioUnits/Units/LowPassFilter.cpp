@@ -7,5 +7,5 @@ void LowPassFilter::setup() {
                           kAudioUnitScope_Global, 0, 20, 0);
     type = AU_TYPE_UNIT;
     className = "LowPassFilter";
-    AudioUnitBase::setup();
+    ofxManagedAudioUnit::setup();
 }

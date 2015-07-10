@@ -26,7 +26,7 @@ void UIHandler::drawControls() {
     ofDrawBitmapString(controlsReport(), controlsPositions.x + padding, controlsPositions.y + padding*2);
 }
 
-void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
+void UIHandler::drawChains(vector<ofxAudioUnitChain*> chains) {
     ofVec2f position;
     for(int i = 0; i < chains.size(); i++) {
         position.x = (chainInfoPositions.x * (i+1)) + (chainInfoDimensions.x * i);
@@ -37,7 +37,7 @@ void UIHandler::drawChains(vector<AudioUnitChain*> chains) {
     }
 }
 
-void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
+void UIHandler::drawWaveforms(ofxAudioUnitChain* chain, float positionX) {
     drawDebugBox(positionX, waveformsPositions.y, waveformsDimensions.x, waveformsDimensions.y, getBackgroundColor(chain));
     chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, waveformsDimensions.x, waveformsDimensions.y);
     ofSetColor(getTextColor(chain));
@@ -47,13 +47,13 @@ void UIHandler::drawWaveforms(AudioUnitChain* chain, float positionX) {
     ofTranslate(-positionX, -waveformsPositions.y);
 }
 
-void UIHandler::drawChainReport(AudioUnitChain* chain, ofVec2f position, int chainNumber) {
+void UIHandler::drawChainReport(ofxAudioUnitChain* chain, ofVec2f position, int chainNumber) {
     drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, getBackgroundColor(chain));
     ofSetColor(getTextColor(chain));
     ofDrawBitmapString(chainReport(chain, chainNumber), position.x + padding, position.y + padding*2);
 }
 
-void UIHandler::drawMidiReport(AudioUnitChain* chain, float positionX, int index) {
+void UIHandler::drawMidiReport(ofxAudioUnitChain* chain, float positionX, int index) {
     drawDebugBox(positionX, midiInfoPositions.y, midiInfoDimensions.x, midiInfoDimensions.y, getBackgroundColor(chain));
     ofDrawBitmapString(midiReport(chain, index), positionX + padding, midiInfoPositions.y + padding*2);
 }
@@ -74,13 +74,13 @@ ofVec2f UIHandler::getControlsPositions() {
         ofGetHeight() - controlsDimensions.y - padding);
 }
 
-ofColor UIHandler::getBackgroundColor(AudioUnitChain* chain) {
+ofColor UIHandler::getBackgroundColor(ofxAudioUnitChain* chain) {
     return chain->isSelected() ?
         ofColor(chain->getColor(), 128) :
         ofColor(chain->getColor(), 32);
 }
 
-ofColor UIHandler::getTextColor(AudioUnitChain* chain) {
+ofColor UIHandler::getTextColor(ofxAudioUnitChain* chain) {
     return chain->isSelected() ?
         ofColor(ofColor::white, 255) :
         ofColor(ofColor::white, 128);
@@ -114,7 +114,7 @@ string UIHandler::controlsReport() {
     return report.str();
 }
 
-string UIHandler::chainReport(AudioUnitChain *chain, int number) {
+string UIHandler::chainReport(ofxAudioUnitChain *chain, int number) {
     string underline(chain->getName().length(), '-');
     stringstream report;
     report  << "CHAIN " << number << " \"" << chain->getName() << "\""
@@ -125,7 +125,7 @@ string UIHandler::chainReport(AudioUnitChain *chain, int number) {
     return report.str();
 }
 
-string UIHandler::midiReport(AudioUnitChain *chain, int index) {
+string UIHandler::midiReport(ofxAudioUnitChain *chain, int index) {
     tempMidiReport = chain->getMidiReport();
     if(tempMidiReport.length() > 0) {
         reports[index] = tempMidiReport;

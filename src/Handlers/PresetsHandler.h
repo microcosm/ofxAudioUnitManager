@@ -1,13 +1,13 @@
 #pragma once
 #include "ofMain.h"
-#include "AudioUnitBase.h"
+#include "ofxManagedAudioUnit.h"
 
 class PresetsHandler{
 
 public:
     void setup(string synthName);
     void load(int index);
-    void add(AudioUnitBase* unit, string unitName);
+    void add(ofxManagedAudioUnit* unit, string unitName);
     void saveNew();
     void saveOverwrite();
     void rename();
@@ -28,14 +28,14 @@ protected:
     void clearPresets();
     string path(string presetName);
     string newTrashPath(string presetName);
-    string filename(AudioUnitBase* unit, string unitName);
+    string filename(ofxManagedAudioUnit* unit, string unitName);
     string trim(string presetName);
     void ensureDirectories();
     bool validateName(string newPresetName, int alertDialogException=-1);
     void save(string presetName);
 
     vector<string> presetNames;
-    vector<AudioUnitBase*> units;
+    vector<ofxManagedAudioUnit*> units;
     vector<string> unitNames;
     vector< vector<ofFile> > presets;
 

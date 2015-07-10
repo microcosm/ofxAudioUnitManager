@@ -3,9 +3,9 @@
 #include "ofxAudioUnit.h"
 #include "PresetsHandler.h"
 #include "MidiHandler.h"
-#include "AudioUnitBase.h"
+#include "ofxManagedAudioUnit.h"
 
-class AudioUnitChain {
+class ofxAudioUnitChain {
     
 public:
     virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
@@ -13,10 +13,10 @@ public:
     void exit();
     void toMixer(ofxAudioUnit* chainEndpoint);
     void toMixer();
-    AudioUnitChain& link(AudioUnitBase* unit);
-    AudioUnitChain& link(AudioUnitBase* unit, string unitName);
-    AudioUnitChain& to(AudioUnitBase* unit);
-    AudioUnitChain& to(AudioUnitBase* unit, string unitName);
+    ofxAudioUnitChain& link(ofxManagedAudioUnit* unit);
+    ofxAudioUnitChain& link(ofxManagedAudioUnit* unit, string unitName);
+    ofxAudioUnitChain& to(ofxManagedAudioUnit* unit);
+    ofxAudioUnitChain& to(ofxManagedAudioUnit* unit, string unitName);
     void showUI(int chainIndex, int numChains);
     void showSynthUI(int chainIndex, int numChains);
     bool isSelected();
@@ -34,12 +34,12 @@ public:
     ofColor getColor();
 
 protected:
-    void loadUnit(AudioUnitBase* unit, string unitName);
-    void loadSynth(AudioUnitBase* synth, string unitName);
+    void loadUnit(ofxManagedAudioUnit* unit, string unitName);
+    void loadSynth(ofxManagedAudioUnit* synth, string unitName);
 
     ofxAudioUnitTap tapUnit;
     ofPolyline waveform1, waveform2;
-    vector<AudioUnitBase*> units;
+    vector<ofxManagedAudioUnit*> units;
     ofxAudioUnit* unitEndpoint;
     ofxAudioUnitMixer* mixer;
     int mixerChannel;

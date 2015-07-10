@@ -31,7 +31,7 @@ void PresetsHandler::load(int presetIndex) {
     }
 }
 
-void PresetsHandler::add(AudioUnitBase* unit, string unitName) {
+void PresetsHandler::add(ofxManagedAudioUnit* unit, string unitName) {
     units.push_back(unit);
     unitNames.push_back(unitName);
 }
@@ -194,7 +194,7 @@ string PresetsHandler::newTrashPath(string presetName) {
     return trashChainDir.getAbsolutePath() + "/" + presetName + "/";
 }
 
-string PresetsHandler::filename(AudioUnitBase* unit, string unitName) {
+string PresetsHandler::filename(ofxManagedAudioUnit* unit, string unitName) {
     return (unitName.length() > 0 ? unitName + "_" : "")
         + unit->getClassName() + "." + presetExtension;
 }

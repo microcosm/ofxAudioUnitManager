@@ -7,7 +7,7 @@ enum AudioUnitType {
     AU_TYPE_UNIT
 };
 
-class AudioUnitBase {
+class ofxManagedAudioUnit {
 
 public:
     string getClassName();

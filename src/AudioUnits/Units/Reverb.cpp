@@ -6,5 +6,5 @@ void Reverb::setup() {
 
     type = AU_TYPE_UNIT;
     className = "Reverb";
-    AudioUnitBase::setup();
+    ofxManagedAudioUnit::setup();
 }

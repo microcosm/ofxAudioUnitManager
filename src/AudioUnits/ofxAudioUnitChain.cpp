@@ -1,27 +1,27 @@
-#include "AudioUnitChain.h"
+#include "ofxAudioUnitChain.h"
 
-void AudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor){
+void ofxAudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor){
     chainName = _chainName;
     mixer = _mixer;
     mixerChannel = _mixerChannel;
     waveColor = _waveColor;
-    className = "AudioUnitChain";
+    className = "ofxAudioUnitChain";
     selected = false;
 }
 
-void AudioUnitChain::loadPresets(){
+void ofxAudioUnitChain::loadPresets(){
     presetsHandler.setup(chainName);
 }
 
-void AudioUnitChain::exit() {
+void ofxAudioUnitChain::exit() {
     midiHandler.exit();
 }
 
-void AudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
+void ofxAudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
     chainEndpoint->connectTo(tapUnit).connectTo(*mixer, mixerChannel);
 }
 
-void AudioUnitChain::toMixer() {
+void ofxAudioUnitChain::toMixer() {
     ofxAudioUnit* unitEndpoint = units.at(0)->getUnit();
 
     for(int i = 1; i < units.size(); i++) {
@@ -32,32 +32,32 @@ void AudioUnitChain::toMixer() {
     toMixer(unitEndpoint);
 }
 
-AudioUnitChain& AudioUnitChain::link(AudioUnitBase* unit) {
+ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit) {
     return link(unit, "");
 }
 
-AudioUnitChain& AudioUnitChain::link(AudioUnitBase* unit, string unitName) {
+ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit, string unitName) {
     unit->setup();
     unit->getType() == AU_TYPE_SYNTH ?
         loadSynth(unit, unitName) : loadUnit(unit, unitName);
     return *this;
 }
 
-AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit) {
+ofxAudioUnitChain& ofxAudioUnitChain::to(ofxManagedAudioUnit* unit) {
     return link(unit);
 }
 
-AudioUnitChain& AudioUnitChain::to(AudioUnitBase* unit, string unitName) {
+ofxAudioUnitChain& ofxAudioUnitChain::to(ofxManagedAudioUnit* unit, string unitName) {
     return link(unit, unitName);
 }
 
-void AudioUnitChain::showUI(int chainIndex, int numChains){
+void ofxAudioUnitChain::showUI(int chainIndex, int numChains){
     for(int i = 0; i < units.size(); i++) {
         units.at(i)->showUI(chainName, chainIndex, numChains, i, units.size());
     }
 }
 
-void AudioUnitChain::showSynthUI(int chainIndex, int numChains){
+void ofxAudioUnitChain::showSynthUI(int chainIndex, int numChains){
     for(int i = 0; i < units.size(); i++) {
         if(units.at(i)->isSynth()){
             units.at(i)->showUI(chainName, chainIndex, numChains, i, units.size());
@@ -65,43 +65,43 @@ void AudioUnitChain::showSynthUI(int chainIndex, int numChains){
     }
 }
 
-bool AudioUnitChain::isSelected() {
+bool ofxAudioUnitChain::isSelected() {
     return selected;
 }
 
-void AudioUnitChain::select() {
+void ofxAudioUnitChain::select() {
     selected = true;
     presetsHandler.select();
 }
 
-void AudioUnitChain::deselect() {
+void ofxAudioUnitChain::deselect() {
     selected = false;
     presetsHandler.deselect();
 }
 
-ofxMidiOut* AudioUnitChain::midi() {
+ofxMidiOut* ofxAudioUnitChain::midi() {
     return midiHandler.midi();
 }
 
-void AudioUnitChain::sendMidiOn(int note) {
+void ofxAudioUnitChain::sendMidiOn(int note) {
     midiHandler.midi()->sendNoteOn(1, note);
     midiEvents.push_back("[ON: " + ofToString(note) + "]");
 }
 
-void AudioUnitChain::sendMidiOff(int note) {
+void ofxAudioUnitChain::sendMidiOff(int note) {
     midiHandler.midi()->sendNoteOff(1, note);
     midiEvents.push_back("[OFF: " + ofToString(note) + "]");
 }
 
-ofxAudioUnitTap* AudioUnitChain::tap() {
+ofxAudioUnitTap* ofxAudioUnitChain::tap() {
     return &tapUnit;
 }
 
-PresetsHandler* AudioUnitChain::presets() {
+PresetsHandler* ofxAudioUnitChain::presets() {
     return &presetsHandler;
 }
 
-string AudioUnitChain::getUnitReport() {
+string ofxAudioUnitChain::getUnitReport() {
     report = "";
     for(int i = 0; i < units.size(); i++) {
         report += "[" + units.at(i)->getClassName() + "]->\n";
@@ -109,7 +109,7 @@ string AudioUnitChain::getUnitReport() {
     return report + "[Mixer]";
 }
 
-string AudioUnitChain::getMidiReport() {
+string ofxAudioUnitChain::getMidiReport() {
     report = "";
     for(int i = 0; i < midiEvents.size(); i++) {
         report += midiEvents.at(i) + " ";
@@ -118,25 +118,25 @@ string AudioUnitChain::getMidiReport() {
     return report;
 }
 
-string AudioUnitChain::getClassName() {
+string ofxAudioUnitChain::getClassName() {
     return className;
 }
 
-string AudioUnitChain::getName() {
+string ofxAudioUnitChain::getName() {
     return chainName;
 }
 
-ofColor AudioUnitChain::getColor() {
+ofColor ofxAudioUnitChain::getColor() {
     return waveColor;
 }
 
-void AudioUnitChain::loadUnit(AudioUnitBase* unit, string unitName) {
+void ofxAudioUnitChain::loadUnit(ofxManagedAudioUnit* unit, string unitName) {
     unit->setUnitName(unitName);
     presetsHandler.add(unit, unitName);
     units.push_back(unit);
 }
 
-void AudioUnitChain::loadSynth(AudioUnitBase* _synth, string unitName) {
+void ofxAudioUnitChain::loadSynth(ofxManagedAudioUnit* _synth, string unitName) {
     loadUnit(_synth, unitName);
     midiHandler.setup(_synth->getUnit(), chainName);
 }

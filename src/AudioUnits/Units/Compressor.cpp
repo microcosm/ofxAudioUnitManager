@@ -5,5 +5,5 @@ void Compressor::setup() {
                         kAudioUnitSubType_DynamicsProcessor);
     type = AU_TYPE_UNIT;
     className = "Compressor";
-    AudioUnitBase::setup();
+    ofxManagedAudioUnit::setup();
 }

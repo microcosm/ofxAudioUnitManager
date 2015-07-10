@@ -1,14 +1,14 @@
 #pragma once
 #include "ofMain.h"
-#include "AudioUnitChain.h"
+#include "ofxAudioUnitChain.h"
 #include "Compressor.h"
 #include "UIHandler.h"
 
 class ofxAudioUnitManager {
 public:
     void setup();
-    void add(AudioUnitChain *chain, string name, ofColor color);
-    void loadPresets(AudioUnitChain *chain);
+    void add(ofxAudioUnitChain *chain, string name, ofColor color);
+    void loadPresets(ofxAudioUnitChain *chain);
     void draw();
     void exit();
     void keyPressed(int key);
@@ -18,7 +18,7 @@ public:
 
 protected:
     void selectChain(int index);
-    void selectChain(AudioUnitChain *chain);
+    void selectChain(ofxAudioUnitChain *chain);
     void showSelectedChainUI();
     void showAllSynthUIs();
     void showAllUIs();
@@ -28,8 +28,8 @@ protected:
     UIHandler userInterface;
     ofxAudioUnitMixer mixer;
     ofxAudioUnitOutput output;
-    vector<AudioUnitChain*> chains;
-    AudioUnitChain* selectedChain;
+    vector<ofxAudioUnitChain*> chains;
+    ofxAudioUnitChain* selectedChain;
     bool showDebugUI;
     int selectedChainIndex;
 };

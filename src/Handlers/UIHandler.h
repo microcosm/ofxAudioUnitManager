@@ -1,7 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "AudioUnitChain.h"
-#include "AudioUnitBase.h"
+#include "ofxAudioUnitChain.h"
 
 class UIHandler{
 
@@ -9,18 +8,18 @@ public:
     void setup();
     void addChain();
     void drawControls();
-    void drawChains(vector<AudioUnitChain*> chains);
-    void drawWaveforms(AudioUnitChain* chain, float positionX);
-    void drawChainReport(AudioUnitChain* chain, ofVec2f position, int chainNumber);
-    void drawMidiReport(AudioUnitChain* chain, float positionX, int index);
+    void drawChains(vector<ofxAudioUnitChain*> chains);
+    void drawWaveforms(ofxAudioUnitChain* chain, float positionX);
+    void drawChainReport(ofxAudioUnitChain* chain, ofVec2f position, int chainNumber);
+    void drawMidiReport(ofxAudioUnitChain* chain, float positionX, int index);
 protected:
     void drawDebugBox(int x, int y, int width, int height, ofColor color=ofColor(255, 255, 255, 32));
     ofVec2f getControlsPositions();
-    ofColor getBackgroundColor(AudioUnitChain* chain);
-    ofColor getTextColor(AudioUnitChain* chain);
+    ofColor getBackgroundColor(ofxAudioUnitChain* chain);
+    ofColor getTextColor(ofxAudioUnitChain* chain);
     string controlsReport();
-    string chainReport(AudioUnitChain* chain, int number);
-    string midiReport(AudioUnitChain* chain, int index);
+    string chainReport(ofxAudioUnitChain* chain, int number);
+    string midiReport(ofxAudioUnitChain* chain, int index);
 
     ofxAudioUnitTap* tap;
     ofPolyline leftWaveform, rightWaveform;

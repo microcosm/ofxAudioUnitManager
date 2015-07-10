@@ -1,8 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "AudioUnitBase.h"
+#include "ofxManagedAudioUnit.h"
 
-class Delay : public AudioUnitBase {
+class Delay : public ofxManagedAudioUnit {
     
 public:
     void setup();
