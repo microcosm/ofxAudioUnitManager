@@ -14,6 +14,7 @@ public:
     virtual void setup();
     void setup(OSType type, OSType subType, OSType manufacturer,
                AudioUnitType _type, string _className="");
+    void setup(OSType type, OSType subType, OSType manufacturer, string _className="");
     void showUI(string chainname, int chainIndex, int numChains, int unitIndex, int numUnits);
     void setUnitName(string name);
     void set(int param, float value);

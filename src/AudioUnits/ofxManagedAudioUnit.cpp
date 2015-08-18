@@ -5,14 +5,20 @@ string ofxManagedAudioUnit::getClassName() {
 }
 
 void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
-                                AudioUnitType _type, string _className) {
+                                string _className) {
     unit = ofxAudioUnit(type, subType, manufacturer);
-    this->type = _type;
+    this->type = stringify(type) == "aumu" ? AU_TYPE_SYNTH : AU_TYPE_UNIT;
     className = _className;
     if(className == "") {
         className = stringify(type, subType, manufacturer);
     }
     isSetup = true;
+}
+
+void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
+                                AudioUnitType _type, string _className) {
+    this->type = _type;
+    setup(type, subType, manufacturer, _className);
 }
 
 void ofxManagedAudioUnit::setup() {
