@@ -7,7 +7,7 @@
 class ofxAudioUnitManager {
 public:
     void setup();
-    void add(ofxAudioUnitChain *chain, string name, ofColor color=ofColor::blue);
+    void add(ofxAudioUnitChain *chain, string name="", ofColor color=ofColor::blue);
     void loadPresets(ofxAudioUnitChain *chain);
     void draw();
     void exit();
