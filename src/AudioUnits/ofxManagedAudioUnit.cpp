@@ -7,8 +7,11 @@ string ofxManagedAudioUnit::getClassName() {
 void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
                                 AudioUnitType _type, string _className) {
     unit = ofxAudioUnit(type, subType, manufacturer);
-    type = _type;
+    this->type = _type;
     className = _className;
+    if(className == "") {
+        className = stringify(type, subType, manufacturer);
+    }
     isSetup = true;
 }
 
@@ -57,4 +60,16 @@ bool ofxManagedAudioUnit::isSynth() {
 
 bool ofxManagedAudioUnit::hasBeenSetup() {
     return isSetup;
+}
+
+string ofxManagedAudioUnit::stringify(OSType type, OSType subType, OSType manufacturer) {
+    return stringify(type) + "-" + stringify(subType) + "-" + stringify(manufacturer);
+}
+
+string ofxManagedAudioUnit::stringify(OSType code) {
+    char char4 = code&0xFF;
+    char char3 = (code>>8)&0xFF;
+    char char2 = (code>>16)&0xFF;
+    char char1 = (code>>24)&0xFF;
+    return ofToString(char1) + ofToString(char2) + ofToString(char3) + ofToString(char4);
 }

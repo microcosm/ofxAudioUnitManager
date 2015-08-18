@@ -13,7 +13,7 @@ public:
     string getClassName();
     virtual void setup();
     void setup(OSType type, OSType subType, OSType manufacturer,
-               AudioUnitType _type, string _className);
+               AudioUnitType _type, string _className="");
     void showUI(string chainname, int chainIndex, int numChains, int unitIndex, int numUnits);
     void setUnitName(string name);
     void set(int param, float value);
@@ -24,6 +24,8 @@ public:
     bool isSynth();
     bool hasBeenSetup();
 protected:
+    string stringify(OSType type, OSType subType, OSType manufacturer);
+    string stringify(OSType code);
     ofxAudioUnit unit;
     AudioUnitType type;
     string className, unitName;
