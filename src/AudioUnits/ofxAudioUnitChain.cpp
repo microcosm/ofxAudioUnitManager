@@ -17,11 +17,12 @@ void ofxAudioUnitChain::exit() {
     midiHandler.exit();
 }
 
-void ofxAudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
+ofxAudioUnitChain& ofxAudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
     chainEndpoint->connectTo(tapUnit).connectTo(*mixer, mixerChannel);
+    return *this;
 }
 
-void ofxAudioUnitChain::toMixer() {
+ofxAudioUnitChain& ofxAudioUnitChain::toMixer() {
     ofxAudioUnit* unitEndpoint = units.at(0)->getUnit();
 
     for(int i = 1; i < units.size(); i++) {
@@ -30,6 +31,8 @@ void ofxAudioUnitChain::toMixer() {
     }
 
     toMixer(unitEndpoint);
+    loadPresets();
+    return *this;
 }
 
 ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit) {

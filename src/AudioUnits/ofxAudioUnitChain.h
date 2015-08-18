@@ -11,8 +11,8 @@ public:
     virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
     void loadPresets();
     void exit();
-    void toMixer(ofxAudioUnit* chainEndpoint);
-    void toMixer();
+    ofxAudioUnitChain& toMixer(ofxAudioUnit* chainEndpoint);
+    ofxAudioUnitChain& toMixer();
     ofxAudioUnitChain& link(ofxManagedAudioUnit* unit);
     ofxAudioUnitChain& link(ofxManagedAudioUnit* unit, string unitName);
     ofxAudioUnitChain& to(ofxManagedAudioUnit* unit);

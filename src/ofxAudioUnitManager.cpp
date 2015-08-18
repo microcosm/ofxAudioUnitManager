@@ -8,7 +8,7 @@ void ofxAudioUnitManager::setup() {
     output.start();
 }
 
-void ofxAudioUnitManager::add(ofxAudioUnitChain *chain, string name, ofColor color) {
+ofxAudioUnitChain& ofxAudioUnitManager::add(ofxAudioUnitChain *chain, string name, ofColor color) {
     int index = chains.size();
     if(name == "") {
         name = "chain" + ofToString(index + 1);
@@ -18,6 +18,7 @@ void ofxAudioUnitManager::add(ofxAudioUnitChain *chain, string name, ofColor col
     userInterface.addChain();
     mixer.setInputBusCount(index + 1);
     selectChain(index);
+    return *chain;
 }
 
 void ofxAudioUnitManager::loadPresets(ofxAudioUnitChain *chain) {
