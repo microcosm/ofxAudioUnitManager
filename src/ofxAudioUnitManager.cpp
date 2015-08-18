@@ -82,6 +82,10 @@ void ofxAudioUnitManager::decrementSelectedChain() {
     selectChain(index);
 }
 
+vector<ofxAudioUnitChain*> ofxAudioUnitManager::allChains() {
+    return chains;
+}
+
 void ofxAudioUnitManager::selectChain(int index) {
     for(int i = 0; i < chains.size(); i++) {
         i == index ? chains.at(i)->select() : chains.at(i)->deselect();

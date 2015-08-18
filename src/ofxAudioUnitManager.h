@@ -15,6 +15,7 @@ public:
     void toggleDebugUI();
     void incrementSelectedChain();
     void decrementSelectedChain();
+    vector<ofxAudioUnitChain*> allChains();
 
 protected:
     void selectChain(int index);
