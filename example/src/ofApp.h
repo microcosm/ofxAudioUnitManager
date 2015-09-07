@@ -26,11 +26,11 @@ public:
     void gotMessage(ofMessage msg);
 
     ofxAudioUnitManager manager;
-    ofxAudioUnitChain chain1, chain2;
-    ofxManagedAudioUnit noiseMaker1, noiseMaker2;
-    ofxManagedAudioUnit filter1, filter2, filter3;
-    ofxManagedAudioUnit reverb1, reverb2;
+    ofxAudioUnitChain myChain, chain2;
+    ofxManagedAudioUnit mySynth, noiseMaker2;
+    ofxManagedAudioUnit myFilter, filter2, filter3;
+    ofxManagedAudioUnit myReverb, reverb2;
 
-    bool playing;
+    bool playing, on;
     int note;
 };

@@ -2,6 +2,7 @@
 
 void ofApp::setup(){
     playing = false;
+    on = true;
     note = 60;
 
     //Setup the manager, and since this is a demo, let's start
@@ -12,15 +13,15 @@ void ofApp::setup(){
     //For each chain:
     //--------------
     //1. Setup some units
-    noiseMaker1.setup("Noise 1", 'aumu', 'ncut', 'TOGU');
-    filter1.setup("Filter 1", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
-    reverb1.setup("Reverb 1", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+    mySynth.setup("My Synth", 'aumu', 'ncut', 'TOGU');
+    myFilter.setup("My Filter", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    myReverb.setup("My Reverb", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
     //2. Have the manager init the chain with a name
-    manager.createChain(&chain1)
-           .link(&noiseMaker1)
-           .to(&filter1)
-           .to(&reverb1)
+    manager.createChain(&myChain)
+           .link(&mySynth)
+           .to(&myFilter)
+           .to(&myReverb)
            .toMixer();
 
     //That's it!
@@ -45,15 +46,20 @@ void ofApp::setup(){
 
 void ofApp::play(void){
     if(playing) {
-        chain1.sendMidiOn(note);
-        chain2.sendMidiOn(note);
+        if(on) {
+            myChain.sendMidiOn(note);
+            on = false;
+        } else {
+            chain2.sendMidiOn(note);
+            on = true;
+        }
     }
 }
 
 void ofApp::togglePlaying() {
     playing = !playing;
     if(!playing) {
-        chain1.sendMidiOff(note);
+        myChain.sendMidiOff(note);
         chain2.sendMidiOff(note);
     }
 }
