@@ -11,7 +11,7 @@ class ofxManagedAudioUnit {
 
 public:
     string getClassName();
-    virtual void setup();
+    void setup(string _unitName, OSType type, OSType subType, OSType manufacturer=kAudioUnitManufacturer_Apple, string _className="");
     void setup(OSType type, OSType subType, OSType manufacturer=kAudioUnitManufacturer_Apple, string _className="");
     void setup(OSType type, OSType subType, OSType manufacturer, AudioUnitType _type, string _className="");
     void showUI(string chainname, int chainIndex, int numChains, int unitIndex, int numUnits);
@@ -22,7 +22,6 @@ public:
     ofxAudioUnit* getUnit();
     AudioUnitType getType();
     bool isSynth();
-    bool hasBeenSetup();
 protected:
     string stringify(OSType type, OSType subType, OSType manufacturer);
     string stringify(OSType code);
@@ -30,5 +29,4 @@ protected:
     AudioUnitType type;
     string className, unitName;
     int x, y;
-    bool isSetup = false;
 };

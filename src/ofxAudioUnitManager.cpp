@@ -3,7 +3,7 @@
 void ofxAudioUnitManager::setup() {
     showDebugUI = false;
     userInterface.setup();
-    compressor.setup();
+    compressor.setup(kAudioUnitType_Effect, kAudioUnitSubType_DynamicsProcessor);
     mixer.connectTo(*compressor.getUnit()).connectTo(output);
     output.start();
 }

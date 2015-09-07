@@ -4,9 +4,6 @@
 #include "ofxAudioUnit.h"
 #include "ofxAudioUnitManager.h"
 #include "ofxBpm.h"
-#include "TALNoiseMaker.h"
-#include "LowPassFilter.h"
-#include "Reverb.h"
 
 class ofApp : public ofBaseApp{
     

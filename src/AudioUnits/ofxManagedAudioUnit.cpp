@@ -4,6 +4,12 @@ string ofxManagedAudioUnit::getClassName() {
     return className;
 }
 
+void ofxManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
+                                string _className) {
+    setUnitName(_unitName);
+    setup(type, subType, manufacturer, _className);
+}
+
 void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
                                 string _className) {
     unit = ofxAudioUnit(type, subType, manufacturer);
@@ -12,17 +18,12 @@ void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer
     if(className == "") {
         className = stringify(type, subType, manufacturer);
     }
-    isSetup = true;
 }
 
 void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
                                 AudioUnitType _type, string _className) {
     this->type = _type;
     setup(type, subType, manufacturer, _className);
-}
-
-void ofxManagedAudioUnit::setup() {
-    isSetup = true;
 }
 
 void ofxManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {
@@ -62,10 +63,6 @@ AudioUnitType ofxManagedAudioUnit::getType() {
 
 bool ofxManagedAudioUnit::isSynth() {
     return type == AU_TYPE_SYNTH;
-}
-
-bool ofxManagedAudioUnit::hasBeenSetup() {
-    return isSetup;
 }
 
 string ofxManagedAudioUnit::stringify(OSType type, OSType subType, OSType manufacturer) {

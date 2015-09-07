@@ -40,9 +40,6 @@ ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit) {
 }
 
 ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit, string unitName) {
-    if(!unit->hasBeenSetup()) {
-        unit->setup();
-    }
     unit->getType() == AU_TYPE_SYNTH ?
         loadSynth(unit, unitName) : loadUnit(unit, unitName);
     return *this;

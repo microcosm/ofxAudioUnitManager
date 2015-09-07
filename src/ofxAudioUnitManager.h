@@ -1,7 +1,6 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxAudioUnitChain.h"
-#include "Compressor.h"
 #include "UIHandler.h"
 
 class ofxAudioUnitManager {
@@ -25,7 +24,7 @@ protected:
     void showAllUIs();
     void showMixerUI();
     
-    Compressor compressor;
+    ofxManagedAudioUnit compressor;
     UIHandler userInterface;
     ofxAudioUnitMixer mixer;
     ofxAudioUnitOutput output;
