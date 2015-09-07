@@ -36,21 +36,13 @@ ofxAudioUnitChain& ofxAudioUnitChain::toMixer() {
 }
 
 ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit) {
-    return link(unit, "");
-}
-
-ofxAudioUnitChain& ofxAudioUnitChain::link(ofxManagedAudioUnit* unit, string unitName) {
     unit->getType() == AU_TYPE_SYNTH ?
-        loadSynth(unit, unitName) : loadUnit(unit, unitName);
+        loadSynth(unit) : loadUnit(unit);
     return *this;
 }
 
 ofxAudioUnitChain& ofxAudioUnitChain::to(ofxManagedAudioUnit* unit) {
     return link(unit);
-}
-
-ofxAudioUnitChain& ofxAudioUnitChain::to(ofxManagedAudioUnit* unit, string unitName) {
-    return link(unit, unitName);
 }
 
 void ofxAudioUnitChain::showUI(int chainIndex, int numChains){
@@ -132,13 +124,12 @@ ofColor ofxAudioUnitChain::getColor() {
     return waveColor;
 }
 
-void ofxAudioUnitChain::loadUnit(ofxManagedAudioUnit* unit, string unitName) {
-    unit->setUnitName(unitName);
-    presetsHandler.add(unit, unitName);
+void ofxAudioUnitChain::loadUnit(ofxManagedAudioUnit* unit) {
+    presetsHandler.add(unit);
     units.push_back(unit);
 }
 
-void ofxAudioUnitChain::loadSynth(ofxManagedAudioUnit* _synth, string unitName) {
-    loadUnit(_synth, unitName);
+void ofxAudioUnitChain::loadSynth(ofxManagedAudioUnit* _synth) {
+    loadUnit(_synth);
     midiHandler.setup(_synth->getUnit(), chainName);
 }

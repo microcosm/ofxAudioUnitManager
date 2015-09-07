@@ -12,9 +12,9 @@ void ofApp::setup(){
     //For each chain:
     //--------------
     //1. Setup some units
-    noiseMaker1.setup('aumu', 'ncut', 'TOGU');
-    filter1.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
-    reverb1.setup(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+    noiseMaker1.setup("Noise 1", 'aumu', 'ncut', 'TOGU');
+    filter1.setup("Filter 1", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    reverb1.setup("Reverb 1", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
     //2. Have the manager init the chain with a name
     manager.add(&chain1);
@@ -30,19 +30,19 @@ void ofApp::setup(){
     //--------------
     
     //Now repeat for every chain you want to create
-    noiseMaker2.setup('aumu', 'ncut', 'TOGU');
-    filter2.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
-    filter3.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
-    reverb2.setup(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+    noiseMaker2.setup("Noise 2", 'aumu', 'ncut', 'TOGU');
+    filter2.setup("Filter 2", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    filter3.setup("Filter 3", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    reverb2.setup("Reverb 2", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
     manager.add(&chain2);
 
-    chain2.link(&noiseMaker2)       //If you want to use the same type of
-          .to(&filter2, "filter2")  //unit more than once in a chain, you
-          .to(&filter3, "filter3")  //should disambiguate by adding a name.
-          .to(&reverb2)             //This allows you to keep using the same
-          .toMixer();               //presets even if you later switch the
-                                    //unit order.
+    chain2.link(&noiseMaker2)
+          .to(&filter2)   //Note you can have two units of
+          .to(&filter3)   //the same type in the same chain
+          .to(&reverb2)
+          .toMixer();
+
     manager.loadPresets(&chain2);
 
     //Use ofxBpm to regularly schedule MIDI events

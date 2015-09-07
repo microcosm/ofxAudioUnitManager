@@ -14,9 +14,7 @@ public:
     ofxAudioUnitChain& toMixer(ofxAudioUnit* chainEndpoint);
     ofxAudioUnitChain& toMixer();
     ofxAudioUnitChain& link(ofxManagedAudioUnit* unit);
-    ofxAudioUnitChain& link(ofxManagedAudioUnit* unit, string unitName);
     ofxAudioUnitChain& to(ofxManagedAudioUnit* unit);
-    ofxAudioUnitChain& to(ofxManagedAudioUnit* unit, string unitName);
     void showUI(int chainIndex, int numChains);
     void showSynthUI(int chainIndex, int numChains);
     bool isSelected();
@@ -34,8 +32,8 @@ public:
     ofColor getColor();
 
 protected:
-    void loadUnit(ofxManagedAudioUnit* unit, string unitName);
-    void loadSynth(ofxManagedAudioUnit* synth, string unitName);
+    void loadUnit(ofxManagedAudioUnit* unit);
+    void loadSynth(ofxManagedAudioUnit* synth);
 
     ofxAudioUnitTap tapUnit;
     ofPolyline waveform1, waveform2;

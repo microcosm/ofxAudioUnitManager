@@ -1,17 +1,8 @@
 #include "ofxManagedAudioUnit.h"
 
-string ofxManagedAudioUnit::getClassName() {
-    return className;
-}
-
 void ofxManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
                                 string _className) {
-    setUnitName(_unitName);
-    setup(type, subType, manufacturer, _className);
-}
-
-void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
-                                string _className) {
+    unitName = _unitName;
     unit = ofxAudioUnit(type, subType, manufacturer);
     this->type = stringify(type) == "aumu" ? AU_TYPE_SYNTH : AU_TYPE_UNIT;
     className = _className;
@@ -20,22 +11,12 @@ void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer
     }
 }
 
-void ofxManagedAudioUnit::setup(OSType type, OSType subType, OSType manufacturer,
-                                AudioUnitType _type, string _className) {
-    this->type = _type;
-    setup(type, subType, manufacturer, _className);
-}
-
 void ofxManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {
     x = ofMap(chainIndex, 0, numChains - 1, 0, ofGetScreenWidth() * 0.5);
     y = ofMap(unitIndex, 0, numUnits - 1, 0, ofGetScreenHeight() * 0.5);
     unit.showUI(chainName + ": " +
                 unitName + (unitName.length() > 0 ? " " : "") +
                 className, x, y);
-}
-
-void ofxManagedAudioUnit::setUnitName(string name) {
-    unitName = name;
 }
 
 void ofxManagedAudioUnit::set(int param, float value) {
@@ -59,6 +40,14 @@ ofxAudioUnit* ofxManagedAudioUnit::getUnit() {
 
 AudioUnitType ofxManagedAudioUnit::getType() {
     return type;
+}
+
+string ofxManagedAudioUnit::getUnitName() {
+    return unitName;
+}
+
+string ofxManagedAudioUnit::getClassName() {
+    return className;
 }
 
 bool ofxManagedAudioUnit::isSynth() {

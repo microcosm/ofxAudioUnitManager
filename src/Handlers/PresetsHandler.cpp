@@ -31,9 +31,9 @@ void PresetsHandler::load(int presetIndex) {
     }
 }
 
-void PresetsHandler::add(ofxManagedAudioUnit* unit, string unitName) {
+void PresetsHandler::add(ofxManagedAudioUnit* unit) {
     units.push_back(unit);
-    unitNames.push_back(unitName);
+    unitNames.push_back(unit->getUnitName());
 }
 
 void PresetsHandler::saveNew() {

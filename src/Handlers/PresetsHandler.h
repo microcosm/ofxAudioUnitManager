@@ -5,9 +5,9 @@
 class PresetsHandler{
 
 public:
-    void setup(string synthName);
+    void setup(string _chainName);
     void load(int index);
-    void add(ofxManagedAudioUnit* unit, string unitName);
+    void add(ofxManagedAudioUnit* unit);
     void saveNew();
     void saveOverwrite();
     void rename();
