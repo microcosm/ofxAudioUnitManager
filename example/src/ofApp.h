@@ -30,9 +30,9 @@ public:
 
     ofxAudioUnitManager manager;
     ofxAudioUnitChain chain1, chain2;
-    TALNoiseMaker noiseMaker1, noiseMaker2;
-    LowPassFilter filter1, filter2, filter3;
-    Reverb reverb1, reverb2;
+    ofxManagedAudioUnit noiseMaker1, noiseMaker2;
+    ofxManagedAudioUnit filter1, filter2, filter3;
+    ofxManagedAudioUnit reverb1, reverb2;
 
     ofxBpm bpm;
     bool playing;

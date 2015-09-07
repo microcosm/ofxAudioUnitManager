@@ -11,20 +11,30 @@ void ofApp::setup(){
 
     //For each chain:
     //--------------
-    //1. Have the manager init the chain with a name & color
+    //1. Setup some units
+    noiseMaker1.setup('aumu', 'ncut', 'TOGU');
+    filter1.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    reverb1.setup(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+
+    //2. Have the manager init the chain with a name & color
     manager.add(&chain1, "tal-one", ofColor::blue);
     
-    //2. Load units in order
+    //3. Load units in order
     chain1.link(&noiseMaker1)
           .to(&filter1)
           .to(&reverb1)
           .toMixer();
     
-    //3. Read presets from disk (if any)
+    //4. Read presets from disk (if any)
     manager.loadPresets(&chain1);
     //--------------
     
     //Now repeat for every chain you want to create
+    noiseMaker2.setup('aumu', 'ncut', 'TOGU');
+    filter2.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    filter3.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    reverb2.setup(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+
     manager.add(&chain2, "tal-two", ofColor::red);
 
     chain2.link(&noiseMaker2)       //If you want to use the same type of
