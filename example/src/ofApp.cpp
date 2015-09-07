@@ -39,8 +39,8 @@ void ofApp::setup(){
            .toMixer();
 
     //Use ofxBpm to regularly schedule MIDI events
-    ofAddListener(bpm.beatEvent, this, &ofApp::play);
-    bpm.start();
+    ofAddListener(manager.bpm.beatEvent, this, &ofApp::play);
+    manager.bpm.start();
 }
 
 void ofApp::play(void){

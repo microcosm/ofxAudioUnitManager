@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxAudioUnitChain.h"
+#include "ofxBpm.h"
 #include "UIHandler.h"
 
 class ofxAudioUnitManager {
@@ -15,6 +16,7 @@ public:
     void incrementSelectedChain();
     void decrementSelectedChain();
     vector<ofxAudioUnitChain*> allChains();
+    ofxBpm bpm;
 
 protected:
     void selectChain(int index);

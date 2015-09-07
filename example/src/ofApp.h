@@ -31,7 +31,6 @@ public:
     ofxManagedAudioUnit filter1, filter2, filter3;
     ofxManagedAudioUnit reverb1, reverb2;
 
-    ofxBpm bpm;
     bool playing;
     int note;
 };
