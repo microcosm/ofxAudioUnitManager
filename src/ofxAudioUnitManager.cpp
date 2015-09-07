@@ -48,17 +48,17 @@ void ofxAudioUnitManager::exit() {
 void ofxAudioUnitManager::keyPressed(int key) {
     if (key == 'u') {
         showSelectedChainUI();
-    } else if (key == 'a') {
-        showAllUIs();
     } else if (key == 'A') {
+        showAllUIs();
+    } else if (key == 'a') {
         showAllSynthUIs();
     } else if (key == 'm') {
         showMixerUI();
     } else if(key == 'v') {
         toggleDebugUI();
-    } else if(key == 's') {
-        selectedChain->presets()->saveOverwrite();
     } else if(key == 'S') {
+        selectedChain->presets()->saveOverwrite();
+    } else if(key == 's') {
         selectedChain->presets()->saveNew();
     } else if(key == 'r') {
         selectedChain->presets()->rename();
