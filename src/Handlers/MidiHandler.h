@@ -7,11 +7,11 @@
 class MidiHandler{
 
 public:
-    void setup(ofxAudioUnit* synth, string midiPortId);
+    void setup(ofxAudioUnit* synth, ofxMidiOut* midiOut, string midiPortId);
     ofxMidiOut* midi();
     void exit();
 protected:
     ofxAudioUnit* synth;
     ofxAudioUnitMidiReceiver midiReceiver;
-    ofxMidiOut midiOut;
+    ofxMidiOut* midiOut;
 };

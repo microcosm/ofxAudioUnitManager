@@ -20,7 +20,6 @@ public:
     bool isSelected();
     void select();
     void deselect();
-    ofxMidiOut* midi();
     void sendMidiOn(int note);
     void sendMidiOff(int note);
     ofxAudioUnitTap* tap();
@@ -30,6 +29,7 @@ public:
     string getClassName();
     string getName();
     ofColor getColor();
+    ofxMidiOut midi;
 
 protected:
     void loadUnit(ofxManagedAudioUnit* unit);

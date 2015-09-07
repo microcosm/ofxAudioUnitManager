@@ -73,17 +73,13 @@ void ofxAudioUnitChain::deselect() {
     presetsHandler.deselect();
 }
 
-ofxMidiOut* ofxAudioUnitChain::midi() {
-    return midiHandler.midi();
-}
-
 void ofxAudioUnitChain::sendMidiOn(int note) {
-    midiHandler.midi()->sendNoteOn(1, note);
+    midi.sendNoteOn(1, note);
     midiEvents.push_back("[ON: " + ofToString(note) + "]");
 }
 
 void ofxAudioUnitChain::sendMidiOff(int note) {
-    midiHandler.midi()->sendNoteOff(1, note);
+    midi.sendNoteOff(1, note);
     midiEvents.push_back("[OFF: " + ofToString(note) + "]");
 }
 
@@ -131,5 +127,5 @@ void ofxAudioUnitChain::loadUnit(ofxManagedAudioUnit* unit) {
 
 void ofxAudioUnitChain::loadSynth(ofxManagedAudioUnit* _synth) {
     loadUnit(_synth);
-    midiHandler.setup(_synth->getUnit(), chainName);
+    midiHandler.setup(_synth->getUnit(), &midi, chainName);
 }
