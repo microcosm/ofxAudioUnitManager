@@ -16,8 +16,8 @@ void ofApp::setup(){
     filter1.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     reverb1.setup(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
-    //2. Have the manager init the chain with a name & color
-    manager.add(&chain1, "tal-one", ofColor::blue);
+    //2. Have the manager init the chain with a name
+    manager.add(&chain1, "tal-one");
     
     //3. Load units in order
     chain1.link(&noiseMaker1)
@@ -35,7 +35,7 @@ void ofApp::setup(){
     filter3.setup(kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     reverb2.setup(kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
-    manager.add(&chain2, "tal-two", ofColor::red);
+    manager.add(&chain2, "tal-two");
 
     chain2.link(&noiseMaker2)       //If you want to use the same type of
           .to(&filter2, "filter2")  //unit more than once in a chain, you
