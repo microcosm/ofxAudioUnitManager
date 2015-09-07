@@ -98,9 +98,9 @@ PresetsHandler* ofxAudioUnitChain::presets() {
 string ofxAudioUnitChain::getUnitReport() {
     report = "";
     for(int i = 0; i < units.size(); i++) {
-        report += "[" + units.at(i)->getClassName() + "]->\n";
+        report += (i > 0 ? "" : "") + ("\"" + units.at(i)->getUnitName() + "\" ->\n");
     }
-    return report + "[Mixer]";
+    return report + " Compressor/Mixer";
 }
 
 string ofxAudioUnitChain::getMidiReport() {
