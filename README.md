@@ -12,40 +12,36 @@ The purpose of this addon is to make it easy to experiment with sound design in 
 
 To do this, the addon automates tasks associated with using `ofxAudioUnit` that are not related to sound design. It then puts in place a helpful interface allowing you to experiment, save and experiment more, often without recompiling.
 
-How to design a chain
----------------------
-Declare the manager and the units you would like to use in the header file. The classes below are all bundled with `ofxAudioUnitManager`, each wrapping `ofxAudioUnit` classes to simplify their usage:
+How to create an audio unit chain
+---------------------------------
+Any chain you create will be made up of a number of units in sequence. The first unit in the sequence will be a synth, or sound-generating unit. The subsequent units will be filters or other types of processing units that modulate the audio signal they recieve from the prior unit in the chain, whether that's the synth or another filter.
 
+First, the declarations:
 ```cpp
     ofxAudioUnitManager manager;
-    AudioUnitChain chain;
-    TALNoiseMaker noiseMaker;
-    LowPassFilter filter;
-    Reverb reverb;
+    ofxAudioUnitChain myChain;
+    ofxManagedAudioUnit mySynth, myFilter, myReverb;
 ```
 
-Over in the `cpp` file you can declare and initialise a chain in three easy steps. First, have the manager set up the chain with a name and a colour:
-
+Second, define the synths (and give them a unique name):
 ```cpp
-    manager.add(&chain, "tal-one", ofColor::blue);
+    mySynth.setup("My Synth", 'aumu', 'ncut', 'TOGU');
+    myFilter.setup("My Filter", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
+    myReverb.setup("My Reverb", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 ```
 
-Then, load the units into the chain, in the order you would like them connected:
-
+Third, link the units to make a chain:
 ```cpp
-    chain.link(&noiseMaker)
-         .to(&filter)
-         .to(&reverb)
-         .toMixer();
+    manager.createChain(&myChain)
+           .link(&mySynth)
+           .to(&myFilter)
+           .to(&myReverb)
+           .toMixer();
 ```
 
-Finally, now that the units are loaded you can read presets from disk:
+That's it. Your chain is good to go.
 
-```cpp
-    manager.loadPresets(&chain);
-```
-
-That's all you need to do. This code will give you the blue chain shown in the image above.
+Those of you who used this addon prior to version 0.2.0 will notice how much simpler this now is to use.
 
 Managing presets
 ----------------
@@ -55,51 +51,9 @@ On the disk, presets are saved in `bin/data` in a directory named `AudioUnitPres
 
 ![How the filesystem is organised](images/finder.png)
 
-Inside `AudioUnitPresets` each chain has a folder (named when you initialise the chain in your code). Inside each chain folder are directories for each of the presets. These you save and name from the `ofxAudioUnitManager` user interface.
+Inside `AudioUnitPresets` each chain has a folder. Inside each chain folder are directories for each of the presets. These you save and name from the `ofxAudioUnitManager` user interface.
 
 Inside each preset folder are the individual preset files, one for each unit in the chain.
-
-Changing the unit order
------------------------
-You are free to experiment with the order of your chain without losing your presets. For example let's imagine you start off with this chain, and save a selection of presets:
-
-```cpp
-    chain.link(&noiseMaker)
-         .to(&filter)   //presets saved as ../preset-name/LowPassFilter.aupreset
-         .to(&reverb)   //presets saved as ../preset-name/Reverb.aupreset
-         .toMixer();
-```
-
-Later you decide to switch the filter and reverb:
-
-```cpp
-    chain.link(&noiseMaker)
-         .to(&reverb)   //presets saved as ../preset-name/Reverb.aupreset
-         .to(&filter)   //presets saved as ../preset-name/LowPassFilter.aupreset
-         .toMixer();
-```
-
-The presets you originally created will still apply to the correct units as they are named after the class name of the unit.
-
-Naming your units
------------------
-The only complication with the storage technique described above is if you want to chain two units of the same type. In this scenario it is best to name the units with string arguments:
-
-```cpp
-    LowPassFilter filter1, filter2;
-
-    chain.link(&noiseMaker)
-         .to(&filter1, "filter1") //presets saved as filter1_LowPassFilter.aupreset
-         .to(&filter2, "filter2") //presets saved as filter2_LowPassFilter.aupreset
-         .to(&reverb)
-         .toMixer();
-```
-
-This will prevent naming conflicts when the manager attempts to load and save presets.
-
-If you decide to add or change a unit's name after you have already been using it, remember to go into the preset folders and update the names there too. Otherwise the manager will generate new preset files the next time you run it.
-
-In this circumstance, the new and old preset files will sit alongside each other on the disk. However only the new preset files will be used by the manager.
 
 Sending MIDI to your chains
 ---------------------------
@@ -116,44 +70,6 @@ This addon uses [ofxBpm](https://github.com/mirrorboy714/ofxBpm) and [ofxMidi](h
 ```
 
 Each chain sets up an `ofxMidi` instance and provides access for you to manipulate it.
-
-Adding new units
-----------------
-Each time you want to work with new Audio Units in `ofxAudioUnitManager`, you will have to create a new class. However, all of the hard work is taken care of in the base class `AudioUnitBase`, and your class only need contain a few lines:
-
-```cpp
-    void TALNoiseMaker::setup() {
-        unit = ofxAudioUnit('aumu', 'ncut', 'TOGU');
-        type = AU_TYPE_SYNTH;
-        className = "TALNoiseMaker";
-        AudioUnitBase::setup();
-    }
-```
-
-The header file is similarly sparse. As a convention the supported parameter list for each unit is listed as `const`s in the header:
-
-```cpp
-    class TALNoiseMaker : public AudioUnitBase {
-    public:
-        void setup();
-    };
-
-    const static int TALNoiseMaker_volume = 1;
-    const static int TALNoiseMaker_filtertype = 2;
-    const static int TALNoiseMaker_cutoff = 3;
-    //.. etc for all parameters
-```
-
-This enables you to quickly find and set parameters in your general code:
-
-```cpp
-    float cutoff = ofMap(sin(ofGetFrameNum() * 0.05), -1, 1, 0, 1);
-    noiseMaker.set(TALNoiseMaker_cutoff, cutoff); //Automate the parameter
-```
-
-In practice only takes a moment to create these classes, using the existing classes as a template.
-
-Obviously there's a world of Audio Units out there and this addon only has a small subset. If you would like to contribute, you can send pull requests with additional units that you use.
 
 Known issues
 ------------
