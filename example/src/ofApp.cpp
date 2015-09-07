@@ -17,7 +17,7 @@ void ofApp::setup(){
     reverb1.setup("Reverb 1", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
     //2. Have the manager init the chain with a name
-    manager.add(&chain1);
+    manager.createChain(&chain1);
     
     //3. Load units in order
     chain1.link(&noiseMaker1)
@@ -35,7 +35,7 @@ void ofApp::setup(){
     filter3.setup("Filter 3", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     reverb2.setup("Reverb 2", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
-    manager.add(&chain2);
+    manager.createChain(&chain2);
 
     chain2.link(&noiseMaker2)
           .to(&filter2)   //Note you can have two units of

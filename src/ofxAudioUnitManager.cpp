@@ -8,7 +8,7 @@ void ofxAudioUnitManager::setup() {
     output.start();
 }
 
-ofxAudioUnitChain& ofxAudioUnitManager::add(ofxAudioUnitChain *chain, string name, ofColor color) {
+ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, string name, ofColor color) {
     int index = chains.size();
     if(name == "") {
         name = "chain" + ofToString(index + 1);
