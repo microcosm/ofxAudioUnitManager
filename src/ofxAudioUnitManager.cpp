@@ -27,6 +27,9 @@ void ofxAudioUnitManager::loadPresets(ofxAudioUnitChain *chain) {
 }
 
 void ofxAudioUnitManager::draw() {
+    if(ofGetFrameNum() == 0) {
+        selectChain(0);
+    }
     if(showDebugUI) {
         ofSetColor(ofColor::black, 180);
         ofFill();

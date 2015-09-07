@@ -17,17 +17,13 @@ void ofApp::setup(){
     reverb1.setup("Reverb 1", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
     //2. Have the manager init the chain with a name
-    manager.createChain(&chain1);
-    
-    //3. Load units in order
-    chain1.link(&noiseMaker1)
-          .to(&filter1)
-          .to(&reverb1)
-          .toMixer();
-    
-    //4. Read presets from disk (if any)
-    manager.loadPresets(&chain1);
-    //--------------
+    manager.createChain(&chain1)
+           .link(&noiseMaker1)
+           .to(&filter1)
+           .to(&reverb1)
+           .toMixer();
+
+    //That's it!
     
     //Now repeat for every chain you want to create
     noiseMaker2.setup("Noise 2", 'aumu', 'ncut', 'TOGU');
@@ -35,15 +31,12 @@ void ofApp::setup(){
     filter3.setup("Filter 3", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     reverb2.setup("Reverb 2", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
 
-    manager.createChain(&chain2);
-
-    chain2.link(&noiseMaker2)
-          .to(&filter2)   //Note you can have two units of
-          .to(&filter3)   //the same type in the same chain
-          .to(&reverb2)
-          .toMixer();
-
-    manager.loadPresets(&chain2);
+    manager.createChain(&chain2)
+           .link(&noiseMaker2)
+           .to(&filter2)   //Note you can have two units of
+           .to(&filter3)   //the same type in the same chain
+           .to(&reverb2)
+           .toMixer();
 
     //Use ofxBpm to regularly schedule MIDI events
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
