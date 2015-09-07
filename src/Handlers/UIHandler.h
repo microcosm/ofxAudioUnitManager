@@ -23,9 +23,10 @@ protected:
 
     ofxAudioUnitTap* tap;
     ofPolyline leftWaveform, rightWaveform;
-    int padding, lastMidiRecieved, midiReceiptTimeout;
+    int padding, midiReceiptTimeout;
     string tempMidiReport;
     vector<string> reports;
+    vector<int> lastMidiRecieved;
     
     ofVec2f midiInfoPositions, midiInfoDimensions;
     ofVec2f chainInfoPositions, chainInfoDimensions;

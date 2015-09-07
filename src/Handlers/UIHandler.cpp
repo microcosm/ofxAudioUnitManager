@@ -1,8 +1,7 @@
 #include "UIHandler.h"
 
 void UIHandler::setup() {
-    midiReceiptTimeout = ofGetFrameRate();
-    lastMidiRecieved = midiReceiptTimeout + 1;
+    midiReceiptTimeout = 15;
     padding = 10;
     controlsDimensions = ofVec2f(300, 340);
     chainInfoDimensions = ofVec2f(220, 340);
@@ -17,6 +16,7 @@ void UIHandler::setup() {
 
 void UIHandler::addChain() {
     reports.push_back("");
+    lastMidiRecieved.push_back(midiReceiptTimeout + 1);
 }
 
 void UIHandler::drawControls() {
@@ -129,10 +129,10 @@ string UIHandler::midiReport(ofxAudioUnitChain *chain, int index) {
     tempMidiReport = chain->getMidiReport();
     if(tempMidiReport.length() > 0) {
         reports[index] = tempMidiReport;
-        lastMidiRecieved = 0;
+        lastMidiRecieved[index] = 0;
     } else {
-        lastMidiRecieved++;
+        lastMidiRecieved[index]++;
     }
-    ofSetColor(ofMap(lastMidiRecieved, 0, midiReceiptTimeout, 255, 0));
+    ofSetColor(ofMap(lastMidiRecieved[index], 0, midiReceiptTimeout, 255, 0));
     return reports[index];
 }
