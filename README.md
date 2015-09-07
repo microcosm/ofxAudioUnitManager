@@ -4,17 +4,19 @@ This addon is a leightweight manager for Adam Carlucci's excellent [ofxAudioUnit
 
 ![A screenshot of ofxAudioUnitManager](images/ofxAudioUnitManager.png)
 
-You can show and hide the control panel above by hitting 'v'.
+If you implement `ofxAudioUnitManager` in your sketch, you can show and hide the overlay above by hitting 'v'.
 
-What is this addon for?
------------------------
-The purpose of this addon is to make it easy to experiment with sound design in your apps.
+Why do I need a manager for ofxAudioUnit?
+-----------------------------------------
+You don't. The original addon on it's own is awesome. I created this addon because I wanted to be able to experiment quickly and fluidly.
 
-To do this, the addon automates tasks associated with using `ofxAudioUnit` that are not related to sound design. It then puts in place a helpful interface allowing you to experiment, save and experiment more, often without recompiling.
+All this manager addon does is automate things you may find yourself doing manually with `ofxAudioUnit`, like connecting units together, saving and managing preset files and sending algorithmic MIDI sequences to synths for playback.
 
-How to create an audio unit chain
+In other words, this addon lets you focus more on sound design, by automating a lot of the boilerplate engineering stuff.
+
+How to create an Audio Unit chain
 ---------------------------------
-Any chain you create will be made up of a number of units in sequence. The first unit in the sequence will be a synth, or sound-generating unit. The subsequent units will be filters or other types of processing units that modulate the audio signal they recieve from the prior unit in the chain, whether that's the synth or another filter.
+A chain is a number of units in sequence. The first unit in the sequence will be a synth, or sound-generating unit. The subsequent units will be filters or other types of processing units that modulate the audio signal they recieve from the prior unit in the chain, whether that's the source synth or another filter in the chain.
 
 First, the declarations:
 ```cpp
@@ -41,35 +43,68 @@ Third, link the units to make a chain:
 
 That's it. Your chain is good to go.
 
-Those of you who used this addon prior to version 0.2.0 will notice how much simpler this now is to use.
+Those of you who used this addon prior to version 0.2.0 will notice how much simpler this is to do now.
 
-Managing presets
-----------------
-Use the `left` and `right` arrow keys at runtime to select different chains. Use the `up` and `down` arrow keys to switch between presets on a chain.
-
-On the disk, presets are saved in `bin/data` in a directory named `AudioUnitPresets`:
-
-![How the filesystem is organised](images/finder.png)
-
-Inside `AudioUnitPresets` each chain has a folder. Inside each chain folder are directories for each of the presets. These you save and name from the `ofxAudioUnitManager` user interface.
-
-Inside each preset folder are the individual preset files, one for each unit in the chain.
-
-Sending MIDI to your chains
----------------------------
-This addon uses [ofxBpm](https://github.com/mirrorboy714/ofxBpm) and [ofxMidi](https://github.com/danomatika/ofxMidi) to allow you to send MIDI sequences at timed intervals.
+How to play notes
+-----------------
+The manager exploses an [ofxBpm](https://github.com/mirrorboy714/ofxBpm) instance, allowing you to declare listeners which will fire at precise moments, such as beat events:
 
 ```cpp
     void ofApp::setup() {
-        ofAddListener(bpm.beatEvent, this, &ofApp::play);
-    }
-
-    void ofApp::play(void){
-        chain.midi()->sendNoteOn(1, 60); //Each chain exposes it's ofxMidi instance
+        ofAddListener(manager.bpm.beatEvent, this, &ofApp::play); //ofxBpm
+        manager.bpm.start();
     }
 ```
 
-Each chain sets up an `ofxMidi` instance and provides access for you to manipulate it.
+Each chain automatically sets up an [ofxMidi](https://github.com/danomatika/ofxMidi) instance for you, allowing you to send commands directly to the source synth of the chain. From there you can do all the usual MIDIish stuff you want to do.
+
+```cpp
+    void ofApp::play(void){
+        myChain.midi.sendNoteOn(1, 60); //ofxMidi
+    }
+```
+
+In the code above we are sending a middle C note on to `myChain` on every beat event. The example sketch does something similar, you can start it by pushing `spacebar`.
+
+How to manage presets
+---------------------
+Once you have cloned this addon and installed the dependencies (see below), you can run the example sketch. While the example is running, use the `left`, `right`, `up` and `down` arrow keys. This will allow you to navigate to a chain and switch presets across all of it's units with a single key press.
+
+Again, while the sketch is running, you can use the following key commands. Note that when synth UIs are launched, they will be distributed neatly across your screen:
+
+Key | Command
+--- | -------
+`A` | Show all UIs for all chains
+`a` | Show all synth UIs
+`m` | Show the mixer UI
+`u` | Show all UIs for the currently selected chain
+`s` | Save current chain state as a new preset
+`S` | Save current preset on current chain (overwrite)
+`r` | Rename preset
+`t` | Send preset to trash
+
+You'll be able to go a long way just using these commands, but at some point you might want to look under the hood.
+
+What's under the hood?
+----------------------
+On the disk, presets are saved in `bin/data` in a directory named `AudioUnitPresets`. When you navigate your presets using the commands above, the addon is just organizing and loading these files for you.
+
+The synth name you use when you setup your unit will be used by the addon to save and load your preset files, so that this:
+
+```cpp
+    mySynth.setup("My Synth", 'aumu', 'ncut', 'TOGU');
+```
+
+Becomes this:
+
+![How the filesystem is organised](images/finder.png)
+
+Now, imagine you've worked a while with one synth name, and you decide to change it to another. The addon won't be able to find it any more, unless you remembered to go and manually rename the files. In the scenario where you did forget, the addon will assume the preset is missing. It will create a new one with the right name, which you will find sat alongside the old one. You can fix this by deleting the new file and renaming the old one.
+
+Don't be afraid
+---------------
+
+The addon never deletes anything, so you won't experience loss through an incorrect key command. If you want to retrieve any previous version of presets you have edited, just take a look in the `AudioUnitPresets/.trash` folder.
 
 Known issues
 ------------
