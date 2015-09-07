@@ -28,7 +28,7 @@ protected:
     void clearPresets();
     string path(string presetName);
     string newTrashPath(string presetName);
-    string filename(ofxManagedAudioUnit* unit, string unitName);
+    string filename(string unitSlug);
     string trim(string presetName);
     void ensureDirectories();
     bool validateName(string newPresetName, int alertDialogException=-1);
@@ -36,7 +36,7 @@ protected:
 
     vector<string> presetNames;
     vector<ofxManagedAudioUnit*> units;
-    vector<string> unitNames;
+    vector<string> unitSlugs;
     vector< vector<ofFile> > presets;
 
     string chainName, storageDir, trashDir;

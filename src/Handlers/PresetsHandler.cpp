@@ -23,7 +23,7 @@ void PresetsHandler::setup(string _chainName){
 void PresetsHandler::load(int presetIndex) {
     string presetPath = path(presetNames.at(presetIndex));
     for(int i = 0; i < units.size(); i++) {
-        string presetFullPath = presetPath + filename(units.at(i), unitNames.at(i));
+        string presetFullPath = presetPath + filename(unitSlugs.at(i));
         if(!ofFile(presetFullPath).exists()) {
             units.at(i)->getUnit()->saveCustomPresetAtPath(presetFullPath);
         }
@@ -33,7 +33,7 @@ void PresetsHandler::load(int presetIndex) {
 
 void PresetsHandler::add(ofxManagedAudioUnit* unit) {
     units.push_back(unit);
-    unitNames.push_back(unit->getUnitName());
+    unitSlugs.push_back(unit->getUnitSlug());
 }
 
 void PresetsHandler::saveNew() {
@@ -57,7 +57,7 @@ void PresetsHandler::rename() {
         if(validateName(newPresetName, currentPreset)) {
             string newPresetPath = path(newPresetName);
             for(int i = 0; i < units.size(); i++) {
-                string newPresetFilename = filename(units.at(i), unitNames.at(i));
+                string newPresetFilename = filename(unitSlugs.at(i));
                 presets.at(currentPreset).at(i).renameTo(newPresetPath + newPresetFilename);
             }
             string oldPresetPath = path(presetNames.at(currentPreset));
@@ -121,7 +121,7 @@ void PresetsHandler::readFromDisk() {
 void PresetsHandler::loadPresetsInChainOrder(string presetName) {
     vector<ofFile> files;
     for(int i = 0; i < units.size(); i++) {
-        files.push_back(ofFile(path(presetName) + filename(units.at(i), unitNames.at(i))));
+        files.push_back(ofFile(path(presetName) + filename(unitSlugs.at(i))));
     }
     presets.push_back(files);
 }
@@ -194,9 +194,8 @@ string PresetsHandler::newTrashPath(string presetName) {
     return trashChainDir.getAbsolutePath() + "/" + presetName + "/";
 }
 
-string PresetsHandler::filename(ofxManagedAudioUnit* unit, string unitName) {
-    return (unitName.length() > 0 ? unitName + "_" : "")
-        + unit->getClassName() + "." + presetExtension;
+string PresetsHandler::filename(string unitSlug) {
+    return unitSlug + "." + presetExtension;
 }
 
 string PresetsHandler::trim(string presetName) {
@@ -241,7 +240,7 @@ void PresetsHandler::save(string presetName) {
     string presetPath = path(presetName);
     dir.createDirectory(presetPath);
     for(int i = 0; i < units.size(); i++) {
-        string presetFilename = filename(units.at(i), unitNames.at(i));
+        string presetFilename = filename(unitSlugs.at(i));
         units.at(i)->getUnit()->saveCustomPresetAtPath(presetPath + presetFilename);
     }
     readFromDisk();

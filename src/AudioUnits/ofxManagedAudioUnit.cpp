@@ -3,6 +3,8 @@
 void ofxManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
                                 string _className) {
     unitName = _unitName;
+    unitSlug = _unitName;
+    ofStringReplace(unitSlug, " ", "_");
     unit = ofxAudioUnit(type, subType, manufacturer);
     this->type = stringify(type) == "aumu" ? AU_TYPE_SYNTH : AU_TYPE_UNIT;
     className = _className;
@@ -44,6 +46,10 @@ AudioUnitType ofxManagedAudioUnit::getType() {
 
 string ofxManagedAudioUnit::getUnitName() {
     return unitName;
+}
+
+string ofxManagedAudioUnit::getUnitSlug() {
+    return unitSlug;
 }
 
 string ofxManagedAudioUnit::getClassName() {
