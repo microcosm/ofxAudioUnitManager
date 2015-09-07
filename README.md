@@ -1,6 +1,6 @@
 ofxAudioUnitManager
 ===================
-This addon is a leightweight manager for Adam Carlucci's excellent [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit). It allows you to manage chains of Audio Units and sets of presets with your keyboard at runtime, and to design new chains with just a few lines of code.
+This addon is a leightweight manager for Adam Carlucci's excellent [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit). It allows you to manage chains of Audio Units and presets with key presses at runtime, and to design new chains with just a few lines of code.
 
 ![A screenshot of ofxAudioUnitManager](images/ofxAudioUnitManager.png)
 
@@ -8,9 +8,9 @@ If you implement `ofxAudioUnitManager` in your sketch, you can show and hide the
 
 Why do I need a manager for ofxAudioUnit?
 -----------------------------------------
-You don't. The original addon on it's own is awesome. I created this addon because I wanted to be able to experiment quickly and fluidly.
+You don't. The original addon on is awesome and lets you do great things with Audio Units.
 
-All this manager addon does is automate things you may find yourself doing manually with `ofxAudioUnit`, like connecting units together, saving and managing preset files and sending algorithmic MIDI sequences to synths for playback.
+I created this addon because I wanted to be able to experiment with sound quickly and fluidly. What `ofxAudioUnitManager` does is automate things you may find yourself doing manually with `ofxAudioUnit`, like connecting units together, saving and managing preset files and sending algorithmic MIDI sequences to synths for playback.
 
 In other words, this addon lets you focus more on sound design, by automating a lot of the boilerplate engineering stuff.
 
@@ -56,7 +56,7 @@ The manager exploses an [ofxBpm](https://github.com/mirrorboy714/ofxBpm) instanc
     }
 ```
 
-Each chain automatically sets up an [ofxMidi](https://github.com/danomatika/ofxMidi) instance for you, allowing you to send commands directly to the source synth of the chain. From there you can do all the usual MIDIish stuff you want to do.
+Each chain automatically sets up an [ofxMidi](https://github.com/danomatika/ofxMidi) instance for you, allowing you to send commands directly to the source synth of the chain. From there you can do all the usual MIDI stuff.
 
 ```cpp
     void ofApp::play(void){
@@ -99,7 +99,9 @@ Becomes this:
 
 ![How the filesystem is organised](images/finder.png)
 
-Now, imagine you've worked a while with one synth name, and you decide to change it to another. The addon won't be able to find it any more, unless you remembered to go and manually rename the files. In the scenario where you did forget, the addon will assume the preset is missing. It will create a new one with the right name, which you will find sat alongside the old one. You can fix this by deleting the new file and renaming the old one.
+Now, imagine you've worked a while with one synth name, and you decide to change it to another. The addon won't be able to find it any more, unless you remembered to go and manually rename the files.
+
+In this scenario, the addon will assume the preset is missing. It will create a new one with the right name, which you will find sat alongside the old one. You can fix this by deleting the new file and renaming the old one.
 
 Don't be afraid
 ---------------
@@ -119,9 +121,9 @@ How to try out this addon
 
 Dependencies
 ------------
-- [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit)
-- [ofxMidi](https://github.com/danomatika/ofxMidi)
-- [ofxBpm](https://github.com/mirrorboy714/ofxBpm)
+- [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit) tested against [this commit](https://github.com/admsyn/ofxAudioUnit/commit/edbef0e6d181bff21e9c61d0f398d64650af34aa)
+- [ofxMidi](https://github.com/danomatika/ofxMidi) tested against [this commit](https://github.com/danomatika/ofxMidi/commit/0a50653021f0c1e13a88e36b130928800b9ae9d8)
+- [ofxBpm](https://github.com/mirrorboy714/ofxBpm) tested against [this commit](https://github.com/mirrorboy714/ofxBpm/commit/0a958858b86810b49469f5af6c00b55c64c2bdac)
 - [TAL NoiseMaker](http://kunz.corrupt.ch/products/tal-noisemaker) to run the bundled examples
 
 Tested against [openFrameworks 0.8.4](http://openframeworks.cc/download/).
