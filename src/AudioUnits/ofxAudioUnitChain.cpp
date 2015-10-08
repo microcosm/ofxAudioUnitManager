@@ -127,5 +127,5 @@ void ofxAudioUnitChain::loadUnit(ofxManagedAudioUnit* unit) {
 
 void ofxAudioUnitChain::loadSynth(ofxManagedAudioUnit* _synth) {
     loadUnit(_synth);
-    midiHandler.setup(_synth->getUnit(), &midi, chainName);
+    midiHandler.setup(_synth->getUnit(), &midi, "openFrameworks: " + chainName);
 }
