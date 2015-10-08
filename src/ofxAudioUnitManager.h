@@ -7,6 +7,7 @@
 class ofxAudioUnitManager {
 public:
     void setup();
+    void onlyFocusOnCommand();
     ofxAudioUnitChain& createChain(ofxAudioUnitChain *chain, string name="", ofColor color=ofColor::blue);
     void loadPresets(ofxAudioUnitChain *chain);
     void draw();
@@ -32,6 +33,6 @@ protected:
     ofxAudioUnitOutput output;
     vector<ofxAudioUnitChain*> chains;
     ofxAudioUnitChain* selectedChain;
-    bool showDebugUI;
+    bool showDebugUI, focusOnCommand, isFocused;
     int selectedChainIndex;
 };

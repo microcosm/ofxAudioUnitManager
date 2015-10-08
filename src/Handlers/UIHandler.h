@@ -6,6 +6,7 @@ class UIHandler{
 
 public:
     void setup();
+    void setFocus(bool _isFocused);
     void addChain();
     void drawControls();
     void drawChains(vector<ofxAudioUnitChain*> chains);
@@ -22,6 +23,7 @@ protected:
     string midiReport(ofxAudioUnitChain* chain, int index);
 
     ofxAudioUnitTap* tap;
+    bool isFocused;
     ofPolyline leftWaveform, rightWaveform;
     int padding, midiReceiptTimeout;
     string tempMidiReport;

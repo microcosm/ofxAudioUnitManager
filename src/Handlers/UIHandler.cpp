@@ -12,6 +12,12 @@ void UIHandler::setup() {
     chainInfoPositions = ofVec2f(padding, padding);
     waveformsPositions = ofVec2f(padding, chainInfoPositions.y + chainInfoDimensions.y + 5);
     midiInfoPositions = ofVec2f(padding, waveformsPositions.y + waveformsDimensions.y + 5);
+
+    isFocused = true;
+}
+
+void UIHandler::setFocus(bool _isFocused) {
+    isFocused = _isFocused;
 }
 
 void UIHandler::addChain() {
@@ -88,29 +94,34 @@ ofColor UIHandler::getTextColor(ofxAudioUnitChain* chain) {
 
 string UIHandler::controlsReport() {
     stringstream report;
-    report <<  "            CONTROLS"
-    << endl << ""
-    << endl << "            MANAGER"
-    << endl << "            ----------------------"
-    << endl << "         v: Toggle view overlay"
-    << endl << " (upper) A: Show all UIs"
-    << endl << " (lower) a: Show synth UIs"
-    << endl << "         m: Show mixer UI"
-    << endl << "Left/right: Select chain"
-    << endl << ""
-    << endl << "            SELECTED CHAIN [*]"
-    << endl << "            ----------------------"
-    << endl << "         u: Show audio unit UIs"
-    << endl << "   Up/down: Select preset"
-    << endl << " (upper) S: Save current preset"
-    << endl << " (lower) s: Save as new preset"
-    << endl << "         r: Rename current preset"
-    << endl << "         t: Send preset to trash"
-    << endl << ""
-    << endl << "            EXAMPLE APP"
-    << endl << "            ----------------------"
-    << endl << "     SPACE: Start/stop playing"
-    << endl << "     [ / ]: Current note up / down";
+
+    if(isFocused) {
+        report <<  "            CONTROLS"
+        << endl << ""
+        << endl << "            MANAGER"
+        << endl << "            ----------------------"
+        << endl << "         v: Toggle view overlay"
+        << endl << " (upper) A: Show all UIs"
+        << endl << " (lower) a: Show synth UIs"
+        << endl << "         m: Show mixer UI"
+        << endl << "Left/right: Select chain"
+        << endl << ""
+        << endl << "            SELECTED CHAIN [*]"
+        << endl << "            ----------------------"
+        << endl << "         u: Show audio unit UIs"
+        << endl << "   Up/down: Select preset"
+        << endl << " (upper) S: Save current preset"
+        << endl << " (lower) s: Save as new preset"
+        << endl << "         r: Rename current preset"
+        << endl << "         t: Send preset to trash"
+        << endl << ""
+        << endl << "            EXAMPLE APP"
+        << endl << "            ----------------------"
+        << endl << "     SPACE: Start/stop playing"
+        << endl << "     [ / ]: Current note up / down";
+    } else {
+        report <<  "Press Command key to set focus";
+    }
     return report.str();
 }
 
