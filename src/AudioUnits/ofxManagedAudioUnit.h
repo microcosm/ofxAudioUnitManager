@@ -21,6 +21,7 @@ public:
     string getUnitSlug();
     string getClassName();
     bool isSynth();
+    void printParamsAsConstants(string unitPrefix);
 protected:
     string stringify(OSType type, OSType subType, OSType manufacturer);
     string stringify(OSType code);
@@ -28,4 +29,5 @@ protected:
     AudioUnitType type;
     string className, unitName, unitSlug;
     int x, y;
+    int unnamedCount;
 };
