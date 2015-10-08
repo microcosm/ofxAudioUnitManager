@@ -184,6 +184,9 @@
 		84AFFBA51B4F67A1009AD056 /* ofxAudioUnitChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitChain.h; sourceTree = "<group>"; };
 		84AFFBA61B4F67A1009AD056 /* ofxManagedAudioUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxManagedAudioUnit.cpp; sourceTree = "<group>"; };
 		84AFFBA71B4F67A1009AD056 /* ofxManagedAudioUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxManagedAudioUnit.h; sourceTree = "<group>"; };
+		84BFB4361BC70303004DF68B /* Massive_Params.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Massive_Params.h; sourceTree = "<group>"; };
+		84BFB4371BC70303004DF68B /* ofxAudioUnitParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAudioUnitParams.h; sourceTree = "<group>"; };
+		84BFB4381BC70303004DF68B /* TALNoiseMaker_Params.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALNoiseMaker_Params.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -332,6 +335,7 @@
 			children = (
 				84AFFB381B4F6658009AD056 /* AudioUnits */,
 				84AFFB4D1B4F6658009AD056 /* Handlers */,
+				84BFB4351BC70303004DF68B /* Params */,
 				84AFFB541B4F6658009AD056 /* ofxAudioUnitManager.cpp */,
 				84AFFB551B4F6658009AD056 /* ofxAudioUnitManager.h */,
 				84AFFB561B4F6658009AD056 /* ofxAudioUnitManagerUtils.cpp */,
@@ -443,6 +447,16 @@
 			);
 			name = src;
 			path = ../../../addons/ofxBpm/src;
+			sourceTree = "<group>";
+		};
+		84BFB4351BC70303004DF68B /* Params */ = {
+			isa = PBXGroup;
+			children = (
+				84BFB4361BC70303004DF68B /* Massive_Params.h */,
+				84BFB4371BC70303004DF68B /* ofxAudioUnitParams.h */,
+				84BFB4381BC70303004DF68B /* TALNoiseMaker_Params.h */,
+			);
+			path = Params;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
