@@ -12,6 +12,8 @@ void ofxAudioUnitManager::setup() {
 
 void ofxAudioUnitManager::onlyFocusOnCommand() {
     focusOnCommand = true;
+    isFocused = false;
+    userInterface.setFocus(isFocused);
 }
 
 ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, string name, ofColor color) {
