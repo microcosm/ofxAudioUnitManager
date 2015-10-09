@@ -106,6 +106,10 @@ void ofxAudioUnitManager::decrementSelectedChain() {
     selectChain(index);
 }
 
+ofxAudioUnitMixer* ofxAudioUnitManager::getMixer() {
+    return &mixer;
+}
+
 vector<ofxAudioUnitChain*> ofxAudioUnitManager::allChains() {
     return chains;
 }

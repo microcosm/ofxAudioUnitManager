@@ -17,6 +17,7 @@ public:
     void toggleDebugUI();
     void incrementSelectedChain();
     void decrementSelectedChain();
+    ofxAudioUnitMixer* getMixer();
     vector<ofxAudioUnitChain*> allChains();
     ofxAudioUnitChain* getChain(int chainId);
     ofxBpm bpm;
