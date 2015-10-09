@@ -28,6 +28,7 @@ protected:
     void showAllSynthUIs();
     void showAllUIs();
     void showMixerUI();
+    void showCompressorUI();
     
     ofxManagedAudioUnit compressor;
     UIHandler userInterface;

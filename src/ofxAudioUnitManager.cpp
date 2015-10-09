@@ -69,6 +69,7 @@ void ofxAudioUnitManager::keyPressed(int key) {
             showAllSynthUIs();
         } else if (key == 'm') {
             showMixerUI();
+            showCompressorUI();
         } else if(key == 'v') {
             toggleDebugUI();
         } else if(key == 'S') {
@@ -149,4 +150,8 @@ void ofxAudioUnitManager::showAllUIs() {
 
 void ofxAudioUnitManager::showMixerUI() {
     mixer.showUI("Mixer", ofGetScreenWidth() * 0.25, ofGetScreenHeight() * 0.25);
+}
+
+void ofxAudioUnitManager::showCompressorUI() {
+    compressor.getUnit()->showUI("Compressor", ofGetScreenWidth() * 0.25, ofGetScreenHeight() * 0.5);
 }

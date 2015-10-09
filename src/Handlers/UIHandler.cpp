@@ -103,7 +103,7 @@ string UIHandler::controlsReport() {
         << endl << "         v: Toggle view overlay"
         << endl << " (upper) A: Show all UIs"
         << endl << " (lower) a: Show synth UIs"
-        << endl << "         m: Show mixer UI"
+        << endl << "         m: Show mixer/compressor"
         << endl << "Left/right: Select chain"
         << endl << ""
         << endl << "            SELECTED CHAIN [*]"
