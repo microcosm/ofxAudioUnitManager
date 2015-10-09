@@ -1,5 +1,10 @@
 #include "ofxManagedAudioUnit.h"
 
+void ofxManagedAudioUnit::setup(string _unitName, ofxAudioUnitDevice device, string _className) {
+    vector<OSType> osTypes = audioUnitParams.getAudioUnitOSTypes(device);
+    setup(_unitName, osTypes.at(0), osTypes.at(1), osTypes.at(2), _className);
+}
+
 void ofxManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
                                 string _className) {
     unitName = _unitName;

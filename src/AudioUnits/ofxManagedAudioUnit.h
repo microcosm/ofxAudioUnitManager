@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxAudioUnit.h"
+#include "ofxAudioUnitParams.h"
 
 enum AudioUnitType {
     AU_TYPE_SYNTH,
@@ -10,6 +11,7 @@ enum AudioUnitType {
 class ofxManagedAudioUnit {
 
 public:
+    void setup(string _unitName, ofxAudioUnitDevice device, string _className="");
     void setup(string _unitName, OSType type, OSType subType, OSType manufacturer=kAudioUnitManufacturer_Apple, string _className="");
     void showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits);
     void set(int param, float value);
@@ -27,6 +29,7 @@ protected:
     string stringify(OSType code);
     ofxAudioUnit unit;
     AudioUnitType type;
+    ofxAudioUnitParams audioUnitParams;
     string className, unitName, unitSlug;
     int x, y;
     int unnamedCount;

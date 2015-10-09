@@ -3,6 +3,7 @@
 #include "ofxAudioUnitChain.h"
 #include "ofxBpm.h"
 #include "UIHandler.h"
+#include "ofxAudioUnitParams.h"
 
 class ofxAudioUnitManager {
 public:
