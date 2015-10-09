@@ -30,9 +30,9 @@ protected:
     void showMixerUI();
     void showCompressorUI();
     
-    ofxManagedAudioUnit compressor;
     UIHandler userInterface;
     ofxAudioUnitMixer mixer;
+    ofxManagedAudioUnit compressor;
     ofxAudioUnitOutput output;
     vector<ofxAudioUnitChain*> chains;
     ofxAudioUnitChain* selectedChain;

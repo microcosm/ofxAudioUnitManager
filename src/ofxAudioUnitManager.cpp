@@ -21,7 +21,7 @@ ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, st
     if(name == "") {
         name = "chain" + ofToString(index + 1);
     }
-    chain->setup(name, &mixer, index, color);
+    chain->setup(name, &mixer, &compressor, index, color);
     chains.push_back(chain);
     userInterface.addChain();
     mixer.setInputBusCount(index + 1);

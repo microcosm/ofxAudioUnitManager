@@ -1,8 +1,9 @@
 #include "ofxAudioUnitChain.h"
 
-void ofxAudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor){
+void ofxAudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor, int _mixerChannel, ofColor _waveColor){
     chainName = _chainName;
     mixer = _mixer;
+    compressor = _compressor;
     mixerChannel = _mixerChannel;
     waveColor = _waveColor;
     className = "ofxAudioUnitChain";
@@ -18,6 +19,8 @@ void ofxAudioUnitChain::exit() {
 }
 
 ofxAudioUnitChain& ofxAudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
+//    presetsHandler.add(mixer);
+    presetsHandler.add(compressor);
     chainEndpoint->connectTo(tapUnit).connectTo(*mixer, mixerChannel);
     return *this;
 }

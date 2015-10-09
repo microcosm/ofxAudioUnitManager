@@ -8,7 +8,7 @@
 class ofxAudioUnitChain {
     
 public:
-    virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, int _mixerChannel, ofColor _waveColor);
+    virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor, int _mixerChannel, ofColor _waveColor);
     void loadPresets();
     void exit();
     ofxAudioUnitChain& toMixer(ofxAudioUnit* chainEndpoint);
@@ -40,6 +40,7 @@ protected:
     vector<ofxManagedAudioUnit*> units;
     ofxAudioUnit* unitEndpoint;
     ofxAudioUnitMixer* mixer;
+    ofxManagedAudioUnit* compressor;
     int mixerChannel;
     vector<string> midiEvents;
     
