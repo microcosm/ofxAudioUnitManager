@@ -17,6 +17,7 @@ public:
     void incrementSelectedChain();
     void decrementSelectedChain();
     vector<ofxAudioUnitChain*> allChains();
+    ofxAudioUnitChain* getChain(int chainId);
     ofxBpm bpm;
 
 protected:

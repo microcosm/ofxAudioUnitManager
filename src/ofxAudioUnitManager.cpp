@@ -109,6 +109,10 @@ vector<ofxAudioUnitChain*> ofxAudioUnitManager::allChains() {
     return chains;
 }
 
+ofxAudioUnitChain* ofxAudioUnitManager::getChain(int chainId) {
+    return chains.at(chainId);
+}
+
 void ofxAudioUnitManager::selectChain(int index) {
     for(int i = 0; i < chains.size(); i++) {
         i == index ? chains.at(i)->select() : chains.at(i)->deselect();
