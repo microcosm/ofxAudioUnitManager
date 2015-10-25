@@ -44,7 +44,7 @@ void PresetsHandler::saveNew() {
 }
 
 void PresetsHandler::saveOverwrite() {
-    if(currentPreset > -1) {
+    if(currentPreset > -1 && presetNames.size() >= currentPreset + 1) {
         string presetName = presetNames.at(currentPreset);
         trash();
         save(presetName);
