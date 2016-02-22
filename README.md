@@ -116,14 +116,14 @@ How to try out this addon
 -------------------------
 1. Clone [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit), follow the instructions in the readme, and make sure it works
 2. Clone this addon and it's dependencies (listed below)
-3. Install the [TAL NoiseMaker](http://kunz.corrupt.ch/products/tal-noisemaker) audio unit. The example project in this repo uses this synth. The 32bit version seems to work with openFrameworks
+3. Install the [TAL NoiseMaker](http://kunz.corrupt.ch/products/tal-noisemaker) audio unit. The example project in this repo uses this synth. The 64bit version seems to work out of the box with openFrameworks 0.9.2
 3. Launch the example project and try out the key controls listed on the screen
 
 Dependencies
 ------------
-- [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit) tested against [this commit](https://github.com/admsyn/ofxAudioUnit/commit/edbef0e6d181bff21e9c61d0f398d64650af34aa)
-- [ofxMidi](https://github.com/danomatika/ofxMidi) tested against [this commit](https://github.com/danomatika/ofxMidi/commit/0a50653021f0c1e13a88e36b130928800b9ae9d8)
+- [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit) tested against [this commit](https://github.com/admsyn/ofxAudioUnit/commit/f649c84e61cc254cdf095111ce453af49d26e710)
+- [ofxMidi](https://github.com/danomatika/ofxMidi) tested against [this commit](https://github.com/danomatika/ofxMidi/commit/06c6785cb767f3c0ea9cd7f2e16145d0203e7f81)
 - [ofxBpm](https://github.com/mirrorboy714/ofxBpm) tested against [this commit](https://github.com/mirrorboy714/ofxBpm/commit/0a958858b86810b49469f5af6c00b55c64c2bdac)
 - [TAL NoiseMaker](http://kunz.corrupt.ch/products/tal-noisemaker) to run the bundled examples
 
-Tested against [openFrameworks 0.8.4](http://openframeworks.cc/download/).
+Tested against [openFrameworks 0.9.2](http://openframeworks.cc/download/).
