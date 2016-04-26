@@ -11,9 +11,9 @@ public:
     void onlyFocusOnCommand();
     ofxAudioUnitChain& createChain(ofxAudioUnitChain *chain, string name="", ofColor color=ofColor::blue);
     void loadPresets(ofxAudioUnitChain *chain);
-    void draw();
-    void exit();
-    void keyPressed(int key);
+    void draw(ofEventArgs& args);
+    void exit(ofEventArgs& args);
+    void keyPressed(ofKeyEventArgs& args);
     void toggleDebugUI();
     void incrementSelectedChain();
     void decrementSelectedChain();

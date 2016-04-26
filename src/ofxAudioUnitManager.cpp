@@ -8,6 +8,9 @@ void ofxAudioUnitManager::setup() {
     output.start();
     focusOnCommand = false;
     isFocused = true;
+    ofAddListener(ofEvents().draw, this, &ofxAudioUnitManager::draw);
+    ofAddListener(ofEvents().exit, this, &ofxAudioUnitManager::exit);
+    ofAddListener(ofEvents().keyPressed, this, &ofxAudioUnitManager::keyPressed);
 }
 
 void ofxAudioUnitManager::onlyFocusOnCommand() {
@@ -34,7 +37,7 @@ void ofxAudioUnitManager::loadPresets(ofxAudioUnitChain *chain) {
     selectChain(chain);
 }
 
-void ofxAudioUnitManager::draw() {
+void ofxAudioUnitManager::draw(ofEventArgs& args) {
     if(ofGetFrameNum() == 0) {
         selectChain(0);
     }
@@ -47,46 +50,46 @@ void ofxAudioUnitManager::draw() {
     }
 }
 
-void ofxAudioUnitManager::exit() {
+void ofxAudioUnitManager::exit(ofEventArgs& args) {
     for(int i = 0; i < chains.size(); i++) {
         chains.at(i)->exit();
     }
 }
 
-void ofxAudioUnitManager::keyPressed(int key) {
+void ofxAudioUnitManager::keyPressed(ofKeyEventArgs& args) {
     //Toggle focus on command
-    if(focusOnCommand && key == 4352) {
+    if(focusOnCommand && args.key == 4352) {
         isFocused = !isFocused;
         userInterface.setFocus(isFocused);
     }
 
     if((focusOnCommand && isFocused) || !focusOnCommand) {
-        if (key == 'u') {
+        if (args.key == 'u') {
             showSelectedChainUI();
-        } else if (key == 'A') {
+        } else if (args.key == 'A') {
             showAllUIs();
-        } else if (key == 'a') {
+        } else if (args.key == 'a') {
             showAllSynthUIs();
-        } else if (key == 'm') {
+        } else if (args.key == 'm') {
             showMixerUI();
             showCompressorUI();
-        } else if(key == 'v') {
+        } else if(args.key == 'v') {
             toggleDebugUI();
-        } else if(key == 'S') {
+        } else if(args.key == 'S') {
             selectedChain->presets()->saveOverwrite();
-        } else if(key == 's') {
+        } else if(args.key == 's') {
             selectedChain->presets()->saveNew();
-        } else if(key == 'r') {
+        } else if(args.key == 'r') {
             selectedChain->presets()->rename();
-        } else if(key == 't') {
+        } else if(args.key == 't') {
             selectedChain->presets()->trash();
-        } else if(key == 359) {
+        } else if(args.key == 359) {
             selectedChain->presets()->increment();
-        } else if(key == 357) {
+        } else if(args.key == 357) {
             selectedChain->presets()->decrement();
-        } else if(key == 358) {
+        } else if(args.key == 358) {
             incrementSelectedChain();
-        } else if(key == 356) {
+        } else if(args.key == 356) {
             decrementSelectedChain();
         }
     }

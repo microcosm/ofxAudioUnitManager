@@ -13,7 +13,6 @@ public:
     void draw();
     void play();
     void togglePlaying();
-    void exit();
 
     void keyPressed(int key);
     void keyReleased(int key);

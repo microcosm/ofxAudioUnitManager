@@ -85,14 +85,6 @@ void ofApp::draw(){
         ofLine(i, -size, i, size);
     }
     ofRotateZ(45);*/
-
-    //And then you will always draw the manager last
-    //(It can be hidden at runtime by pressing 'v')
-    manager.draw();
-}
-
-void ofApp::exit() {
-    manager.exit();
 }
 
 void ofApp::keyPressed(int key){
@@ -106,8 +98,6 @@ void ofApp::keyPressed(int key){
         togglePlaying();
         note++;
         togglePlaying();
-    } else {
-        manager.keyPressed(key);
     }
 }
 
