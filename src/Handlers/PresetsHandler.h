@@ -5,7 +5,7 @@
 class PresetsHandler{
 
 public:
-    void setup(string _chainName);
+    void setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor);
     void load(int index);
     void add(ofxManagedAudioUnit* unit);
     void saveNew();
@@ -33,13 +33,17 @@ protected:
     void ensureDirectories();
     bool validateName(string newPresetName, int alertDialogException=-1);
     void save(string presetName);
+    void saveMasterUnits();
+    void loadMasterUnits();
 
     vector<string> presetNames;
     vector<ofxManagedAudioUnit*> units;
     vector<string> unitSlugs;
     vector< vector<ofFile> > presets;
+    ofxAudioUnitMixer* mixer;
+    ofxManagedAudioUnit* compressor;
 
-    string chainName, storageDir, trashDir;
+    string chainName, storageDir, storagePath, trashDir, mixerName;
     int currentPreset, lastSaved, lastSaveTimer, lastSaveTimeout;
     bool selected;
 

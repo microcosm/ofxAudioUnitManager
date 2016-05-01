@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<data>
+	AAAAAQAAAAAAAAADAAAAAD+AAAAAAAABP4AAAAAAAAIAAAAAAAAAAQAAAAEAAAADAAAA
+	AD+AAAAAAAABP4AAAAAAAAIAAAAAAAAAAQAAAAIAAAADAAAAAD+AAAAAAAABP4AAAAAA
+	AAIAAAAAAAAAAQAAAAMAAAADAAAAAD+AAAAAAAABP4AAAAAAAAIAAAAAAAAAAQAAAAQA
+	AAADAAAAAD+AAAAAAAABP4AAAAAAAAIAAAAAAAAAAQAAAAUAAAADAAAAAD+AAAAAAAAB
+	P4AAAAAAAAIAAAAAAAAAAQAAAAYAAAADAAAAAD+AAAAAAAABP4AAAAAAAAIAAAAAAAAA
+	AQAAAAcAAAADAAAAAD+AAAAAAAABP4AAAAAAAAIAAAAAAAAAAgAAAAAAAAADAAAAAD+A
+	AAAAAAACAAAAAAAAAGQAAAAA
+	</data>
+	<key>manufacturer</key>
+	<integer>1634758764</integer>
+	<key>name</key>
+	<string>Untitled</string>
+	<key>render-quality</key>
+	<integer>64</integer>
+	<key>subtype</key>
+	<integer>1835232632</integer>
+	<key>type</key>
+	<integer>1635085688</integer>
+	<key>version</key>
+	<integer>0</integer>
+</dict>
+</plist>

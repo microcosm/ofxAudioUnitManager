@@ -1,6 +1,6 @@
 #include "PresetsHandler.h"
 
-void PresetsHandler::setup(string _chainName){
+void PresetsHandler::setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor){
     chainName = _chainName;
     selected = false;
     currentPreset = -1;
@@ -9,15 +9,23 @@ void PresetsHandler::setup(string _chainName){
     lastSaveTimeout = 60;
     storageDir = "AudioUnitPresets/";
     trashDir = ".trash/";
+    mixerName = "Mixer";
     anyExtension = "";
     presetExtension = "aupreset";
+    mixer = _mixer;
+    compressor = _compressor;
     ensureDirectories();
     readFromDisk();
-    
+
+    ofDirectory dir(storageDir);
+    storagePath = dir.getAbsolutePath() + "/";
+
     if(presets.size() > 0) {
         currentPreset = 0;
         load(currentPreset);
     }
+
+    loadMasterUnits();
 }
 
 void PresetsHandler::load(int presetIndex) {
@@ -243,7 +251,18 @@ void PresetsHandler::save(string presetName) {
         string presetFilename = filename(unitSlugs.at(i));
         units.at(i)->getUnit()->saveCustomPresetAtPath(presetPath + presetFilename);
     }
+    saveMasterUnits();
     readFromDisk();
     currentPreset = indexOf(presetName);
     lastSaved = currentPreset;
+}
+
+void PresetsHandler::saveMasterUnits(){
+    mixer->saveCustomPresetAtPath(storagePath + filename(mixerName));
+    compressor->getUnit()->saveCustomPresetAtPath(storagePath + filename(compressor->getUnitSlug()));
+}
+
+void PresetsHandler::loadMasterUnits(){
+    mixer->loadCustomPresetAtPath(storagePath + filename(mixerName));
+    compressor->getUnit()->loadCustomPresetAtPath(storagePath + filename(compressor->getUnitSlug()));
 }

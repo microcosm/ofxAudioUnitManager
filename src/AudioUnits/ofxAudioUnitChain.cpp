@@ -11,7 +11,7 @@ void ofxAudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxM
 }
 
 void ofxAudioUnitChain::loadPresets(){
-    presetsHandler.setup(chainName);
+    presetsHandler.setup(chainName, mixer, compressor);
 }
 
 void ofxAudioUnitChain::exit() {
@@ -19,8 +19,6 @@ void ofxAudioUnitChain::exit() {
 }
 
 ofxAudioUnitChain& ofxAudioUnitChain::toMixer(ofxAudioUnit* chainEndpoint) {
-//    presetsHandler.add(mixer);
-    presetsHandler.add(compressor);
     chainEndpoint->connectTo(tapUnit).connectTo(*mixer, mixerChannel);
     return *this;
 }
