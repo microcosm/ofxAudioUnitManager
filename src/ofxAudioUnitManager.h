@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxAudioUnitChain.h"
+#include "ofxManagedAudioUnitMixer.h"
 #include "ofxBpm.h"
 #include "UIHandler.h"
 #include "ofxAudioUnitParams.h"
@@ -9,9 +10,9 @@ class ofxAudioUnitManager {
 public:
     void setup();
     void onlyFocusOnCommand();
-    ofxAudioUnitChain& createChain(ofxAudioUnitChain *chain, string name="", ofColor color=ofColor::blue);
+    ofxAudioUnitChain& createChain(ofxAudioUnitChain *chain, string name="", ofxManagedAudioUnitMixer* altMixer=NULL, ofColor color=ofColor::blue);
     void addUnmanagedUnit(ofxAudioUnit* unit);
-    void loadPresets(ofxAudioUnitChain *chain);
+    void loadPresets(ofxAudioUnitChain* chain);
     void draw(ofEventArgs& args);
     void exit(ofEventArgs& args);
     void keyPressed(ofKeyEventArgs& args);
@@ -31,6 +32,7 @@ protected:
     void showAllUIs();
     void showMixerUI();
     void showCompressorUI();
+    int nextMixerBusIndex(ofxAudioUnitMixer* mixer);
 
     UIHandler userInterface;
     ofxAudioUnitMixer mixer;
@@ -40,4 +42,5 @@ protected:
     ofxAudioUnitChain* selectedChain;
     bool showDebugUI, focusOnCommand, isFocused;
     int selectedChainIndex, numUnmanagedInputs;
+    map<ofxAudioUnitMixer*, int> mixersToBusCounts;
 };

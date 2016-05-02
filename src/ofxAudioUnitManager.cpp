@@ -20,24 +20,25 @@ void ofxAudioUnitManager::onlyFocusOnCommand() {
     userInterface.setFocus(isFocused);
 }
 
-ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, string name, ofColor color) {
-    int index = chains.size();
-    if(name == "") {
-        name = "chain" + ofToString(index + 1);
-    }
-    chain->setup(name, &mixer, &compressor, index, color);
-    chains.push_back(chain);
+ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, string name, ofxManagedAudioUnitMixer* altMixer, ofColor color) {
     userInterface.addChain();
-    mixer.setInputBusCount(index + 1 + numUnmanagedInputs);
-    selectChain(index);
+    chains.push_back(chain);
+    name = name == "" ? "chain" + ofToString(chains.size()) : name;
+
+    ofxAudioUnitMixer* targetMixer = altMixer == NULL ? &mixer : altMixer->getUnit();
+    int mixerBusIndex = nextMixerBusIndex(targetMixer);
+    targetMixer->setInputBusCount(mixerBusIndex + 1);
+    chain->setup(name, targetMixer, &compressor, mixerBusIndex, color);
+
+    selectChain(chains.size() - 1);
     return *chain;
 }
 
 void ofxAudioUnitManager::addUnmanagedUnit(ofxAudioUnit* unit){
     numUnmanagedInputs++;
-    int numInputs = chains.size() + numUnmanagedInputs;
-    mixer.setInputBusCount(numInputs);
-    unit->connectTo(mixer, numInputs - 1);
+    int mixerBusIndex = nextMixerBusIndex(&mixer);
+    mixer.setInputBusCount(mixerBusIndex + 1);
+    unit->connectTo(mixer, mixerBusIndex);
 }
 
 void ofxAudioUnitManager::loadPresets(ofxAudioUnitChain *chain) {
@@ -169,4 +170,13 @@ void ofxAudioUnitManager::showMixerUI() {
 
 void ofxAudioUnitManager::showCompressorUI() {
     compressor.getUnit()->showUI("Compressor", ofGetScreenWidth() * 0.25, ofGetScreenHeight() * 0.5);
+}
+
+int ofxAudioUnitManager::nextMixerBusIndex(ofxAudioUnitMixer* mixer) {
+    if(mixersToBusCounts.find(mixer) == mixersToBusCounts.end()) {
+        mixersToBusCounts[mixer] = 0;
+    } else {
+        mixersToBusCounts[mixer]++;
+    }
+    return mixersToBusCounts[mixer];
 }
