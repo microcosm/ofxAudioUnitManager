@@ -10,6 +10,7 @@ public:
     void setup();
     void onlyFocusOnCommand();
     ofxAudioUnitChain& createChain(ofxAudioUnitChain *chain, string name="", ofColor color=ofColor::blue);
+    void addUnmanagedUnit(ofxAudioUnit* unit);
     void loadPresets(ofxAudioUnitChain *chain);
     void draw(ofEventArgs& args);
     void exit(ofEventArgs& args);
@@ -30,7 +31,7 @@ protected:
     void showAllUIs();
     void showMixerUI();
     void showCompressorUI();
-    
+
     UIHandler userInterface;
     ofxAudioUnitMixer mixer;
     ofxManagedAudioUnit compressor;
@@ -38,5 +39,5 @@ protected:
     vector<ofxAudioUnitChain*> chains;
     ofxAudioUnitChain* selectedChain;
     bool showDebugUI, focusOnCommand, isFocused;
-    int selectedChainIndex;
+    int selectedChainIndex, numUnmanagedInputs;
 };

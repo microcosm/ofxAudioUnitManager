@@ -2,6 +2,7 @@
 
 void ofxAudioUnitManager::setup() {
     showDebugUI = false;
+    numUnmanagedInputs = 0;
     userInterface.setup();
     compressor.setup("Main Compressor", kAudioUnitType_Effect, kAudioUnitSubType_DynamicsProcessor);
     mixer.connectTo(*compressor.getUnit()).connectTo(output);
@@ -27,9 +28,16 @@ ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, st
     chain->setup(name, &mixer, &compressor, index, color);
     chains.push_back(chain);
     userInterface.addChain();
-    mixer.setInputBusCount(index + 1);
+    mixer.setInputBusCount(index + 1 + numUnmanagedInputs);
     selectChain(index);
     return *chain;
+}
+
+void ofxAudioUnitManager::addUnmanagedUnit(ofxAudioUnit* unit){
+    numUnmanagedInputs++;
+    int numInputs = chains.size() + numUnmanagedInputs;
+    mixer.setInputBusCount(numInputs);
+    unit->connectTo(mixer, numInputs - 1);
 }
 
 void ofxAudioUnitManager::loadPresets(ofxAudioUnitChain *chain) {
