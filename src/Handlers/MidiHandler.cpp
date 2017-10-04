@@ -8,6 +8,6 @@ void MidiHandler::setup(ofxAudioUnit* synth, ofxMidiOut* midiOut, string midiPor
     midiOut->openPort(midiPortId);
 }
 
-void MidiHandler::exit() {
-    midiOut->closePort();
+void MidiHandler::exit(){
+    //midiOut->closePort();
 }
