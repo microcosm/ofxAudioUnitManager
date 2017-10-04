@@ -1,8 +1,11 @@
 #pragma once
 #include "ofMain.h"
-#include "ofxAudioUnit.h"
 #include "ofxAudioUnitMidi.h"
 #include "ofxMidi.h"
+
+#ifdef __APPLE__
+#include "ofxAudioUnit.h"
+#endif
 
 class MidiHandler{
 

@@ -1,7 +1,10 @@
 #pragma once
 #include "ofMain.h"
-#include "ofxAudioUnit.h"
 #include "ofxAudioUnitParams.h"
+
+#ifdef __APPLE__
+#include "ofxAudioUnit.h"
+#endif
 
 enum AudioUnitType {
     AU_TYPE_SYNTH,

@@ -1,6 +1,9 @@
 #pragma once
 #include "ofMain.h"
+
+#ifdef __APPLE__
 #include "ofxAudioUnit.h"
+#endif
 
 class ofxManagedAudioUnitMixer {
 
