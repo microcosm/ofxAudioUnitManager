@@ -9,6 +9,7 @@
 class ofxAudioUnitManager {
 public:
     void setup();
+    void setupDark();
     void onlyFocusOnCommand();
     ofxAudioUnitChain& createChain(ofxAudioUnitChain *chain, string name="", ofxManagedAudioUnitMixer* altMixer=NULL, ofColor color=ofColor::blue);
     void addUnmanagedUnit(ofxAudioUnit* unit);
@@ -41,7 +42,7 @@ protected:
     ofxAudioUnitOutput output;
     vector<ofxAudioUnitChain*> chains;
     ofxAudioUnitChain* selectedChain;
-    bool showDebugUI, focusOnCommand, isFocused;
+    bool showDebugUI, drawDarkOverlay, focusOnCommand, isFocused;
     int selectedChainIndex, numUnmanagedInputs;
     map<ofxAudioUnitMixer*, int> mixersToBusCounts;
 };

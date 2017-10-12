@@ -2,6 +2,7 @@
 
 void ofxAudioUnitManager::setup() {
     showDebugUI = false;
+    drawDarkOverlay = false;
     numUnmanagedInputs = 0;
     userInterface.setup();
     compressor.setup("Main Compressor", kAudioUnitType_Effect, kAudioUnitSubType_DynamicsProcessor);
@@ -12,6 +13,11 @@ void ofxAudioUnitManager::setup() {
     ofAddListener(ofEvents().draw, this, &ofxAudioUnitManager::draw);
     ofAddListener(ofEvents().exit, this, &ofxAudioUnitManager::exit);
     ofAddListener(ofEvents().keyPressed, this, &ofxAudioUnitManager::keyPressed);
+}
+
+void ofxAudioUnitManager::setupDark() {
+    setup();
+    drawDarkOverlay = true;
 }
 
 void ofxAudioUnitManager::onlyFocusOnCommand() {
@@ -51,9 +57,11 @@ void ofxAudioUnitManager::draw(ofEventArgs& args) {
         selectChain(0);
     }
     if(showDebugUI) {
-        ofSetColor(ofColor::black, 180);
-        ofFill();
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        if(drawDarkOverlay){
+            ofSetColor(ofColor::black, 180);
+            ofFill();
+            ofRect(0, 0, ofGetWidth(), ofGetHeight());
+        }
         userInterface.drawChains(chains);
         userInterface.drawControls();
     }
