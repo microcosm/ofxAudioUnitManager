@@ -108,6 +108,10 @@ void ofxAudioUnitManager::toggleDebugUI() {
     showDebugUI = !showDebugUI;
 }
 
+void ofxAudioUnitManager::enableDebugUI(bool show) {
+    showDebugUI = show;
+}
+
 void ofxAudioUnitManager::incrementSelectedChain() {
     int index = selectedChainIndex + 1 >= chains.size() ? 0 : selectedChainIndex + 1;
     selectChain(index);

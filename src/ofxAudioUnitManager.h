@@ -17,6 +17,7 @@ public:
     void exit(ofEventArgs& args);
     void keyPressed(ofKeyEventArgs& args);
     void toggleDebugUI();
+    void enableDebugUI(bool show);
     void incrementSelectedChain();
     void decrementSelectedChain();
     ofxAudioUnitMixer* getMixer();
