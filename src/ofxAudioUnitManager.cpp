@@ -100,13 +100,13 @@ void ofxAudioUnitManager::keyPressed(ofKeyEventArgs& args) {
             selectedChain->presets()->rename();
         } else if(args.key == 't') {
             selectedChain->presets()->trash();
-        } else if(args.key == 359) {
+        } else if(args.key == OF_KEY_DOWN) {
             selectedChain->presets()->increment();
-        } else if(args.key == 357) {
+        } else if(args.key == OF_KEY_UP) {
             selectedChain->presets()->decrement();
-        } else if(args.key == 358) {
+        } else if(args.key == OF_KEY_RIGHT) {
             incrementSelectedChain();
-        } else if(args.key == 356) {
+        } else if(args.key == OF_KEY_LEFT) {
             decrementSelectedChain();
         }
     }
