@@ -121,9 +121,9 @@ How to try out this addon
 
 Dependencies
 ------------
-- [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit) tested against [this commit](https://github.com/admsyn/ofxAudioUnit/commit/f649c84e61cc254cdf095111ce453af49d26e710)
-- [ofxMidi](https://github.com/danomatika/ofxMidi) tested against [this commit](https://github.com/danomatika/ofxMidi/commit/06c6785cb767f3c0ea9cd7f2e16145d0203e7f81)
-- [ofxBpm](https://github.com/mirrorboy714/ofxBpm) tested against [this commit](https://github.com/mirrorboy714/ofxBpm/commit/0a958858b86810b49469f5af6c00b55c64c2bdac)
+- [ofxAudioUnit](https://github.com/admsyn/ofxAudioUnit) tested against [this commit](https://github.com/admsyn/ofxAudioUnit/commit/f6a2d16e4a84c52bdf5e5a65e8ad1bb78b9acc00)
+- [ofxMidi](https://github.com/danomatika/ofxMidi) tested against [this commit](https://github.com/danomatika/ofxMidi/commit/f9d85fd888ba23cf49207b362e2bcc8cfad352ed)
+- [ofxBpm](https://github.com/karolsenami/ofxBpm) tested against [this commit](https://github.com/karolsenami/ofxBpm/commit/f31bfb43055cdb2f0f5fcec30a28779b1e668544)
 - [TAL NoiseMaker](http://kunz.corrupt.ch/products/tal-noisemaker) to run the bundled examples
 
-Tested against [openFrameworks 0.9.2](http://openframeworks.cc/download/).
+Tested against [openFrameworks 0.10.1](http://openframeworks.cc/download/).
