@@ -60,7 +60,7 @@ void ofxAudioUnitManager::draw(ofEventArgs& args) {
         if(drawDarkOverlay){
             ofSetColor(ofColor::black, 180);
             ofFill();
-            ofRect(0, 0, ofGetWidth(), ofGetHeight());
+            ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
         }
         userInterface.drawChains(chains);
         userInterface.drawControls();

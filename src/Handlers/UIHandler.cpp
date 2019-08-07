@@ -68,10 +68,10 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color)
     ofSetLineWidth(1);
     ofSetColor(color);
     ofFill();
-    ofRect(x, y, width, height);
+    ofDrawRectangle(x, y, width, height);
     ofSetColor(ofColor::white);
     ofNoFill();
-    ofRect(x, y, width, height);
+    ofDrawRectangle(x, y, width, height);
 }
 
 ofVec2f UIHandler::getControlsPositions() {
