@@ -1,11 +1,11 @@
-#include "ofxManagedAudioUnit.h"
+#include "aumManagedAudioUnit.h"
 
-void ofxManagedAudioUnit::setup(string _unitName, ofxAudioUnitDevice device, string _className) {
+void aumManagedAudioUnit::setup(string _unitName, aumAudioUnitDevice device, string _className) {
     vector<OSType> osTypes = audioUnitParams.getAudioUnitOSTypes(device);
     setup(_unitName, osTypes.at(0), osTypes.at(1), osTypes.at(2), _className);
 }
 
-void ofxManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
+void aumManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
                                 string _className) {
     unitName = _unitName;
     unitSlug = _unitName;
@@ -18,7 +18,7 @@ void ofxManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, O
     }
 }
 
-void ofxManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {
+void aumManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {
     x = ofMap(chainIndex, 0, numChains - 1, 0, ofGetScreenWidth() * 0.5);
     y = ofMap(unitIndex, 0, numUnits - 1, 0, ofGetScreenHeight() * 0.5);
     unit.showUI(chainName + ": " +
@@ -26,46 +26,46 @@ void ofxManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains
                 className, x, y);
 }
 
-void ofxManagedAudioUnit::set(int param, float value) {
+void aumManagedAudioUnit::set(int param, float value) {
     AudioUnitSetParameter(unit.getUnit(), param, kAudioUnitScope_Global, 0, value, 0);
 }
 
-void ofxManagedAudioUnit::set(int param1, int param2, ofVec2f value) {
+void aumManagedAudioUnit::set(int param1, int param2, ofVec2f value) {
     set(param1, value.x);
     set(param2, value.y);
 }
 
-void ofxManagedAudioUnit::set(int param1, int param2, int param3, ofVec3f value) {
+void aumManagedAudioUnit::set(int param1, int param2, int param3, ofVec3f value) {
     set(param1, value.x);
     set(param2, value.y);
     set(param3, value.z);
 }
 
-ofxAudioUnit* ofxManagedAudioUnit::getUnit() {
+ofxAudioUnit* aumManagedAudioUnit::getUnit() {
     return &unit;
 }
 
-AudioUnitType ofxManagedAudioUnit::getType() {
+AudioUnitType aumManagedAudioUnit::getType() {
     return type;
 }
 
-string ofxManagedAudioUnit::getUnitName() {
+string aumManagedAudioUnit::getUnitName() {
     return unitName;
 }
 
-string ofxManagedAudioUnit::getUnitSlug() {
+string aumManagedAudioUnit::getUnitSlug() {
     return unitSlug;
 }
 
-string ofxManagedAudioUnit::getClassName() {
+string aumManagedAudioUnit::getClassName() {
     return className;
 }
 
-bool ofxManagedAudioUnit::isSynth() {
+bool aumManagedAudioUnit::isSynth() {
     return type == AU_TYPE_SYNTH;
 }
 
-void ofxManagedAudioUnit::printParamsAsConstants(string unitPrefix) {
+void aumManagedAudioUnit::printParamsAsConstants(string unitPrefix) {
     vector<AudioUnitParameterInfo> paramList = unit.getParameterList();
     unnamedCount = 0;
 
@@ -104,11 +104,11 @@ void ofxManagedAudioUnit::printParamsAsConstants(string unitPrefix) {
     cout << endl;
 }
 
-string ofxManagedAudioUnit::stringify(OSType type, OSType subType, OSType manufacturer) {
+string aumManagedAudioUnit::stringify(OSType type, OSType subType, OSType manufacturer) {
     return stringify(type) + "-" + stringify(subType) + "-" + stringify(manufacturer);
 }
 
-string ofxManagedAudioUnit::stringify(OSType code) {
+string aumManagedAudioUnit::stringify(OSType code) {
     char char4 = code&0xFF;
     char char3 = (code>>8)&0xFF;
     char char2 = (code>>16)&0xFF;

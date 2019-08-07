@@ -1,16 +1,16 @@
 #pragma once
-#include "TALNoiseMaker_Params.h"
-#include "Massive_Params.h"
+#include "aum_TALNoiseMaker_Params.h"
+#include "aum_Massive_Params.h"
 
-enum ofxAudioUnitDevice {
+enum aumAudioUnitDevice {
     AUDIOUNIT_TALNOISEMAKER,
     AUDIOUNIT_MASSIVE
 };
 
-class ofxAudioUnitParams {
+class aumParams {
     
 public:
-    vector<OSType> getAudioUnitOSTypes(ofxAudioUnitDevice device) {
+    vector<OSType> getAudioUnitOSTypes(aumAudioUnitDevice device) {
         vector<OSType> osTypes;
         switch(device){
             case AUDIOUNIT_TALNOISEMAKER:

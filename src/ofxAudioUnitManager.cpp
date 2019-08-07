@@ -26,7 +26,7 @@ void ofxAudioUnitManager::onlyFocusOnCommand() {
     userInterface.setFocus(isFocused);
 }
 
-ofxAudioUnitChain& ofxAudioUnitManager::createChain(ofxAudioUnitChain *chain, string name, ofxManagedAudioUnitMixer* altMixer, ofColor color) {
+aumAudioUnitChain& ofxAudioUnitManager::createChain(aumAudioUnitChain *chain, string name, aumManagedAudioUnitMixer* altMixer, ofColor color) {
     userInterface.addChain();
     chains.push_back(chain);
     name = name == "" ? "chain" + ofToString(chains.size()) : name;
@@ -47,7 +47,7 @@ void ofxAudioUnitManager::addUnmanagedUnit(ofxAudioUnit* unit){
     unit->connectTo(mixer, mixerBusIndex);
 }
 
-void ofxAudioUnitManager::loadPresets(ofxAudioUnitChain *chain) {
+void ofxAudioUnitManager::loadPresets(aumAudioUnitChain *chain) {
     chain->loadPresets();
     selectChain(chain);
 }
@@ -134,11 +134,11 @@ ofxAudioUnitMixer* ofxAudioUnitManager::getMixer() {
     return &mixer;
 }
 
-vector<ofxAudioUnitChain*> ofxAudioUnitManager::allChains() {
+vector<aumAudioUnitChain*> ofxAudioUnitManager::allChains() {
     return chains;
 }
 
-ofxAudioUnitChain* ofxAudioUnitManager::getChain(int chainId) {
+aumAudioUnitChain* ofxAudioUnitManager::getChain(int chainId) {
     return chains.at(chainId);
 }
 
@@ -150,7 +150,7 @@ void ofxAudioUnitManager::selectChain(int index) {
     selectedChain = chains.at(index);
 }
 
-void ofxAudioUnitManager::selectChain(ofxAudioUnitChain *chain) {
+void ofxAudioUnitManager::selectChain(aumAudioUnitChain *chain) {
     for(int i = 0; i < chains.size(); i++) {
         if(chains.at(i) == chain) {
             selectedChainIndex = i;

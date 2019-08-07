@@ -1,23 +1,23 @@
 #pragma once
 #include "ofMain.h"
-#include "PresetsHandler.h"
-#include "MidiHandler.h"
-#include "ofxManagedAudioUnit.h"
+#include "aumPresets.h"
+#include "aumMidi.h"
+#include "aumManagedAudioUnit.h"
 
 #ifdef __APPLE__
 #include "ofxAudioUnit.h"
 #endif
 
-class ofxAudioUnitChain {
+class aumAudioUnitChain {
     
 public:
-    virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor, int _mixerChannel, ofColor _waveColor);
+    virtual void setup(string _chainName, ofxAudioUnitMixer* _mixer, aumManagedAudioUnit* _compressor, int _mixerChannel, ofColor _waveColor);
     void loadPresets();
     void exit();
-    ofxAudioUnitChain& toMixer(ofxAudioUnit* chainEndpoint);
-    ofxAudioUnitChain& toMixer();
-    ofxAudioUnitChain& link(ofxManagedAudioUnit* unit);
-    ofxAudioUnitChain& to(ofxManagedAudioUnit* unit);
+    aumAudioUnitChain& toMixer(ofxAudioUnit* chainEndpoint);
+    aumAudioUnitChain& toMixer();
+    aumAudioUnitChain& link(aumManagedAudioUnit* unit);
+    aumAudioUnitChain& to(aumManagedAudioUnit* unit);
     void showUI(int chainIndex, int numChains);
     void showSynthUI(int chainIndex, int numChains);
     bool isSelected();
@@ -26,7 +26,7 @@ public:
     void sendMidiOn(int note);
     void sendMidiOff(int note);
     ofxAudioUnitTap* tap();
-    PresetsHandler* presets();
+    aumPresets* presets();
     string getUnitReport();
     string getMidiReport();
     string getClassName();
@@ -35,20 +35,20 @@ public:
     ofxMidiOut midi;
 
 protected:
-    void loadUnit(ofxManagedAudioUnit* unit);
-    void loadSynth(ofxManagedAudioUnit* synth);
+    void loadUnit(aumManagedAudioUnit* unit);
+    void loadSynth(aumManagedAudioUnit* synth);
 
     ofxAudioUnitTap tapUnit;
     ofPolyline waveform1, waveform2;
-    vector<ofxManagedAudioUnit*> units;
+    vector<aumManagedAudioUnit*> units;
     ofxAudioUnit* unitEndpoint;
     ofxAudioUnitMixer* mixer;
-    ofxManagedAudioUnit* compressor;
+    aumManagedAudioUnit* compressor;
     int mixerChannel;
     vector<string> midiEvents;
     
-    PresetsHandler presetsHandler;
-    MidiHandler midiHandler;
+    aumPresets presetsHandler;
+    aumMidi midiHandler;
     ofColor waveColor;
     bool selected;
     string chainName, className, report;

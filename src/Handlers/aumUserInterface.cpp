@@ -1,6 +1,6 @@
-#include "UIHandler.h"
+#include "aumUserInterface.h"
 
-void UIHandler::setup() {
+void aumUserInterface::setup() {
     midiReceiptTimeout = 15;
     padding = 10;
     controlsDimensions = ofVec2f(300, 340);
@@ -16,23 +16,23 @@ void UIHandler::setup() {
     isFocused = true;
 }
 
-void UIHandler::setFocus(bool _isFocused) {
+void aumUserInterface::setFocus(bool _isFocused) {
     isFocused = _isFocused;
 }
 
-void UIHandler::addChain() {
+void aumUserInterface::addChain() {
     reports.push_back("");
     lastMidiRecieved.push_back(midiReceiptTimeout + 1);
 }
 
-void UIHandler::drawControls() {
+void aumUserInterface::drawControls() {
     controlsPositions = getControlsPositions();
     drawDebugBox(controlsPositions.x, controlsPositions.y, controlsDimensions.x, controlsDimensions.y);
     ofSetColor(ofColor::white);
     ofDrawBitmapString(controlsReport(), controlsPositions.x + padding, controlsPositions.y + padding*2);
 }
 
-void UIHandler::drawChains(vector<ofxAudioUnitChain*> chains) {
+void aumUserInterface::drawChains(vector<aumAudioUnitChain*> chains) {
     ofVec2f position;
     for(int i = 0; i < chains.size(); i++) {
         position.x = (chainInfoPositions.x * (i+1)) + (chainInfoDimensions.x * i);
@@ -43,7 +43,7 @@ void UIHandler::drawChains(vector<ofxAudioUnitChain*> chains) {
     }
 }
 
-void UIHandler::drawWaveforms(ofxAudioUnitChain* chain, float positionX) {
+void aumUserInterface::drawWaveforms(aumAudioUnitChain* chain, float positionX) {
     drawDebugBox(positionX, waveformsPositions.y, waveformsDimensions.x, waveformsDimensions.y, getBackgroundColor(chain));
     chain->tap()->getStereoWaveform(leftWaveform, rightWaveform, waveformsDimensions.x, waveformsDimensions.y);
     ofSetColor(getTextColor(chain));
@@ -53,18 +53,18 @@ void UIHandler::drawWaveforms(ofxAudioUnitChain* chain, float positionX) {
     ofTranslate(-positionX, -waveformsPositions.y);
 }
 
-void UIHandler::drawChainReport(ofxAudioUnitChain* chain, ofVec2f position, int chainNumber) {
+void aumUserInterface::drawChainReport(aumAudioUnitChain* chain, ofVec2f position, int chainNumber) {
     drawDebugBox(position.x, position.y, chainInfoDimensions.x, chainInfoDimensions.y, getBackgroundColor(chain));
     ofSetColor(getTextColor(chain));
     ofDrawBitmapString(chainReport(chain, chainNumber), position.x + padding, position.y + padding*2);
 }
 
-void UIHandler::drawMidiReport(ofxAudioUnitChain* chain, float positionX, int index) {
+void aumUserInterface::drawMidiReport(aumAudioUnitChain* chain, float positionX, int index) {
     drawDebugBox(positionX, midiInfoPositions.y, midiInfoDimensions.x, midiInfoDimensions.y, getBackgroundColor(chain));
     ofDrawBitmapString(midiReport(chain, index), positionX + padding, midiInfoPositions.y + padding*2);
 }
 
-void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color) {
+void aumUserInterface::drawDebugBox(int x, int y, int width, int height, ofColor color) {
     ofSetLineWidth(1);
     ofSetColor(color);
     ofFill();
@@ -74,25 +74,25 @@ void UIHandler::drawDebugBox(int x, int y, int width, int height, ofColor color)
     ofDrawRectangle(x, y, width, height);
 }
 
-ofVec2f UIHandler::getControlsPositions() {
+ofVec2f aumUserInterface::getControlsPositions() {
     return ofVec2f(
         ofGetWidth()  - controlsDimensions.x - padding,
         ofGetHeight() - controlsDimensions.y - padding);
 }
 
-ofColor UIHandler::getBackgroundColor(ofxAudioUnitChain* chain) {
+ofColor aumUserInterface::getBackgroundColor(aumAudioUnitChain* chain) {
     return chain->isSelected() ?
         ofColor(chain->getColor(), 128) :
         ofColor(chain->getColor(), 32);
 }
 
-ofColor UIHandler::getTextColor(ofxAudioUnitChain* chain) {
+ofColor aumUserInterface::getTextColor(aumAudioUnitChain* chain) {
     return chain->isSelected() ?
         ofColor(ofColor::white, 255) :
         ofColor(ofColor::white, 128);
 }
 
-string UIHandler::controlsReport() {
+string aumUserInterface::controlsReport() {
     stringstream report;
 
     if(isFocused) {
@@ -125,7 +125,7 @@ string UIHandler::controlsReport() {
     return report.str();
 }
 
-string UIHandler::chainReport(ofxAudioUnitChain *chain, int number) {
+string aumUserInterface::chainReport(aumAudioUnitChain *chain, int number) {
     string underline(chain->getName().length(), '-');
     stringstream report;
     report  << "CHAIN " << number << " \"" << chain->getName() << "\""
@@ -136,7 +136,7 @@ string UIHandler::chainReport(ofxAudioUnitChain *chain, int number) {
     return report.str();
 }
 
-string UIHandler::midiReport(ofxAudioUnitChain *chain, int index) {
+string aumUserInterface::midiReport(aumAudioUnitChain *chain, int index) {
     tempMidiReport = chain->getMidiReport();
     if(tempMidiReport.length() > 0) {
         reports[index] = tempMidiReport;

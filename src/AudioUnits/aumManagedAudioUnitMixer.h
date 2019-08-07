@@ -5,7 +5,7 @@
 #include "ofxAudioUnit.h"
 #endif
 
-class ofxManagedAudioUnitMixer {
+class aumManagedAudioUnitMixer {
 
 public:
     void setup(string _name);

@@ -7,7 +7,7 @@
 #include "ofxAudioUnit.h"
 #endif
 
-class MidiHandler{
+class aumMidi{
 
 public:
     void setup(ofxAudioUnit* synth, ofxMidiOut* midiOut, string midiPortId);

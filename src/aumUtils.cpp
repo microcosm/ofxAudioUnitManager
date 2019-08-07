@@ -1,12 +1,12 @@
-#include "ofxAudioUnitManagerUtils.h"
+#include "aumUtils.h"
 
-void ofxAudioUnitManagerUtils::setup() {
+void aumUtils::setup() {
     loadNotesMap();
 }
 
 /* Format can be either: "60 ON",  "60 OFF"  etc, or
                          "C#5 ON", "C#5 OFF" etc */
-void ofxAudioUnitManagerUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
+void aumUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
     vector<string> args = ofSplitString(command, " ");
     if(args.size() == 2) {
         int parsedNote = midiNote(args.at(0));
@@ -20,7 +20,7 @@ void ofxAudioUnitManagerUtils::executeMidiCommand(string command, ofxMidiOut *mi
     }
 }
 
-int ofxAudioUnitManagerUtils::midiNote(string arg) {
+int aumUtils::midiNote(string arg) {
     if(arg.length() > 1 && ofToInt(arg) == 0) {
         octave = ofToInt(arg.substr(arg.length() - 1, arg.length()));
         note = notes[arg.substr(0, arg.length() - 1)];
@@ -29,7 +29,7 @@ int ofxAudioUnitManagerUtils::midiNote(string arg) {
     return ofToInt(arg);
 }
 
-void ofxAudioUnitManagerUtils::loadNotesMap() {
+void aumUtils::loadNotesMap() {
     notes["C"] = 0;
     notes["C#"] = 1;
     notes["D"] = 2;

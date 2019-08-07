@@ -1,6 +1,6 @@
-#include "PresetsHandler.h"
+#include "aumPresets.h"
 
-void PresetsHandler::setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor){
+void aumPresets::setup(string _chainName, ofxAudioUnitMixer* _mixer, aumManagedAudioUnit* _compressor){
     chainName = _chainName;
     selected = false;
     currentPreset = -1;
@@ -28,7 +28,7 @@ void PresetsHandler::setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxMana
     loadMasterUnits();
 }
 
-void PresetsHandler::load(int presetIndex) {
+void aumPresets::load(int presetIndex) {
     string presetPath = path(presetNames.at(presetIndex));
     for(int i = 0; i < units.size(); i++) {
         string presetFullPath = presetPath + filename(unitSlugs.at(i));
@@ -39,19 +39,19 @@ void PresetsHandler::load(int presetIndex) {
     }
 }
 
-void PresetsHandler::add(ofxManagedAudioUnit* unit) {
+void aumPresets::add(aumManagedAudioUnit* unit) {
     units.push_back(unit);
     unitSlugs.push_back(unit->getUnitSlug());
 }
 
-void PresetsHandler::saveNew() {
+void aumPresets::saveNew() {
     string presetName = ofSystemTextBoxDialog("Preset name:");
     if(validateName(presetName)) {
         save(presetName);
     }
 }
 
-void PresetsHandler::saveOverwrite() {
+void aumPresets::saveOverwrite() {
     if(currentPreset > -1 && presetNames.size() >= currentPreset + 1) {
         string presetName = presetNames.at(currentPreset);
         trash();
@@ -59,7 +59,7 @@ void PresetsHandler::saveOverwrite() {
     }
 }
 
-void PresetsHandler::rename() {
+void aumPresets::rename() {
     if(currentPreset > -1) {
         string newPresetName = ofSystemTextBoxDialog("New name:", presetNames.at(currentPreset));
         if(validateName(newPresetName, currentPreset)) {
@@ -77,7 +77,7 @@ void PresetsHandler::rename() {
     }
 }
 
-void PresetsHandler::trash() {
+void aumPresets::trash() {
     if(currentPreset > -1) {
         ofDirectory presetDir(path(presetNames.at(currentPreset)));
         presetDir.renameTo(newTrashPath(presetNames.at(currentPreset)));
@@ -88,7 +88,7 @@ void PresetsHandler::trash() {
     }
 }
 
-void PresetsHandler::increment() {
+void aumPresets::increment() {
     if(currentPreset > -1) {
         readFromDisk();
         currentPreset = currentPreset == presets.size() - 1 ? currentPreset = 0 : currentPreset + 1;
@@ -96,7 +96,7 @@ void PresetsHandler::increment() {
     }
 }
 
-void PresetsHandler::decrement() {
+void aumPresets::decrement() {
     if(currentPreset > -1) {
         readFromDisk();
         currentPreset = currentPreset == 0 ? presets.size() - 1 : currentPreset - 1;
@@ -104,15 +104,15 @@ void PresetsHandler::decrement() {
     }
 }
 
-void PresetsHandler::select() {
+void aumPresets::select() {
     selected = true;
 }
 
-void PresetsHandler::deselect() {
+void aumPresets::deselect() {
     selected = false;
 }
 
-void PresetsHandler::readFromDisk() {
+void aumPresets::readFromDisk() {
     clearPresets();
     vector<ofFile> chainDirContents = dirContents(chainName, anyExtension);
     
@@ -126,7 +126,7 @@ void PresetsHandler::readFromDisk() {
     ensureValidIndex();
 }
 
-void PresetsHandler::loadPresetsInChainOrder(string presetName) {
+void aumPresets::loadPresetsInChainOrder(string presetName) {
     vector<ofFile> files;
     for(int i = 0; i < units.size(); i++) {
         files.push_back(ofFile(path(presetName) + filename(unitSlugs.at(i))));
@@ -134,11 +134,11 @@ void PresetsHandler::loadPresetsInChainOrder(string presetName) {
     presets.push_back(files);
 }
 
-int PresetsHandler::currentIndex(){
+int aumPresets::currentIndex(){
     return currentPreset;
 }
 
-string PresetsHandler::report() {
+string aumPresets::report() {
     string icon = selected ? "[*]" : "[ ]";
     stringstream report;
     report << "PRESETS" << endl << "-------";
@@ -161,7 +161,7 @@ string PresetsHandler::report() {
     return report.str();
 }
 
-int PresetsHandler::indexOf(string presetName) {
+int aumPresets::indexOf(string presetName) {
     for(int i = 0; i < presets.size(); i++) {
         if(presetNames.at(i) == presetName) {
             return i;
@@ -171,29 +171,29 @@ int PresetsHandler::indexOf(string presetName) {
     return -1;
 }
 
-void PresetsHandler::ensureValidIndex() {
+void aumPresets::ensureValidIndex() {
     if(currentPreset > presets.size() - 1) {
         currentPreset = presets.size() - 1;
     }
 }
 
-vector<ofFile> PresetsHandler::dirContents(string path, string extensions) {
+vector<ofFile> aumPresets::dirContents(string path, string extensions) {
     dir.allowExt(extensions);
     dir.listDir(storageDir + path);
     return dir.getFiles();
 }
 
-void PresetsHandler::clearPresets() {
+void aumPresets::clearPresets() {
     presets.clear();
     presetNames.clear();
 }
 
-string PresetsHandler::path(string presetName) {
+string aumPresets::path(string presetName) {
     ofDirectory dir(storageDir + chainName);
     return dir.getAbsolutePath() + "/" + presetName + "/";
 }
 
-string PresetsHandler::newTrashPath(string presetName) {
+string aumPresets::newTrashPath(string presetName) {
     string timeIndexedTrashDir = storageDir + trashDir + ofGetTimestampString() + "/";
     ofDirectory timedTrashDir(timeIndexedTrashDir);
     timedTrashDir.create();
@@ -202,15 +202,15 @@ string PresetsHandler::newTrashPath(string presetName) {
     return trashChainDir.getAbsolutePath() + "/" + presetName + "/";
 }
 
-string PresetsHandler::filename(string unitSlug) {
+string aumPresets::filename(string unitSlug) {
     return unitSlug + "." + presetExtension;
 }
 
-string PresetsHandler::trim(string presetName) {
+string aumPresets::trim(string presetName) {
     return presetName.length() < 22 ? presetName : presetName.substr(0, 18) + "...";
 }
 
-void PresetsHandler::ensureDirectories() {
+void aumPresets::ensureDirectories() {
     ofDirectory storage(storageDir);
     if(!storage.exists()) {
         storage.create();
@@ -226,7 +226,7 @@ void PresetsHandler::ensureDirectories() {
 }
 
 string allowableCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-";
-bool PresetsHandler::validateName(string newPresetName, int alertDialogException) {
+bool aumPresets::validateName(string newPresetName, int alertDialogException) {
     bool nameIsUnique = true;
     for(int i = 0; i < presetNames.size(); i++) {
         if(ofToUpper(newPresetName) == ofToUpper(presetNames.at(i))) {
@@ -244,7 +244,7 @@ bool PresetsHandler::validateName(string newPresetName, int alertDialogException
     return nameIsValid && nameIsUnique;
 }
 
-void PresetsHandler::save(string presetName) {
+void aumPresets::save(string presetName) {
     string presetPath = path(presetName);
     dir.createDirectory(presetPath);
     for(int i = 0; i < units.size(); i++) {
@@ -257,12 +257,12 @@ void PresetsHandler::save(string presetName) {
     lastSaved = currentPreset;
 }
 
-void PresetsHandler::saveMasterUnits(){
+void aumPresets::saveMasterUnits(){
     mixer->saveCustomPresetAtPath(storagePath + filename(mixerName));
     compressor->getUnit()->saveCustomPresetAtPath(storagePath + filename(compressor->getUnitSlug()));
 }
 
-void PresetsHandler::loadMasterUnits(){
+void aumPresets::loadMasterUnits(){
     mixer->loadCustomPresetAtPath(storagePath + filename(mixerName));
     compressor->getUnit()->loadCustomPresetAtPath(storagePath + filename(compressor->getUnitSlug()));
 }

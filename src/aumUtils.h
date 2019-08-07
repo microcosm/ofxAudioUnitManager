@@ -1,8 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "MidiHandler.h"
+#include "aumMidi.h"
 
-class ofxAudioUnitManagerUtils {
+class aumUtils {
     
 public:
     void setup();

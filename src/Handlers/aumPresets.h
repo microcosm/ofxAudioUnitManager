@@ -1,13 +1,13 @@
 #pragma once
 #include "ofMain.h"
-#include "ofxManagedAudioUnit.h"
+#include "aumManagedAudioUnit.h"
 
-class PresetsHandler{
+class aumPresets{
 
 public:
-    void setup(string _chainName, ofxAudioUnitMixer* _mixer, ofxManagedAudioUnit* _compressor);
+    void setup(string _chainName, ofxAudioUnitMixer* _mixer, aumManagedAudioUnit* _compressor);
     void load(int index);
-    void add(ofxManagedAudioUnit* unit);
+    void add(aumManagedAudioUnit* unit);
     void saveNew();
     void saveOverwrite();
     void rename();
@@ -37,11 +37,11 @@ protected:
     void loadMasterUnits();
 
     vector<string> presetNames;
-    vector<ofxManagedAudioUnit*> units;
+    vector<aumManagedAudioUnit*> units;
     vector<string> unitSlugs;
     vector< vector<ofFile> > presets;
     ofxAudioUnitMixer* mixer;
-    ofxManagedAudioUnit* compressor;
+    aumManagedAudioUnit* compressor;
 
     string chainName, storageDir, storagePath, trashDir, mixerName;
     int currentPreset, lastSaved, lastSaveTimer, lastSaveTimeout;

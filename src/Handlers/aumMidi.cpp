@@ -1,6 +1,6 @@
-#include "MidiHandler.h"
+#include "aumMidi.h"
 
-void MidiHandler::setup(ofxAudioUnit* synth, ofxMidiOut* midiOut, string midiPortId){
+void aumMidi::setup(ofxAudioUnit* synth, ofxMidiOut* midiOut, string midiPortId){
     this->synth = synth;
     
     midiReceiver.createMidiDestination(midiPortId);
@@ -8,6 +8,6 @@ void MidiHandler::setup(ofxAudioUnit* synth, ofxMidiOut* midiOut, string midiPor
     midiOut->openPort(midiPortId);
 }
 
-void MidiHandler::exit(){
+void aumMidi::exit(){
     //midiOut->closePort();
 }
