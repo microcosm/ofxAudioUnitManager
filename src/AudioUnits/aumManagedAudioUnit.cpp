@@ -87,6 +87,10 @@ void aumManagedAudioUnit::printParamsAsConstants(string unitPrefix) {
             ofStringReplace(freindlyName, ":", "_");
             ofStringReplace(freindlyName, "/", "_");
             ofStringReplace(freindlyName, "\\", "_");
+            ofStringReplace(freindlyName, ">", "GT");
+            ofStringReplace(freindlyName, "#", "_sharp");
+            ofStringReplace(freindlyName, "<", "LT");
+            ofStringReplace(freindlyName, "*", "MULTIPLY");
             ofStringReplace(freindlyName, "____", "_");
             ofStringReplace(freindlyName, "___", "_");
             ofStringReplace(freindlyName, "__", "_");
