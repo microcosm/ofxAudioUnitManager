@@ -6,7 +6,7 @@ class aumUtils {
     
 public:
     void setup();
-    void executeMidiCommand(string command, ofxMidiOut *midi);
+    string executeMidiCommand(string command, ofxMidiOut *midi);
     int midiNote(string arg);
 protected:
     void loadNotesMap();

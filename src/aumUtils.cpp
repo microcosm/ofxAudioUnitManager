@@ -6,7 +6,7 @@ void aumUtils::setup() {
 
 /* Format can be either: "60 ON",  "60 OFF"  etc, or
                          "C#5 ON", "C#5 OFF" etc */
-void aumUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
+string aumUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
     vector<string> args = ofSplitString(command, " ");
     if(args.size() == 2) {
         int parsedNote = midiNote(args.at(0));
@@ -17,7 +17,9 @@ void aumUtils::executeMidiCommand(string command, ofxMidiOut *midi) {
             cout << "Sending MIDI OFF: " << parsedNote << endl;
             midi->sendNoteOff(1, parsedNote);
         }
+        return args.at(1);
     }
+    return NULL;
 }
 
 int aumUtils::midiNote(string arg) {

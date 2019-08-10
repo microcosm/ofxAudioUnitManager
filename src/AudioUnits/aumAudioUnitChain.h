@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "aumPresets.h"
+#include "aumUtils.h"
 #include "aumMidi.h"
 #include "aumManagedAudioUnit.h"
 
@@ -23,8 +24,10 @@ public:
     bool isSelected();
     void select();
     void deselect();
-    void sendMidiOn(int note);
-    void sendMidiOff(int note);
+    void sendMidiOn(int midiNum);
+    void sendMidiOff(int midiNum);
+    void sendNoteOn(string note);
+    void sendNoteOff(string note);
     ofxAudioUnitTap* tap();
     aumPresets* presets();
     string getUnitReport();
@@ -48,6 +51,7 @@ protected:
     vector<string> midiEvents;
     
     aumPresets presetsHandler;
+    aumUtils utils;
     aumMidi midiHandler;
     ofColor waveColor;
     bool selected;

@@ -8,6 +8,7 @@ void aumAudioUnitChain::setup(string _chainName, ofxAudioUnitMixer* _mixer, aumM
     waveColor = _waveColor;
     className = "aumAudioUnitChain";
     selected = false;
+    utils.setup();
 }
 
 void aumAudioUnitChain::loadPresets(){
@@ -74,13 +75,23 @@ void aumAudioUnitChain::deselect() {
     presetsHandler.deselect();
 }
 
-void aumAudioUnitChain::sendMidiOn(int note) {
-    midi.sendNoteOn(1, note);
+void aumAudioUnitChain::sendMidiOn(int midiNum) {
+    midi.sendNoteOn(1, midiNum);
+    midiEvents.push_back("[ON: " + ofToString(midiNum) + "]");
+}
+
+void aumAudioUnitChain::sendMidiOff(int midiNum) {
+    midi.sendNoteOff(1, midiNum);
+    midiEvents.push_back("[OFF: " + ofToString(midiNum) + "]");
+}
+
+void aumAudioUnitChain::sendNoteOn(string note) {
+    utils.executeMidiCommand(note + " ON", &midi);
     midiEvents.push_back("[ON: " + ofToString(note) + "]");
 }
 
-void aumAudioUnitChain::sendMidiOff(int note) {
-    midi.sendNoteOff(1, note);
+void aumAudioUnitChain::sendNoteOff(string note) {
+    utils.executeMidiCommand(note + " OFF", &midi);
     midiEvents.push_back("[OFF: " + ofToString(note) + "]");
 }
 
