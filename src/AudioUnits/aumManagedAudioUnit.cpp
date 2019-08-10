@@ -26,6 +26,12 @@ void aumManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains
                 className, x, y);
 }
 
+AudioUnitParameterValue aumManagedAudioUnit::get(int param) {
+    AudioUnitParameterValue value = 0;
+    AudioUnitGetParameter(unit.getUnit(), param, kAudioUnitScope_Global, 0, &value);
+    return value;
+}
+
 void aumManagedAudioUnit::set(int param, float value) {
     AudioUnitSetParameter(unit.getUnit(), param, kAudioUnitScope_Global, 0, value, 0);
 }
