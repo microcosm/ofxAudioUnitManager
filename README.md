@@ -47,7 +47,7 @@ Those of you who used this addon prior to version 0.2.0 will notice how much sim
 
 How to play notes
 -----------------
-The manager exploses an [ofxBpm](https://github.com/mirrorboy714/ofxBpm) instance, allowing you to declare listeners which will fire at precise moments, such as beat events:
+The manager exposes an [ofxBpm](https://github.com/mirrorboy714/ofxBpm) instance, allowing you to declare listeners which will fire at precise moments, such as beat events:
 
 ```cpp
     void ofApp::setup() {
