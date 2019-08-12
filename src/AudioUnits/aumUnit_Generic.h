@@ -11,13 +11,19 @@ public:
         //Nothing to do.
     }
 
-    void printParamsAsConstants(string unitPrefix) {
-        cout << endl << "============================" << endl << endl;
-        cout << "#pragma once" << endl << endl;
-        cout << getParamsAsConstants(unitPrefix).str();
+    void generateClassFileForAudioUnit(string deviceName) {
+        string classTemplate = getClassTemplate();
+        ofStringReplace(classTemplate, "<DEVICE_NAME>", deviceName);
+        writeFile(classTemplate, deviceName);
     }
 
-    stringstream getParamsAsConstants(string unitPrefix) {
+    void printParamsAsConstants(string deviceName) {
+        cout << "============================" << endl;
+        cout << "#pragma once" << endl;
+        cout << getParamsAsConstants(deviceName);
+    }
+
+    string getParamsAsConstants(string deviceName) {
         vector<AudioUnitParameterInfo> paramList = unit.getParameterList();
         unnamedCount = 0;
         stringstream paramStr;
@@ -35,11 +41,11 @@ public:
             }
 
             paramStr << "//min: " << p.minValue << ", max: " << p.maxValue << ", default: " << p.defaultValue << endl;
-            paramStr << "const static int " << unitPrefix << "_" << friendlyName << " = " << i << ";" << endl << endl;
+            paramStr << "const static int " << deviceName << "_" << friendlyName << " = " << i << ";" << endl;
         }
 
         paramStr << endl;
-        return paramStr;
+        return paramStr.str();
     }
 
     string formatFriendlyName(string givenName) {
@@ -62,5 +68,37 @@ public:
         ofStringReplace(friendlyName, "___", "_");
         ofStringReplace(friendlyName, "__", "_");
         return friendlyName;
+    }
+
+    void writeFile(string contents, string deviceName) {
+        ofFile file(ofToDataPath("../../../src/AudioUnits/aumUnit_" + deviceName + ".h"), ofFile::WriteOnly);
+        file.create();
+        file << contents;
+    }
+
+    string getClassTemplate() {
+        stringstream classTemplate;
+        classTemplate << "#pragma once"
+        << endl << "#include \"aumMonitorableAudioUnit.h\""
+        << endl << ""
+        << endl << "class aumUnit_<DEVICE_NAME> : public aumMonitorableAudioUnit"
+        << endl << "{"
+        << endl << "public:"
+        << endl << ""
+        << endl << "    <PARAM_CONSTS>"
+        << endl << ""
+        << endl << "    //These variables store the most recenty recorded values"
+        << endl << "    //of each of the parameters, for recording and detection"
+        << endl << "    <PARAM_PREVIOUS_VARS>"
+        << endl << ""
+        << endl << "    void doPrintChanges() {"
+        << endl << "        <PARAM_COMPARE_CALLS>"
+        << endl << "    }"
+        << endl << ""
+        << endl << "    void doRecordParams() {"
+        << endl << "        <PARAM_RECORD_STATEMENTS>"
+        << endl << "    }"
+        << endl << "}";
+        return classTemplate.str();
     }
 };
