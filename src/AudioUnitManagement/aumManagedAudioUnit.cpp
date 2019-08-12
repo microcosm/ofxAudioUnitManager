@@ -16,6 +16,12 @@ void aumManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, O
     if(className == "") {
         className = stringify(type, subType, manufacturer);
     }
+
+    ofAddListener(ofEvents().update, this, &aumManagedAudioUnit::update);
+}
+
+void aumManagedAudioUnit::update(ofEventArgs& args){
+    update();
 }
 
 void aumManagedAudioUnit::showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits) {

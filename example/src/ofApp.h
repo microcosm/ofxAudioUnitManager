@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "ofxAudioUnit.h"
 #include "ofxAudioUnitManager.h"
+#include "aumUnit_TALNoiseMaker.h"
+#include "aumUnit_Generic.h"
 #include "ofxBpm.h"
 
 class ofApp : public ofBaseApp{
@@ -26,9 +28,9 @@ public:
 
     ofxAudioUnitManager manager;
     aumAudioUnitChain myChain, chain2, chain3;
-    aumManagedAudioUnit mySynth, noiseMaker2;
-    aumManagedAudioUnit myFilter, filter2, filter3;
-    aumManagedAudioUnit myReverb, reverb2;
+    aumUnit_TALNoiseMaker mySynth, noiseMaker2;
+    aumUnit_Generic myFilter, filter2, filter3;
+    aumUnit_Generic myReverb, reverb2;
 
     bool playing, on;
     int note;

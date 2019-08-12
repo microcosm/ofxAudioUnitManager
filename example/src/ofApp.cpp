@@ -16,6 +16,7 @@ void ofApp::setup(){
     mySynth.setup("My Synth", 'aumu', 'ncut', 'TOGU');
     myFilter.setup("My Filter", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     myReverb.setup("My Reverb", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+    mySynth.printParamChanges();
 
     //2. Have the manager init the chain with a name
     manager.createChain(&myChain)

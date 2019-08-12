@@ -872,7 +872,88 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>5C6B1622C1583917DFAEE26A</key>
+			<key>F8E7B19F518A30AAAB7E87D3</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>4</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>aumUnit_TALNoiseMaker.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumUnit_TALNoiseMaker.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>17704A6E314B4DE9B4F597C0</key>
+			<dict>
+				<key>children</key>
+				<array>
+					<string>1E481AED2CF81B2904C0FA72</string>
+					<string>F8E7B19F518A30AAAB7E87D3</string>
+				</array>
+				<key>isa</key>
+				<string>PBXGroup</string>
+				<key>name</key>
+				<string>AudioUnits</string>
+				<key>sourceTree</key>
+				<string>&lt;group&gt;</string>
+			</dict>
+			<key>1E481AED2CF81B2904C0FA72</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>4</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>aumUnit_Generic.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumUnit_Generic.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>0F33ADF3A4A8DB214BA8E6D1</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>4</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>aumMonitorableAudioUnit.h</string>
+				<key>path</key>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumMonitorableAudioUnit.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>1BD9ED1129EB630A0CF70574</key>
+			<dict>
+				<key>fileRef</key>
+				<string>777296F23C12F5820ED6AF7A</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>777296F23C12F5820ED6AF7A</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>4</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>aumMonitorableAudioUnit.cpp</string>
+				<key>path</key>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumMonitorableAudioUnit.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>BA45447443F668688A7B79F2</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -883,18 +964,18 @@
 				<key>name</key>
 				<string>aumManagedAudioUnitMixer.h</string>
 				<key>path</key>
-				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumManagedAudioUnitMixer.h</string>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumManagedAudioUnitMixer.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>15DE78C8214F8EFEFF18186D</key>
+			<key>AFD12515EC68E4712DDD2A08</key>
 			<dict>
 				<key>fileRef</key>
-				<string>9DC08F734398005AEC8F70CB</string>
+				<string>5D918B7738AE60A0922029A9</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>9DC08F734398005AEC8F70CB</key>
+			<key>5D918B7738AE60A0922029A9</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -905,11 +986,11 @@
 				<key>name</key>
 				<string>aumManagedAudioUnitMixer.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumManagedAudioUnitMixer.cpp</string>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumManagedAudioUnitMixer.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>815290081A75F8CA9B843833</key>
+			<key>DBF8DA519FB54D910E7991A4</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -920,18 +1001,18 @@
 				<key>name</key>
 				<string>aumManagedAudioUnit.h</string>
 				<key>path</key>
-				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumManagedAudioUnit.h</string>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumManagedAudioUnit.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>E363C53E9BB51FE3F3BFBE1E</key>
+			<key>870D5151F8DCC6548ED5117B</key>
 			<dict>
 				<key>fileRef</key>
-				<string>6A21BA721F6C9B8A82BF3A17</string>
+				<string>2757D9AE7A14524A392AEB4A</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>6A21BA721F6C9B8A82BF3A17</key>
+			<key>2757D9AE7A14524A392AEB4A</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -942,11 +1023,11 @@
 				<key>name</key>
 				<string>aumManagedAudioUnit.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumManagedAudioUnit.cpp</string>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumManagedAudioUnit.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>5C72C242468FAF006F1575C9</key>
+			<key>30F5933AC52E8E197F21CA52</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.c.h</string>
@@ -957,25 +1038,27 @@
 				<key>name</key>
 				<string>aumAudioUnitChain.h</string>
 				<key>path</key>
-				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumAudioUnitChain.h</string>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumAudioUnitChain.h</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
-			<key>17704A6E314B4DE9B4F597C0</key>
+			<key>4D6B94B5CCF2E9DAC4959B47</key>
 			<dict>
 				<key>children</key>
 				<array>
-					<string>46D8FEA5E4A7A8E4A78F6B7C</string>
-					<string>5C72C242468FAF006F1575C9</string>
-					<string>6A21BA721F6C9B8A82BF3A17</string>
-					<string>815290081A75F8CA9B843833</string>
-					<string>9DC08F734398005AEC8F70CB</string>
-					<string>5C6B1622C1583917DFAEE26A</string>
+					<string>DBD0356CEBD3F95A6A18AAE6</string>
+					<string>30F5933AC52E8E197F21CA52</string>
+					<string>2757D9AE7A14524A392AEB4A</string>
+					<string>DBF8DA519FB54D910E7991A4</string>
+					<string>5D918B7738AE60A0922029A9</string>
+					<string>BA45447443F668688A7B79F2</string>
+					<string>777296F23C12F5820ED6AF7A</string>
+					<string>0F33ADF3A4A8DB214BA8E6D1</string>
 				</array>
 				<key>isa</key>
 				<string>PBXGroup</string>
 				<key>name</key>
-				<string>AudioUnits</string>
+				<string>AudioUnitManagement</string>
 				<key>sourceTree</key>
 				<string>&lt;group&gt;</string>
 			</dict>
@@ -983,6 +1066,7 @@
 			<dict>
 				<key>children</key>
 				<array>
+					<string>4D6B94B5CCF2E9DAC4959B47</string>
 					<string>17704A6E314B4DE9B4F597C0</string>
 					<string>54B07585A9E15EB75C7A818C</string>
 					<string>43D4780B8B2546E7EB6103FE</string>
@@ -1011,14 +1095,14 @@
 				<key>sourceTree</key>
 				<string>&lt;group&gt;</string>
 			</dict>
-			<key>7484EFBB3E2824467556C0E5</key>
+			<key>A5A66C1B3F610B4CB2FB9107</key>
 			<dict>
 				<key>fileRef</key>
-				<string>46D8FEA5E4A7A8E4A78F6B7C</string>
+				<string>DBD0356CEBD3F95A6A18AAE6</string>
 				<key>isa</key>
 				<string>PBXBuildFile</string>
 			</dict>
-			<key>46D8FEA5E4A7A8E4A78F6B7C</key>
+			<key>DBD0356CEBD3F95A6A18AAE6</key>
 			<dict>
 				<key>explicitFileType</key>
 				<string>sourcecode.cpp.cpp</string>
@@ -1029,7 +1113,7 @@
 				<key>name</key>
 				<string>aumAudioUnitChain.cpp</string>
 				<key>path</key>
-				<string>../../../addons/ofxAudioUnitManager/src/AudioUnits/aumAudioUnitChain.cpp</string>
+				<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement/aumAudioUnitChain.cpp</string>
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
@@ -2180,6 +2264,7 @@ fi
 						<string>../../../addons/ofxAudioUnit/src/CAPublicUtility</string>
 						<string>../../../addons/ofxAudioUnit/src/TPCircularBuffer</string>
 						<string>../../../addons/ofxAudioUnitManager/src</string>
+						<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement</string>
 						<string>../../../addons/ofxAudioUnitManager/src/AudioUnits</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Handlers</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Params</string>
@@ -2238,6 +2323,7 @@ fi
 						<string>../../../addons/ofxAudioUnit/src/CAPublicUtility</string>
 						<string>../../../addons/ofxAudioUnit/src/TPCircularBuffer</string>
 						<string>../../../addons/ofxAudioUnitManager/src</string>
+						<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement</string>
 						<string>../../../addons/ofxAudioUnitManager/src/AudioUnits</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Handlers</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Params</string>
@@ -5056,6 +5142,7 @@ fi
 						<string>../../../addons/ofxAudioUnit/src/CAPublicUtility</string>
 						<string>../../../addons/ofxAudioUnit/src/TPCircularBuffer</string>
 						<string>../../../addons/ofxAudioUnitManager/src</string>
+						<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement</string>
 						<string>../../../addons/ofxAudioUnitManager/src/AudioUnits</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Handlers</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Params</string>
@@ -5130,6 +5217,7 @@ fi
 						<string>../../../addons/ofxAudioUnit/src/CAPublicUtility</string>
 						<string>../../../addons/ofxAudioUnit/src/TPCircularBuffer</string>
 						<string>../../../addons/ofxAudioUnitManager/src</string>
+						<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement</string>
 						<string>../../../addons/ofxAudioUnitManager/src/AudioUnits</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Handlers</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Params</string>
@@ -5185,9 +5273,10 @@ fi
 					<string>0928F46C1FFAFB7170C2A661</string>
 					<string>AB6830767302568AB46DC937</string>
 					<string>0B1A7EDFBC477E5A2E37CCDF</string>
-					<string>7484EFBB3E2824467556C0E5</string>
-					<string>E363C53E9BB51FE3F3BFBE1E</string>
-					<string>15DE78C8214F8EFEFF18186D</string>
+					<string>A5A66C1B3F610B4CB2FB9107</string>
+					<string>870D5151F8DCC6548ED5117B</string>
+					<string>AFD12515EC68E4712DDD2A08</string>
+					<string>1BD9ED1129EB630A0CF70574</string>
 					<string>18D88E676EFD17F699309EE9</string>
 					<string>941A2F47990E60737DB9C974</string>
 					<string>D38017EE4A2C93E10CEB03AA</string>
@@ -5315,6 +5404,7 @@ fi
 						<string>../../../addons/ofxAudioUnit/src/CAPublicUtility</string>
 						<string>../../../addons/ofxAudioUnit/src/TPCircularBuffer</string>
 						<string>../../../addons/ofxAudioUnitManager/src</string>
+						<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement</string>
 						<string>../../../addons/ofxAudioUnitManager/src/AudioUnits</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Handlers</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Params</string>
@@ -5384,6 +5474,7 @@ fi
 						<string>../../../addons/ofxAudioUnit/src/CAPublicUtility</string>
 						<string>../../../addons/ofxAudioUnit/src/TPCircularBuffer</string>
 						<string>../../../addons/ofxAudioUnitManager/src</string>
+						<string>../../../addons/ofxAudioUnitManager/src/AudioUnitManagement</string>
 						<string>../../../addons/ofxAudioUnitManager/src/AudioUnits</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Handlers</string>
 						<string>../../../addons/ofxAudioUnitManager/src/Params</string>

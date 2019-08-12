@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "aumAudioUnitChain.h"
+#include "aumUnit_Generic.h"
 #include "aumManagedAudioUnitMixer.h"
 #include "ofxBpm.h"
 #include "aumUserInterface.h"
@@ -38,7 +39,7 @@ protected:
 
     aumUserInterface userInterface;
     ofxAudioUnitMixer mixer;
-    aumManagedAudioUnit compressor;
+    aumUnit_Generic compressor;
     ofxAudioUnitOutput output;
     vector<aumAudioUnitChain*> chains;
     aumAudioUnitChain* selectedChain;

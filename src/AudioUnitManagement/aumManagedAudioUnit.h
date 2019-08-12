@@ -16,6 +16,9 @@ class aumManagedAudioUnit {
 public:
     void setup(string _unitName, aumAudioUnitDevice device, string _className="");
     void setup(string _unitName, OSType type, OSType subType, OSType manufacturer=kAudioUnitManufacturer_Apple, string _className="");
+    void update(ofEventArgs& args);
+    virtual void update() = 0;
+
     void showUI(string chainName, int chainIndex, int numChains, int unitIndex, int numUnits);
     AudioUnitParameterValue get(int param);
     void set(int param, float value);
