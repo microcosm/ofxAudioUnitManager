@@ -77,49 +77,6 @@ bool aumManagedAudioUnit::isSynth() {
     return type == AU_TYPE_SYNTH;
 }
 
-void aumManagedAudioUnit::printParamsAsConstants(string unitPrefix) {
-    vector<AudioUnitParameterInfo> paramList = unit.getParameterList();
-    unnamedCount = 0;
-
-    cout << endl << "============================" << endl << endl;
-    cout << "#pragma once" << endl << endl;
-
-    for(int i = 0; i < paramList.size(); i++) {
-        AudioUnitParameterInfo& p = paramList[i];
-        string freindlyName = p.name;
-        if(freindlyName.size() > 0) {
-            freindlyName = ofToLower(freindlyName);
-            ofStringReplace(freindlyName, " ", "_");
-            ofStringReplace(freindlyName, ".", "_");
-            ofStringReplace(freindlyName, "-", "_");
-            ofStringReplace(freindlyName, ".", "_");
-            ofStringReplace(freindlyName, "(", "_");
-            ofStringReplace(freindlyName, ")", "_");
-            ofStringReplace(freindlyName, "&", "_");
-            ofStringReplace(freindlyName, ":", "_");
-            ofStringReplace(freindlyName, "/", "_");
-            ofStringReplace(freindlyName, "\\", "_");
-            ofStringReplace(freindlyName, ">", "GT");
-            ofStringReplace(freindlyName, "#", "_sharp");
-            ofStringReplace(freindlyName, "<", "LT");
-            ofStringReplace(freindlyName, "*", "MULTIPLY");
-            ofStringReplace(freindlyName, "____", "_");
-            ofStringReplace(freindlyName, "___", "_");
-            ofStringReplace(freindlyName, "__", "_");
-
-            cout << "//" << p.name << endl;
-        } else {
-            freindlyName = "unnamed" + ofToString(++unnamedCount);
-            cout << "//No name found" << endl;
-        }
-
-        cout << "//min: " << p.minValue << ", max: " << p.maxValue << ", default: " << p.defaultValue << endl;
-        cout << "const static int " << unitPrefix << "_" << freindlyName << " = " << i << ";" << endl << endl;
-    }
-
-    cout << endl;
-}
-
 string aumManagedAudioUnit::stringify(OSType type, OSType subType, OSType manufacturer) {
     return stringify(type) + "-" + stringify(subType) + "-" + stringify(manufacturer);
 }
