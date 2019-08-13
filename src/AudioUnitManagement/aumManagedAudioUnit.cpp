@@ -5,16 +5,20 @@ void aumManagedAudioUnit::setup(string _unitName, aumAudioUnitDevice device, str
     setup(_unitName, osTypes.at(0), osTypes.at(1), osTypes.at(2), _className);
 }
 
-void aumManagedAudioUnit::setup(string _unitName, OSType type, OSType subType, OSType manufacturer,
-                                string _className) {
+void aumManagedAudioUnit::setup(string _unitName, OSType _osType, OSType _osSubType, OSType _osManufacturer, string _className) {
     unitName = _unitName;
     unitSlug = _unitName;
     ofStringReplace(unitSlug, " ", "_");
-    unit = ofxAudioUnit(type, subType, manufacturer);
-    this->type = stringify(type) == "aumu" ? AU_TYPE_SYNTH : AU_TYPE_UNIT;
+
+    osType = _osType;
+    osSubType = _osSubType;
+    osManufacturer = _osManufacturer;
+    unit = ofxAudioUnit(osType, osSubType, osManufacturer);
+    this->type = stringify(osType) == "aumu" ? AU_TYPE_SYNTH : AU_TYPE_UNIT;
+
     className = _className;
     if(className == "") {
-        className = stringify(type, subType, manufacturer);
+        className = stringify(_osType, _osSubType, _osManufacturer);
     }
 
     ofAddListener(ofEvents().update, this, &aumManagedAudioUnit::update);
@@ -77,8 +81,8 @@ bool aumManagedAudioUnit::isSynth() {
     return type == AU_TYPE_SYNTH;
 }
 
-string aumManagedAudioUnit::stringify(OSType type, OSType subType, OSType manufacturer) {
-    return stringify(type) + "-" + stringify(subType) + "-" + stringify(manufacturer);
+string aumManagedAudioUnit::stringify(OSType _osType, OSType _osSubType, OSType _osManufacturer) {
+    return stringify(_osType) + "-" + stringify(_osSubType) + "-" + stringify(_osManufacturer);
 }
 
 string aumManagedAudioUnit::stringify(OSType code) {

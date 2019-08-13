@@ -15,7 +15,7 @@ class aumManagedAudioUnit {
 
 public:
     void setup(string _unitName, aumAudioUnitDevice device, string _className="");
-    void setup(string _unitName, OSType type, OSType subType, OSType manufacturer=kAudioUnitManufacturer_Apple, string _className="");
+    void setup(string _unitName, OSType _osType, OSType _osSubType, OSType _osManufacturer=kAudioUnitManufacturer_Apple, string _className="");
     void update(ofEventArgs& args);
     virtual void update() = 0;
 
@@ -31,8 +31,9 @@ public:
     string getClassName();
     bool isSynth();
 protected:
-    string stringify(OSType type, OSType subType, OSType manufacturer);
+    string stringify(OSType _osType, OSType _osSubType, OSType _osManufacturer);
     string stringify(OSType code);
+    OSType osType, osSubType, osManufacturer;
     ofxAudioUnit unit;
     AudioUnitType type;
     aumParams audioUnitParams;

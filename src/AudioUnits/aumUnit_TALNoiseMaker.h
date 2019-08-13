@@ -477,6 +477,10 @@ public:
     AudioUnitParameterValue previous_unnamed9;
     AudioUnitParameterValue previous_unnamed10;
 
+    void setup(string _unitName) {
+        aumManagedAudioUnit::setup(_unitName, 'aumu', 'ncut', 'TOGU', "aumUnit_TALNoiseMaker");
+    }
+
     void doPrintChanges() {
         compareAndPrint("unnamed1", previous_unnamed1, get(unnamed1));
         compareAndPrint("volume", previous_volume, get(volume));

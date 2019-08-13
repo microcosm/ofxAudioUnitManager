@@ -13,10 +13,11 @@ void ofApp::setup(){
     //For each chain:
     //--------------
     //1. Setup some units
-    mySynth.setup("My Synth", 'aumu', 'ncut', 'TOGU');
+    mySynth.setup("My Synth");
     myFilter.setup("My Filter", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     myReverb.setup("My Reverb", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
     mySynth.printParamChanges();
+    //mySynth.generateClassFileForAudioUnit("TALNoiseMaker");
 
     //2. Have the manager init the chain with a name
     manager.createChain(&myChain)
@@ -28,7 +29,7 @@ void ofApp::setup(){
     //That's it!
     
     //Now repeat for every chain you want to create
-    noiseMaker2.setup("Noise 2", 'aumu', 'ncut', 'TOGU');
+    noiseMaker2.setup("Noise 2");
     filter2.setup("Filter 2", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     filter3.setup("Filter 3", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
     reverb2.setup("Reverb 2", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
