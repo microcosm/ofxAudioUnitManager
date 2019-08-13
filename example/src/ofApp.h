@@ -4,6 +4,8 @@
 #include "ofxAudioUnit.h"
 #include "ofxAudioUnitManager.h"
 #include "aumUnit_TALNoiseMaker.h"
+#include "aumUnit_AULowPassFilter.h"
+#include "aumUnit_AUMatrixReverb.h"
 #include "aumUnit_Generic.h"
 #include "ofxBpm.h"
 
@@ -29,8 +31,8 @@ public:
     ofxAudioUnitManager manager;
     aumAudioUnitChain myChain, chain2, chain3;
     aumUnit_TALNoiseMaker mySynth, noiseMaker2;
-    aumUnit_Generic myFilter, filter2, filter3;
-    aumUnit_Generic myReverb, reverb2;
+    aumUnit_AULowPassFilter myFilter, filter2, filter3;
+    aumUnit_AUMatrixReverb myReverb, reverb2;
 
     bool playing, on;
     int note;
