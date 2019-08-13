@@ -2,7 +2,9 @@
 
 void aumMonitorableAudioUnit::update() {
     if(isMonitoringParams) {
-        doPrintChanges();
+        if(ofGetFrameNum() > 0) {
+            doPrintChanges();
+        }
         doRecordParams();
     }
 }
