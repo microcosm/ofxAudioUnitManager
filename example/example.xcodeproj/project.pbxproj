@@ -121,6 +121,7 @@
 		81AC32CCCB56FAABA3E1BDE0 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
 		8221A0A72302FD12002BD3CC /* aumUnit_AULowPassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aumUnit_AULowPassFilter.h; path = ../src/AudioUnits/aumUnit_AULowPassFilter.h; sourceTree = "<group>"; };
 		8221A0A82302FD12002BD3CC /* aumUnit_AUMatrixReverb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aumUnit_AUMatrixReverb.h; path = ../src/AudioUnits/aumUnit_AUMatrixReverb.h; sourceTree = "<group>"; };
+		82AF51032310494700A5ACDB /* aumUnit_Massive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aumUnit_Massive.h; path = ../src/AudioUnits/aumUnit_Massive.h; sourceTree = "<group>"; };
 		82E523CE23030328005C73CA /* aumUnit_Fm8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aumUnit_Fm8.h; path = ../src/AudioUnits/aumUnit_Fm8.h; sourceTree = "<group>"; };
 		883971DDCC3F7881C2C65B50 /* ofxAudioUnitSpeechSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxAudioUnitSpeechSynth.h; path = ../../../addons/ofxAudioUnit/src/ofxAudioUnitSpeechSynth.h; sourceTree = SOURCE_ROOT; };
 		8B873EEEF22B81D25EA0D45D /* ofxAudioUnitDSPNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxAudioUnitDSPNode.h; path = ../../../addons/ofxAudioUnit/src/ofxAudioUnitDSPNode.h; sourceTree = SOURCE_ROOT; };
@@ -370,6 +371,7 @@
 				8221A0A72302FD12002BD3CC /* aumUnit_AULowPassFilter.h */,
 				8221A0A82302FD12002BD3CC /* aumUnit_AUMatrixReverb.h */,
 				82E523CE23030328005C73CA /* aumUnit_Fm8.h */,
+				82AF51032310494700A5ACDB /* aumUnit_Massive.h */,
 				1E481AED2CF81B2904C0FA72 /* aumUnit_Generic.h */,
 				F8E7B19F518A30AAAB7E87D3 /* aumUnit_TALNoiseMaker.h */,
 			);
