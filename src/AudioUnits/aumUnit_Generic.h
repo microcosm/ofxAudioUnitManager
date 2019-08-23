@@ -5,6 +5,7 @@ class aumUnit_Generic : public aumManagedAudioUnit
 {
 protected:
     int unnamedCount;
+    const string AUM_TO_TRIM = " \n\r\t\f\v_";
 
 public:
     void update() {
@@ -26,7 +27,7 @@ public:
         cout << "#pragma once" << endl;
         cout << getParamsAsConstants();
     }
-    
+
     string getParamsAsConstants() {
         vector<AudioUnitParameterInfo> paramList = unit.getParameterList();
         unnamedCount = 0;
@@ -52,7 +53,7 @@ public:
 
         return paramStr.str();
     }
-    
+
     string getParamsAsVars() {
         vector<AudioUnitParameterInfo> paramList = unit.getParameterList();
         unnamedCount = 0;
@@ -75,7 +76,7 @@ public:
 
         return paramStr.str();
     }
-    
+
     string getCompareCalls() {
         vector<AudioUnitParameterInfo> paramList = unit.getParameterList();
         unnamedCount = 0;
@@ -141,7 +142,22 @@ public:
         ofStringReplace(friendlyName, "____", "_");
         ofStringReplace(friendlyName, "___", "_");
         ofStringReplace(friendlyName, "__", "_");
-        return friendlyName;
+
+        return trim(friendlyName);
+    }
+
+    string ltrim(const string& s) {
+        size_t start = s.find_first_not_of(AUM_TO_TRIM);
+        return (start == std::string::npos) ? "" : s.substr(start);
+    }
+
+    string rtrim(const string& s) {
+        size_t end = s.find_last_not_of(AUM_TO_TRIM);
+        return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+    }
+
+    string trim(const string& s) {
+        return rtrim(ltrim(s));
     }
 
     void writeFile(string contents, string deviceName) {
